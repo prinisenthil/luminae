@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="LuminaeData" load_steps=16 format=3 uid="uid://df48tnbb32j8b"]
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=15 format=3 uid="uid://df48tnbb32j8b"]
 
 [ext_resource type="Texture2D" uid="uid://n7r3xy1hu1oa" path="res://art/placeholders/sprites/sprite2_attack.png" id="1_jmyn5"]
-[ext_resource type="Script" path="res://scripts/move_data.gd" id="1_o1st0"]
 [ext_resource type="Texture2D" uid="uid://bnsv3m71ndv7l" path="res://art/placeholders/sprites/sprite2_idle.png" id="2_k5cfo"]
 [ext_resource type="Script" path="res://scripts/luminae_data.gd" id="2_o5iye"]
 [ext_resource type="Texture2D" uid="uid://d2p3k4xgeasx0" path="res://art/placeholders/sprites/sprite2.png" id="5_s4o87"]
@@ -37,7 +36,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8ojeu")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -90,7 +89,6 @@ base_exp = 64
 level = 5
 captured = false
 seen = false
-moves = Array[ExtResource("1_o1st0")]([])
 sprite = ExtResource("5_s4o87")
 idle = SubResource("SpriteFrames_wbxv1")
 attack = SubResource("SpriteFrames_y7x7q")

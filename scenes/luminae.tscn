@@ -1,13 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://n3nolitr13ll"]
+[gd_scene load_steps=12 format=3 uid="uid://n3nolitr13ll"]
 
 [ext_resource type="Script" path="res://scripts/luminae.gd" id="1_tl2rs"]
+[ext_resource type="Texture2D" uid="uid://cowl7s58pumnc" path="res://art/placeholders/sprites/sprite1_idle.png" id="2_gb2jy"]
+[ext_resource type="Texture2D" uid="uid://c6tasjoo6gk2t" path="res://art/placeholders/ui/health_bar_body.png" id="3_nk4y7"]
+[ext_resource type="Texture2D" uid="uid://b0euh5q1i1f73" path="res://art/placeholders/ui/health_bar_fill.png" id="4_ouif0"]
+[ext_resource type="Script" path="res://scenes/hp_bar.gd" id="5_phxmd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q01x"]
+atlas = ExtResource("2_gb2jy")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj2rv"]
+atlas = ExtResource("2_gb2jy")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwmy4"]
+atlas = ExtResource("2_gb2jy")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_350c5"]
+atlas = ExtResource("2_gb2jy")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ov1cy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q01x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj2rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwmy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_350c5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dhqv5"]
+radius = 117.143
+height = 234.286
 
 [node name="luminae" type="Node2D"]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_tl2rs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -122)
 scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ov1cy")
 flip_h = true
 
 [node name="AttackOrigin" type="Marker2D" parent="."]
@@ -16,11 +62,30 @@ position = Vector2(20, 10)
 [node name="ImpactPoint" type="Marker2D" parent="."]
 position = Vector2(16, 10)
 
-[node name="HPBar" type="ProgressBar" parent="."]
-custom_minimum_size = Vector2(100, 0)
-anchors_preset = 2
+[node name="HPBar" type="TextureProgressBar" parent="."]
+custom_minimum_size = Vector2(50, 0)
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -27.0
-offset_right = 200.0
+offset_left = -100.0
+offset_top = -50.0
+offset_bottom = -34.0
+grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(4, 4)
+value = 100.0
+texture_under = ExtResource("3_nk4y7")
+texture_progress = ExtResource("4_ouif0")
+texture_progress_offset = Vector2(1.5, -2.5)
+script = ExtResource("5_phxmd")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.85714, -120)
+shape = SubResource("CapsuleShape2D_dhqv5")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_tap"]

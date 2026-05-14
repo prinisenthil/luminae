@@ -18,7 +18,9 @@ class_name LuminaeData
 @export var seen: bool = false			# Whether this Pokémon has been encountered
 
 # Move & Evolution data
-@export var moves: Array[MoveData] = []  # List of moves
+@export var basic_attack: MoveData
+@export var special_attack1: MoveData
+@export var special_attack2: MoveData
 @export var evolution: LuminaeData
 
 # Sprites/Animations

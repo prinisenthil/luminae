@@ -1,22 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://bssje14pluqbd"]
+[gd_scene load_steps=7 format=3 uid="uid://bssje14pluqbd"]
 
 [ext_resource type="Texture2D" uid="uid://dwepyjsesdww4" path="res://art/placeholders/battle backgrounds/game_background_4.png" id="1_dm41r"]
+[ext_resource type="Script" path="res://scenes/battle.gd" id="1_ldc4u"]
 [ext_resource type="PackedScene" uid="uid://n3nolitr13ll" path="res://scenes/luminae.tscn" id="2_j3txc"]
 [ext_resource type="Resource" uid="uid://ccfrpuysipx8x" path="res://luminae resources/fernling.tres" id="3_wilo0"]
 [ext_resource type="Resource" uid="uid://bgyl3dtpcj6ag" path="res://luminae resources/tidbit.tres" id="4_q0q50"]
+[ext_resource type="PackedScene" uid="uid://bki1g3shrsunx" path="res://scenes/attack.tscn" id="6_2f187"]
 
 [node name="battle" type="Node2D"]
+script = ExtResource("1_ldc4u")
 
 [node name="Battle Background" type="Sprite2D" parent="."]
-scale = Vector2(0.305, 0.305)
+scale = Vector2(0.220052, 0.181481)
 texture = ExtResource("1_dm41r")
 centered = false
 
 [node name="player_luminae" parent="." instance=ExtResource("2_j3txc")]
-position = Vector2(323, 548)
+position = Vector2(219, 321)
 luminae_data = ExtResource("3_wilo0")
 player = true
 
 [node name="enemy_luminae" parent="." instance=ExtResource("2_j3txc")]
-position = Vector2(791, 356)
+position = Vector2(570, 201)
 luminae_data = ExtResource("4_q0q50")
+
+[node name="Spirit Orbs" type="Label" parent="."]
+offset_left = 297.0
+offset_top = 326.0
+offset_right = 323.0
+offset_bottom = 349.0
+scale = Vector2(2, 2)
+text = "5"
+
+[node name="Label" type="Label" parent="Spirit Orbs"]
+layout_mode = 0
+offset_left = 20.0
+offset_right = 103.0
+offset_bottom = 23.0
+text = "Spirit Orbs"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 320.0
+offset_top = 220.0
+offset_right = 320.0
+offset_bottom = 220.0
+
+[node name="attack1" parent="Control" instance=ExtResource("6_2f187")]
+
+[node name="attack2" parent="Control" instance=ExtResource("6_2f187")]
+position = Vector2(80, 0)

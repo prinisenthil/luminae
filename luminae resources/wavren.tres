@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="LuminaeData" load_steps=17 format=3 uid="uid://pq1ba3bkltxn"]
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=16 format=3 uid="uid://pq1ba3bkltxn"]
 
 [ext_resource type="Texture2D" uid="uid://b8m87j7c4bvxj" path="res://art/placeholders/sprites/sprite13_attack.png" id="1_5sewg"]
-[ext_resource type="Script" path="res://scripts/move_data.gd" id="1_wfgcp"]
 [ext_resource type="Resource" uid="uid://dictp81wxfi0w" path="res://luminae resources/deepcrest.tres" id="2_uh5ev"]
 [ext_resource type="Script" path="res://scripts/luminae_data.gd" id="2_vkogl"]
 [ext_resource type="Texture2D" uid="uid://b2ofibfns6wfg" path="res://art/placeholders/sprites/sprite13_idle.png" id="3_xtnbb"]
@@ -38,7 +37,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tamwh")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -91,7 +90,6 @@ base_exp = 64
 level = 5
 captured = false
 seen = false
-moves = Array[ExtResource("1_wfgcp")]([])
 evolution = ExtResource("2_uh5ev")
 sprite = ExtResource("6_e5e8a")
 idle = SubResource("SpriteFrames_kbokf")
