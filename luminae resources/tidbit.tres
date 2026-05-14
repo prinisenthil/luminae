@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=17 format=3 uid="uid://bgyl3dtpcj6ag"]
+
+[ext_resource type="Texture2D" uid="uid://bh0ac6amhc04a" path="res://art/placeholders/sprites/sprite12_attack.png" id="1_1bmik"]
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1_sw4ea"]
+[ext_resource type="Resource" uid="uid://pq1ba3bkltxn" path="res://luminae resources/wavren.tres" id="2_6syts"]
+[ext_resource type="Script" path="res://scripts/luminae_data.gd" id="2_8i0kj"]
+[ext_resource type="Texture2D" uid="uid://ubiqc846mr0h" path="res://art/placeholders/sprites/sprite12_idle.png" id="3_w5sod"]
+[ext_resource type="Texture2D" uid="uid://ffxqq50yah0a" path="res://art/placeholders/sprites/sprite12.png" id="6_7oopq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1qwe"]
+atlas = ExtResource("1_1bmik")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2bi4"]
+atlas = ExtResource("1_1bmik")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyqlc"]
+atlas = ExtResource("1_1bmik")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hrq7"]
+atlas = ExtResource("1_1bmik")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcrta"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1qwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2bi4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyqlc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hrq7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_311tw"]
+atlas = ExtResource("3_w5sod")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5uch"]
+atlas = ExtResource("3_w5sod")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64d1h"]
+atlas = ExtResource("3_w5sod")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2layk"]
+atlas = ExtResource("3_w5sod")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_of8tw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_311tw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5uch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64d1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2layk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_8i0kj")
+name = "Tidbit"
+element = 1
+base_health = 11
+base_attack = 10
+base_defense = 10
+base_speed = 100
+base_exp = 64
+level = 5
+captured = false
+seen = false
+moves = Array[ExtResource("1_sw4ea")]([])
+evolution = ExtResource("2_6syts")
+sprite = ExtResource("6_7oopq")
+idle = SubResource("SpriteFrames_of8tw")
+attack = SubResource("SpriteFrames_xcrta")

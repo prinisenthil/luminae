@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=17 format=3 uid="uid://ccfrpuysipx8x"]
+
+[ext_resource type="Texture2D" uid="uid://ct0erdw13h0i2" path="res://art/placeholders/sprites/sprite1_attack.png" id="1_cojag"]
+[ext_resource type="Texture2D" uid="uid://cowl7s58pumnc" path="res://art/placeholders/sprites/sprite1_idle.png" id="1_r2hyw"]
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1_wh2e7"]
+[ext_resource type="Script" path="res://scripts/luminae_data.gd" id="2_e5fwg"]
+[ext_resource type="Resource" uid="uid://df48tnbb32j8b" path="res://luminae resources/mosshorn.tres" id="2_slpsh"]
+[ext_resource type="Texture2D" uid="uid://b2t8i0rojhpvs" path="res://art/placeholders/sprites/sprite1.png" id="6_7p2kq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g5yv"]
+atlas = ExtResource("1_cojag")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8qoj"]
+atlas = ExtResource("1_cojag")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks14k"]
+atlas = ExtResource("1_cojag")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckopq"]
+atlas = ExtResource("1_cojag")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvfcj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g5yv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8qoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks14k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckopq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wap8k"]
+atlas = ExtResource("1_r2hyw")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m3yp"]
+atlas = ExtResource("1_r2hyw")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcntp"]
+atlas = ExtResource("1_r2hyw")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsna7"]
+atlas = ExtResource("1_r2hyw")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eox1v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wap8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m3yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcntp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsna7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_e5fwg")
+name = "Fernling"
+element = 2
+base_health = 11
+base_attack = 10
+base_defense = 10
+base_speed = 100
+base_exp = 64
+level = 5
+captured = false
+seen = false
+moves = Array[ExtResource("1_wh2e7")]([])
+evolution = ExtResource("2_slpsh")
+sprite = ExtResource("6_7p2kq")
+idle = SubResource("SpriteFrames_eox1v")
+attack = SubResource("SpriteFrames_nvfcj")

@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=17 format=3 uid="uid://bumhnajl34noa"]
+
+[ext_resource type="Texture2D" uid="uid://tqvvg6lluvyd" path="res://art/placeholders/sprites/sprite8_attack.png" id="1_gr34v"]
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1_wgkhm"]
+[ext_resource type="Script" path="res://scripts/luminae_data.gd" id="2_tqr6n"]
+[ext_resource type="Resource" uid="uid://bpg2dk8gp1dyw" path="res://luminae resources/auralion.tres" id="2_xmdv1"]
+[ext_resource type="Texture2D" uid="uid://boocksnbsmn68" path="res://art/placeholders/sprites/sprite8_idle.png" id="3_r3wik"]
+[ext_resource type="Texture2D" uid="uid://gbfse4yl78aa" path="res://art/placeholders/sprites/sprite8.png" id="6_xcnyd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7sj5"]
+atlas = ExtResource("1_gr34v")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b70oy"]
+atlas = ExtResource("1_gr34v")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8irv8"]
+atlas = ExtResource("1_gr34v")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8myo"]
+atlas = ExtResource("1_gr34v")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_12tvq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7sj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b70oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8irv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8myo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbok6"]
+atlas = ExtResource("3_r3wik")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlnlc"]
+atlas = ExtResource("3_r3wik")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mflg3"]
+atlas = ExtResource("3_r3wik")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp2ls"]
+atlas = ExtResource("3_r3wik")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_abg2w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbok6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlnlc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mflg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vp2ls")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_tqr6n")
+name = "Manefire"
+element = 0
+base_health = 11
+base_attack = 10
+base_defense = 10
+base_speed = 100
+base_exp = 64
+level = 5
+captured = false
+seen = false
+moves = Array[ExtResource("1_wgkhm")]([])
+evolution = ExtResource("2_xmdv1")
+sprite = ExtResource("6_xcnyd")
+idle = SubResource("SpriteFrames_abg2w")
+attack = SubResource("SpriteFrames_12tvq")

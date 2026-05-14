@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://n3nolitr13ll"]
+
+[ext_resource type="Script" path="res://scripts/luminae.gd" id="1_tl2rs"]
+
+[node name="luminae" type="Node2D"]
+script = ExtResource("1_tl2rs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -122)
+scale = Vector2(4, 4)
+flip_h = true
+
+[node name="AttackOrigin" type="Marker2D" parent="."]
+position = Vector2(20, 10)
+
+[node name="ImpactPoint" type="Marker2D" parent="."]
+position = Vector2(16, 10)
+
+[node name="HPBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 200.0
+grow_vertical = 0

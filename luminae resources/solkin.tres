@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=17 format=3 uid="uid://dk3iu6qmaw7a6"]
+
+[ext_resource type="Texture2D" uid="uid://tfd7i5d12o5l" path="res://art/placeholders/sprites/sprite7_attack.png" id="1_prooy"]
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1_y5v1n"]
+[ext_resource type="Resource" uid="uid://bumhnajl34noa" path="res://luminae resources/manefire.tres" id="2_4d4ik"]
+[ext_resource type="Script" path="res://scripts/luminae_data.gd" id="2_csn27"]
+[ext_resource type="Texture2D" uid="uid://6jipr22upybt" path="res://art/placeholders/sprites/sprite7_idle.png" id="3_tc7xi"]
+[ext_resource type="Texture2D" uid="uid://bbdum27fr5a2a" path="res://art/placeholders/sprites/sprite7.png" id="6_i31uy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3n3n"]
+atlas = ExtResource("1_prooy")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lm11"]
+atlas = ExtResource("1_prooy")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo4tn"]
+atlas = ExtResource("1_prooy")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3j8s"]
+atlas = ExtResource("1_prooy")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hrxno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3n3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lm11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo4tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3j8s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00agt"]
+atlas = ExtResource("3_tc7xi")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbik0"]
+atlas = ExtResource("3_tc7xi")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qqbw"]
+atlas = ExtResource("3_tc7xi")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6w86"]
+atlas = ExtResource("3_tc7xi")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_orck6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00agt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbik0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qqbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6w86")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_csn27")
+name = "Solkin"
+element = 0
+base_health = 11
+base_attack = 10
+base_defense = 10
+base_speed = 100
+base_exp = 64
+level = 5
+captured = false
+seen = false
+moves = Array[ExtResource("1_y5v1n")]([])
+evolution = ExtResource("2_4d4ik")
+sprite = ExtResource("6_i31uy")
+idle = SubResource("SpriteFrames_orck6")
+attack = SubResource("SpriteFrames_hrxno")

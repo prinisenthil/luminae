@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://byrgluicm3qiq"]
+
+[ext_resource type="Texture2D" uid="uid://deiufjm3ntx8t" path="res://art/placeholders/attack effects/attack1.png" id="1_51u1a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ixnc"]
+atlas = ExtResource("1_51u1a")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi84h"]
+atlas = ExtResource("1_51u1a")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymifb"]
+atlas = ExtResource("1_51u1a")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax3qx"]
+atlas = ExtResource("1_51u1a")
+region = Rect2(288, 0, 96, 96)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ixnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi84h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymifb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax3qx")
+}],
+"loop": true,
+"name": &"play",
+"speed": 5.0
+}]

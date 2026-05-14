@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=3 format=3 uid="uid://dictp81wxfi0w"]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1_kbcbu"]
+[ext_resource type="Script" path="res://scripts/luminae_data.gd" id="2_bnxl5"]
+
+[resource]
+script = ExtResource("2_bnxl5")
+name = ""
+element = 0
+base_health = 11
+base_attack = 10
+base_defense = 10
+base_speed = 100
+base_exp = 64
+level = 5
+captured = false
+seen = false
+moves = Array[ExtResource("1_kbcbu")]([])

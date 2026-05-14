@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bssje14pluqbd"]
+
+[ext_resource type="Texture2D" uid="uid://dwepyjsesdww4" path="res://art/placeholders/battle backgrounds/game_background_4.png" id="1_dm41r"]
+[ext_resource type="PackedScene" uid="uid://n3nolitr13ll" path="res://scenes/luminae.tscn" id="2_j3txc"]
+[ext_resource type="Resource" uid="uid://ccfrpuysipx8x" path="res://luminae resources/fernling.tres" id="3_wilo0"]
+[ext_resource type="Resource" uid="uid://bgyl3dtpcj6ag" path="res://luminae resources/tidbit.tres" id="4_q0q50"]
+
+[node name="battle" type="Node2D"]
+
+[node name="Battle Background" type="Sprite2D" parent="."]
+scale = Vector2(0.305, 0.305)
+texture = ExtResource("1_dm41r")
+centered = false
+
+[node name="player_luminae" parent="." instance=ExtResource("2_j3txc")]
+position = Vector2(323, 548)
+luminae_data = ExtResource("3_wilo0")
+player = true
+
+[node name="enemy_luminae" parent="." instance=ExtResource("2_j3txc")]
+position = Vector2(791, 356)
+luminae_data = ExtResource("4_q0q50")
