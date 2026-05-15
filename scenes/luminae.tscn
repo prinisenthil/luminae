@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/luminae.gd" id="1_tl2rs"]
 [ext_resource type="Texture2D" uid="uid://cowl7s58pumnc" path="res://art/placeholders/sprites/sprite1_idle.png" id="2_gb2jy"]
-[ext_resource type="Texture2D" uid="uid://c6tasjoo6gk2t" path="res://art/placeholders/ui/health_bar_body.png" id="3_nk4y7"]
-[ext_resource type="Texture2D" uid="uid://b0euh5q1i1f73" path="res://art/placeholders/ui/health_bar_fill.png" id="4_ouif0"]
-[ext_resource type="Script" path="res://scenes/hp_bar.gd" id="5_phxmd"]
+[ext_resource type="Texture2D" uid="uid://f2xjtji3xwah" path="res://art/placeholders/ui/Bar_Body_2.png" id="3_u83px"]
+[ext_resource type="Texture2D" uid="uid://bkc6em6k74vvr" path="res://art/placeholders/ui/Bar_Fill_Green.png" id="4_kveov"]
+[ext_resource type="Script" path="res://scripts/hp_bar.gd" id="5_phxmd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3q01x"]
 atlas = ExtResource("2_gb2jy")
@@ -57,10 +57,10 @@ sprite_frames = SubResource("SpriteFrames_ov1cy")
 flip_h = true
 
 [node name="AttackOrigin" type="Marker2D" parent="."]
-position = Vector2(20, 10)
+position = Vector2(60, -80)
 
 [node name="ImpactPoint" type="Marker2D" parent="."]
-position = Vector2(16, 10)
+position = Vector2(50, -80)
 
 [node name="HPBar" type="TextureProgressBar" parent="."]
 custom_minimum_size = Vector2(50, 0)
@@ -76,9 +76,9 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(4, 4)
 value = 100.0
-texture_under = ExtResource("3_nk4y7")
-texture_progress = ExtResource("4_ouif0")
-texture_progress_offset = Vector2(1.5, -2.5)
+texture_under = ExtResource("3_u83px")
+texture_progress = ExtResource("4_kveov")
+texture_progress_offset = Vector2(2, 3)
 script = ExtResource("5_phxmd")
 
 [node name="Area2D" type="Area2D" parent="."]

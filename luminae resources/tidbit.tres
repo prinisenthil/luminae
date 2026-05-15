@@ -46,9 +46,9 @@ animations = [{
 [sub_resource type="Resource" id="Resource_n521w"]
 script = ExtResource("1_sw4ea")
 display_name = "Splash"
-element = 1
+element = 5
 energy_cost = 0
-power = 5
+power = 25
 description = ""
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_311tw"]
@@ -92,7 +92,7 @@ script = ExtResource("1_sw4ea")
 display_name = "Bubble"
 element = 1
 energy_cost = 3
-power = 10
+power = 45
 description = ""
 
 [sub_resource type="Resource" id="Resource_daupb"]
@@ -100,16 +100,16 @@ script = ExtResource("1_sw4ea")
 display_name = "Water Whirl"
 element = 1
 energy_cost = 5
-power = 15
+power = 65
 description = ""
 
 [resource]
 script = ExtResource("2_8i0kj")
 name = "Tidbit"
 element = 1
-base_health = 11
-base_attack = 10
-base_defense = 10
+base_health = 150
+base_attack = 40
+base_defense = 35
 base_speed = 100
 base_exp = 64
 level = 5

@@ -3,6 +3,7 @@ class_name Luminae
 
 @export var luminae_data: LuminaeData
 @export var player: bool
+@export var level: int = 5
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var tap_area: Area2D = $Area2D
@@ -17,7 +18,6 @@ var attack: int
 var defense: int
 var max_health: int
 var health: int
-var level: int
 var spirit_orbs
 
 signal tapped
@@ -52,17 +52,13 @@ func set_stats():
 	hp_bar.setup(max_health)
 	health = max_health
 
-# Calculates a stat like attack or defense using base stat, IV, EV
-func calc_stat(base_stat: int, iv := 15, ev := 0) -> int:
-	var stat = ((2 * base_stat + iv + int(ev / 4)) * level / 100.0) + 5
-	return int(stat)
+# Calculates attack, defense, speed etc
+func calc_stat(base_stat: int) -> int:
+	return int(base_stat * (1.0 + (level - 1) * 0.1))
 
-# Calculates the Pokémon's maximum HP using standard formula
-func calc_hp():
-	var IV = 15
-	var EV = 0
-	var HP = ((2 * luminae_data.base_health + IV + (EV / 4)) * level / 100) + level + 10
-	return HP
+# Calculates max HP
+func calc_hp() -> int:
+	return int(luminae_data.base_health * (1.0 + (level - 1) * 0.15))
 
 func update_health(dmg):
 	health = max(0, health - dmg)

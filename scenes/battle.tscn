@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bssje14pluqbd"]
 
 [ext_resource type="Texture2D" uid="uid://dwepyjsesdww4" path="res://art/placeholders/battle backgrounds/game_background_4.png" id="1_dm41r"]
-[ext_resource type="Script" path="res://scenes/battle.gd" id="1_ldc4u"]
+[ext_resource type="Script" path="res://scripts/battle.gd" id="1_ldc4u"]
 [ext_resource type="PackedScene" uid="uid://n3nolitr13ll" path="res://scenes/luminae.tscn" id="2_j3txc"]
 [ext_resource type="Resource" uid="uid://ccfrpuysipx8x" path="res://luminae resources/fernling.tres" id="3_wilo0"]
 [ext_resource type="Resource" uid="uid://bgyl3dtpcj6ag" path="res://luminae resources/tidbit.tres" id="4_q0q50"]

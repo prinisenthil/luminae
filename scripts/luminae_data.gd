@@ -5,10 +5,10 @@ class_name LuminaeData
 @export var element: Global.LuminaeElement
 
 # Base stats used for stat calculation in battle
-@export var base_health: int = 11		# Base HP stat
-@export var base_attack: int = 10		# Base physical attack
-@export var base_defense: int = 10		# Base physical defense
-@export var base_speed: int = 100			# Speed determines turn order
+@export var base_health: int = 150		# Base HP Stat
+@export var base_attack: int = 40		# Base Attack Stat
+@export var base_defense: int = 35		# Base Defense Stat
+@export var base_speed: int = 100		# Base Speed Stat
 @export var base_exp: int = 64
 
 @export var level: int = 5				# Default starting level
