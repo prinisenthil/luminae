@@ -48,6 +48,9 @@ func perform_attack(move: MoveData):
 	await get_tree().create_timer(0.5).timeout
 	execute_move(enemy_luminae, enemy_luminae.luminae_data.basic_attack, player_luminae)
 	player_turn = true
+	
+	if enemy_luminae.health == 0:
+		win_battle()
 
 # helper function to apply damage and execute move then update player spirit orbs
 func execute_move(attacker: Luminae, move: MoveData, defender: Luminae):
@@ -87,6 +90,23 @@ func get_type_multiplier(move_element: Global.MoveElement, defender_element: Glo
 
 func take_dmg(defender, dmg):
 	defender.update_health(dmg)
+
+# battle.gd
+func win_battle() -> void:
+	GameState.complete_node(GameState.current_region, GameState.current_node)
+	_unlock_next_node()
+	GameState.change_scene(GameState.current_region)
+
+
+func _unlock_next_node() -> void:
+	var completed = GameState.current_node
+	if Global.unlock_map.has(completed):
+		for next_node in Global.unlock_map[completed]:
+			GameState.set_node_state(
+				GameState.current_region,
+				next_node,
+				MapNode.NodeState.AVAILABLE
+			)
 
 func calc_spirit_orbs(damage: int, move_cost: int) -> int:
 	# Base: roughly 1 orb per 20 damage dealt

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfanv7awc5a11"]
+
+[ext_resource type="Script" path="res://scripts/region_map.gd" id="1_1efa8"]
+[ext_resource type="Texture2D" uid="uid://8djlyp7d84rn" path="res://art/placeholders/sprites/sprite4.png" id="2_28fym"]
+
+[node name="RegionMap" type="Node2D"]
+script = ExtResource("1_1efa8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PathLine" type="Line2D" parent="."]
+
+[node name="PlayerMarker" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerMarker"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_28fym")

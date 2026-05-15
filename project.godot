@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Luminae"
-run/main_scene="res://scenes/battle.tscn"
+run/main_scene="res://scenes/region maps/region_1.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://scripts/global.gd"
+GameState="*res://scripts/game_state.gd"
 
 [display]
 
@@ -29,6 +30,10 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="Luminae"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [rendering]
 

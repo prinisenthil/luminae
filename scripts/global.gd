@@ -39,3 +39,13 @@ const TYPE_DISADVANTAGES: Dictionary = {
 	MoveElement.SKY: LuminaeElement.OCEAN,
 	MoveElement.NIGHT: LuminaeElement.SKY
 }
+
+# Define which node unlocks after which — this is your progression graph
+var unlock_map: Dictionary = {
+	"BrightstoneVillage": ["GoldenMeadows"],
+	"GoldenMeadows":      ["DustyCrossroads"],
+	"DustyCrossroads":    ["SunTempleRuins", "CrackedIdol"],  # main + side branch
+	"SunTempleRuins":     ["MirageLake"],
+	"MirageLake":         ["ScorchedCanyon", "GildedDunes"],
+	"ScorchedCanyon":     ["SolaraThrone"],
+}

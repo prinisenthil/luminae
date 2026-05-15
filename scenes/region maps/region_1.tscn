@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://xj1jmaybgg7y"]
+
+[ext_resource type="PackedScene" uid="uid://dfanv7awc5a11" path="res://scenes/region_map.tscn" id="1_rkdou"]
+[ext_resource type="PackedScene" uid="uid://dxmuip8jd0bf2" path="res://scenes/map_node.tscn" id="2_aiqwn"]
+
+[node name="Region1" instance=ExtResource("1_rkdou")]
+
+[node name="BrightstoneVillage" parent="." index="3" instance=ExtResource("2_aiqwn")]
+position = Vector2(-145, 65)
+node_label = "Brightstone Village"
+
+[node name="GoldenMeadows" parent="." index="4" instance=ExtResource("2_aiqwn")]
+position = Vector2(79, -72)
+node_label = "Golden Meadows"

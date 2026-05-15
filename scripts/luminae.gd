@@ -41,7 +41,7 @@ func play_attack():
 	await sprite.animation_finished
 
 func _on_tap(viewport, event, shape_idx) -> void:
-	if event is InputEventScreenTouch or event is InputEventMouseButton and event.pressed:
+	if event is InputEventScreenTouch and event.pressed:
 		tapped.emit()
 
 # Recalculates all derived stats based on level and base stats
