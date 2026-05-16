@@ -31,6 +31,13 @@ func _ready():
 	sprite.play()
 	set_stats()
 
+static func create(luminae_data: LuminaeData, level: int, player: bool) -> Luminae:
+	var new_luminae := Luminae.new()
+	new_luminae.luminae_data = luminae_data
+	new_luminae.level = level
+	new_luminae.player = player
+	return new_luminae
+
 func play_idle():
 	sprite.sprite_frames = idle_anim
 	sprite.play()

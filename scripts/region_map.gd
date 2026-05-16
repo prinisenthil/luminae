@@ -159,6 +159,7 @@ func _on_node_tapped(node: MapNode) -> void:
 	#_confirm_panel.show_for(node)
 	GameState.current_region = region_id
 	GameState.current_node = node.name
+	GameState.current_enemy = node.spawn_luminae()
 	GameState.change_scene("battle")
 
 

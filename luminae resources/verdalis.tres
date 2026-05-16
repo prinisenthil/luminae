@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="LuminaeData" load_steps=15 format=3 uid="uid://dg63shnrrgw18"]
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=19 format=3 uid="uid://dg63shnrrgw18"]
 
 [ext_resource type="Texture2D" uid="uid://brder88m12cta" path="res://art/placeholders/sprites/sprite3_attack.png" id="1_8ch4f"]
 [ext_resource type="Texture2D" uid="uid://bdtwwqi16ew3f" path="res://art/placeholders/sprites/sprite3_idle.png" id="2_n0dyp"]
+[ext_resource type="Resource" uid="uid://c66s37jpvm2yx" path="res://move resources/basic_attack.tres" id="2_q5pf1"]
 [ext_resource type="Script" path="res://scripts/luminae_data.gd" id="2_yclv7"]
 [ext_resource type="Texture2D" uid="uid://lwnqgbivt8j" path="res://art/placeholders/sprites/sprite3.png" id="5_v7ymy"]
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="5_wwc4g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i2mnk"]
 atlas = ExtResource("1_8ch4f")
@@ -77,6 +79,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_o21q0"]
+script = ExtResource("5_wwc4g")
+display_name = "Big Boom"
+element = 2
+energy_cost = 3
+power = 45
+description = ""
+
+[sub_resource type="Resource" id="Resource_5p7ap"]
+script = ExtResource("5_wwc4g")
+display_name = "Bigger Boom"
+element = 2
+energy_cost = 5
+power = 65
+description = ""
+
 [resource]
 script = ExtResource("2_yclv7")
 name = "Verdalis"
@@ -89,6 +107,9 @@ base_exp = 64
 level = 5
 captured = false
 seen = false
+basic_attack = ExtResource("2_q5pf1")
+special_attack1 = SubResource("Resource_o21q0")
+special_attack2 = SubResource("Resource_5p7ap")
 sprite = ExtResource("5_v7ymy")
 idle = SubResource("SpriteFrames_ti1a4")
 attack = SubResource("SpriteFrames_7nv3p")

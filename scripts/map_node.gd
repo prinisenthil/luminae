@@ -1,9 +1,7 @@
 extends Area2D
 class_name MapNode
 
-# ─────────────────────────────────────────
 #  Enums & Constants
-# ─────────────────────────────────────────
 
 enum NodeState { LOCKED, AVAILABLE, COMPLETED }
 
@@ -18,9 +16,7 @@ enum NodeType {
 	THRONE
 }
 
-# ─────────────────────────────────────────
 #  Exports
-# ─────────────────────────────────────────
 
 @export var node_label: String = ""
 @export var node_type: NodeType = NodeType.BATTLE
@@ -31,37 +27,28 @@ enum NodeType {
 @export var texture_completed: Texture2D
 @export var texture_locked: Texture2D
 
+# Available Luminae and spawn rates
+@export var luminae_entries: Array[LuminaeEntry] = []
+
 # Post-Eternal shimmer — assign if this is a POST_ETERNAL node
 @export var is_post_eternal: bool = false
 
-
-# ─────────────────────────────────────────
 #  Signals
-# ─────────────────────────────────────────
 
 signal node_tapped(node: MapNode)
 
-# ─────────────────────────────────────────
 #  Node References
-# ─────────────────────────────────────────
 
 @onready var _sprite: Sprite2D = $Sprite2D
 @onready var _label: Label = $Label
 #@onready var _shimmer: GPUParticles2D = $Shimmer  # nullable — only on post-eternal nodes
 
-# ─────────────────────────────────────────
-#  Lifecycle
-# ─────────────────────────────────────────
 
 func _ready() -> void:
 	_apply_state()
 #	_apply_shimmer()
 	_label.text = node_label
 
-
-# ─────────────────────────────────────────
-#  Public API
-# ─────────────────────────────────────────
 
 func set_state(new_state: NodeState) -> void:
 	state = new_state
@@ -76,9 +63,7 @@ func get_node_type() -> NodeType:
 	return node_type
 
 
-# ─────────────────────────────────────────
 #  Input
-# ─────────────────────────────────────────
 
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if state == NodeState.LOCKED:
@@ -95,10 +80,8 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 
 	node_tapped.emit(self)
 
-
-# ─────────────────────────────────────────
 #  Private
-# ─────────────────────────────────────────
+
 
 func _apply_state() -> void:
 	match state:
@@ -118,6 +101,28 @@ func _apply_state() -> void:
 			_sprite.modulate = Color(1.0, 1.0, 1.0, 0.4)
 			_label.modulate = Color(1.0, 1.0, 1.0, 0.4)
 
+func spawn_luminae():
+	if luminae_entries.is_empty():
+		push_error("No luminae entries on node: " + node_label)
+		return null
+	
+	var total_weight: int = 0
+	for entry in luminae_entries:
+		total_weight += entry.spawn_rate
+	
+	var roll := randi() % total_weight
+	var cumulative:= 0
+	var chosen: LuminaeEntry
+	
+	for entry in luminae_entries:
+		cumulative += entry.spawn_rate
+		if roll < cumulative:
+			chosen = entry
+			break
+	
+	var level := randi_range(chosen.low_level, chosen.upper_level)
+	
+	return Luminae.create(chosen.Luminae, level, false)
 
 #func _apply_shimmer() -> void:
 #	if not _shimmer:

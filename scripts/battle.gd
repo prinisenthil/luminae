@@ -11,9 +11,10 @@ extends Node2D
 
 # executed upon battle start
 func _ready() -> void:
+	#enemy_luminae = GameState.current_enemy
 	enemy_luminae.tapped.connect(_on_enemy_tapped)
-	player_luminae.spirit_orbs = 10
-	enemy_luminae.spirit_orbs = 10
+	player_luminae.spirit_orbs = 3
+	enemy_luminae.spirit_orbs = 3
 	update_orbs()
 
 	attack1_btn.pressed.connect(self._attack1_pressed)
@@ -45,12 +46,15 @@ func perform_attack(move: MoveData):
 	player_turn = false
 	execute_move(player_luminae, move, enemy_luminae)
 	await player_luminae.sprite.animation_finished
-	await get_tree().create_timer(0.5).timeout
-	execute_move(enemy_luminae, enemy_luminae.luminae_data.basic_attack, player_luminae)
-	player_turn = true
-	
+	await get_tree().create_timer(.5).timeout
 	if enemy_luminae.health == 0:
 		win_battle()
+		return
+
+	execute_move(enemy_luminae, enemy_luminae.luminae_data.basic_attack, player_luminae)
+	await get_tree().create_timer(.5).timeout
+	player_turn = true
+
 
 # helper function to apply damage and execute move then update player spirit orbs
 func execute_move(attacker: Luminae, move: MoveData, defender: Luminae):
@@ -109,8 +113,8 @@ func _unlock_next_node() -> void:
 			)
 
 func calc_spirit_orbs(damage: int, move_cost: int) -> int:
-	# Base: roughly 1 orb per 20 damage dealt
-	var base: float = damage / 20.0
+	# Base: roughly 1 orb per 30 damage dealt
+	var base: float = damage / 30.0
 	# Random multiplier between 0.85 and 1.15 (tighter range, less swingy)
 	var rng: float = randf_range(0.85, 1.15)
 	# Cost bonus rewards committing to expensive moves
@@ -119,7 +123,17 @@ func calc_spirit_orbs(damage: int, move_cost: int) -> int:
 	return max(1, int((base + cost_bonus) * rng))
 
 func update_orbs():
-	orbs_text.text = str(player_luminae.spirit_orbs)
+	var orbs = player_luminae.spirit_orbs
+	orbs_text.text = str(orbs)
+	if orbs < player_luminae.luminae_data.special_attack1.energy_cost:
+		attack1.set_availability(false)
+	else:
+		attack1.set_availability(true)
+	if orbs < player_luminae.luminae_data.special_attack2.energy_cost:
+		attack2.set_availability(false)
+	else:
+		attack2.set_availability(true)
+	
 
 func update_moves():
 	attack1.setup(player_luminae.luminae_data.special_attack1)

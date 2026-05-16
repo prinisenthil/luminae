@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MoveData" load_steps=2 format=3 uid="uid://b08emltttsmye"]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1_sh7lg"]
+
+[resource]
+script = ExtResource("1_sh7lg")
+display_name = "Big Boom"
+element = 2
+energy_cost = 3
+power = 45
+description = ""

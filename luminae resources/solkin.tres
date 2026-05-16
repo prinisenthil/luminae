@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="LuminaeData" load_steps=16 format=3 uid="uid://dk3iu6qmaw7a6"]
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=20 format=3 uid="uid://dk3iu6qmaw7a6"]
 
 [ext_resource type="Texture2D" uid="uid://tfd7i5d12o5l" path="res://art/placeholders/sprites/sprite7_attack.png" id="1_prooy"]
 [ext_resource type="Resource" uid="uid://bumhnajl34noa" path="res://luminae resources/manefire.tres" id="2_4d4ik"]
 [ext_resource type="Script" path="res://scripts/luminae_data.gd" id="2_csn27"]
+[ext_resource type="Resource" uid="uid://c66s37jpvm2yx" path="res://move resources/basic_attack.tres" id="2_o83bg"]
 [ext_resource type="Texture2D" uid="uid://6jipr22upybt" path="res://art/placeholders/sprites/sprite7_idle.png" id="3_tc7xi"]
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="6_d88sg"]
 [ext_resource type="Texture2D" uid="uid://bbdum27fr5a2a" path="res://art/placeholders/sprites/sprite7.png" id="6_i31uy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3n3n"]
@@ -78,18 +80,37 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_vaj57"]
+script = ExtResource("6_d88sg")
+display_name = "Big Boom"
+element = 0
+energy_cost = 3
+power = 45
+description = ""
+
+[sub_resource type="Resource" id="Resource_1cp3u"]
+script = ExtResource("6_d88sg")
+display_name = "Bigger Boom"
+element = 0
+energy_cost = 5
+power = 65
+description = ""
+
 [resource]
 script = ExtResource("2_csn27")
 name = "Solkin"
 element = 0
-base_health = 11
-base_attack = 10
-base_defense = 10
+base_health = 150
+base_attack = 40
+base_defense = 35
 base_speed = 100
 base_exp = 64
 level = 5
 captured = false
 seen = false
+basic_attack = ExtResource("2_o83bg")
+special_attack1 = SubResource("Resource_vaj57")
+special_attack2 = SubResource("Resource_1cp3u")
 evolution = ExtResource("2_4d4ik")
 sprite = ExtResource("6_i31uy")
 idle = SubResource("SpriteFrames_orck6")

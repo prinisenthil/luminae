@@ -32,5 +32,6 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Sunspot"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="input_event" from="." to="." method="_input_event"]

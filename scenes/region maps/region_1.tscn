@@ -1,14 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://xj1jmaybgg7y"]
+[gd_scene load_steps=8 format=3 uid="uid://xj1jmaybgg7y"]
 
 [ext_resource type="PackedScene" uid="uid://dfanv7awc5a11" path="res://scenes/region_map.tscn" id="1_rkdou"]
 [ext_resource type="PackedScene" uid="uid://dxmuip8jd0bf2" path="res://scenes/map_node.tscn" id="2_aiqwn"]
+[ext_resource type="Script" path="res://scripts/luminae_entry.gd" id="3_4qgtx"]
+[ext_resource type="Resource" uid="uid://dk3iu6qmaw7a6" path="res://luminae resources/solkin.tres" id="4_jxdpr"]
+[ext_resource type="Resource" uid="uid://bgyl3dtpcj6ag" path="res://luminae resources/tidbit.tres" id="5_edfrm"]
+
+[sub_resource type="Resource" id="Resource_mhjxo"]
+script = ExtResource("3_4qgtx")
+Luminae = ExtResource("4_jxdpr")
+spawn_rate = 1
+low_level = 5
+upper_level = 6
+
+[sub_resource type="Resource" id="Resource_37rg4"]
+script = ExtResource("3_4qgtx")
+Luminae = ExtResource("5_edfrm")
+spawn_rate = 1
+low_level = 5
+upper_level = 6
 
 [node name="Region1" instance=ExtResource("1_rkdou")]
 
+[node name="PlayerMarker" parent="." index="2"]
+visible = false
+
 [node name="BrightstoneVillage" parent="." index="3" instance=ExtResource("2_aiqwn")]
-position = Vector2(-145, 65)
+position = Vector2(-317, 164)
 node_label = "Brightstone Village"
+luminae_entries = Array[ExtResource("3_4qgtx")]([SubResource("Resource_mhjxo"), SubResource("Resource_37rg4")])
 
 [node name="GoldenMeadows" parent="." index="4" instance=ExtResource("2_aiqwn")]
-position = Vector2(79, -72)
+position = Vector2(-222, 37)
 node_label = "Golden Meadows"
+
+[node name="DustyCrossroads" parent="." index="5" instance=ExtResource("2_aiqwn")]
+position = Vector2(-51, 121)
+
+[node name="CrackedIdol" parent="." index="6" instance=ExtResource("2_aiqwn")]
+position = Vector2(39, -52)
+
+[node name="SunTempleRuins" parent="." index="7" instance=ExtResource("2_aiqwn")]
+position = Vector2(278, 39)

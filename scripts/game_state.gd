@@ -6,6 +6,7 @@ var node_states: Dictionary = {}
 
 var current_region: String = "region_1"
 var current_node: String = ""
+var current_enemy: Luminae = null
 
 var world = ""
 
