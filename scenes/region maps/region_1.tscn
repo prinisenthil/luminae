@@ -1,24 +1,49 @@
-[gd_scene load_steps=8 format=3 uid="uid://xj1jmaybgg7y"]
+[gd_scene load_steps=15 format=3 uid="uid://xj1jmaybgg7y"]
 
 [ext_resource type="PackedScene" uid="uid://dfanv7awc5a11" path="res://scenes/region_map.tscn" id="1_rkdou"]
 [ext_resource type="PackedScene" uid="uid://dxmuip8jd0bf2" path="res://scenes/map_node.tscn" id="2_aiqwn"]
 [ext_resource type="Script" path="res://scripts/luminae_entry.gd" id="3_4qgtx"]
-[ext_resource type="Resource" uid="uid://dk3iu6qmaw7a6" path="res://luminae resources/solkin.tres" id="4_jxdpr"]
+[ext_resource type="Resource" uid="uid://cqqw0eiou78bj" path="res://luminae entries/solkin_entry.tres" id="4_shiam"]
 [ext_resource type="Resource" uid="uid://bgyl3dtpcj6ag" path="res://luminae resources/tidbit.tres" id="5_edfrm"]
+[ext_resource type="Resource" uid="uid://viva72tc4qlb" path="res://luminae entries/fernling_entry.tres" id="5_rcxqo"]
+[ext_resource type="Resource" uid="uid://l8j6dm1bhumf" path="res://luminae resources/zeltina.tres" id="6_dmlel"]
+[ext_resource type="Resource" uid="uid://bi653htthowdt" path="res://luminae resources/starburn.tres" id="7_g1y6p"]
+[ext_resource type="Resource" uid="uid://dictp81wxfi0w" path="res://luminae resources/deepcrest.tres" id="9_yfvqr"]
 
-[sub_resource type="Resource" id="Resource_mhjxo"]
-script = ExtResource("3_4qgtx")
-Luminae = ExtResource("4_jxdpr")
-spawn_rate = 1
-low_level = 5
-upper_level = 6
-
-[sub_resource type="Resource" id="Resource_37rg4"]
+[sub_resource type="Resource" id="Resource_gvose"]
 script = ExtResource("3_4qgtx")
 Luminae = ExtResource("5_edfrm")
+spawn_rate = 2
+low_level = 5
+upper_level = 6
+
+[sub_resource type="Resource" id="Resource_ooflo"]
+script = ExtResource("3_4qgtx")
+Luminae = ExtResource("6_dmlel")
 spawn_rate = 1
 low_level = 5
 upper_level = 6
+
+[sub_resource type="Resource" id="Resource_pi0mu"]
+script = ExtResource("3_4qgtx")
+Luminae = ExtResource("7_g1y6p")
+spawn_rate = 2
+low_level = 5
+upper_level = 6
+
+[sub_resource type="Resource" id="Resource_iuyd6"]
+script = ExtResource("3_4qgtx")
+Luminae = ExtResource("7_g1y6p")
+spawn_rate = 2
+low_level = 3
+upper_level = 5
+
+[sub_resource type="Resource" id="Resource_l4thv"]
+script = ExtResource("3_4qgtx")
+Luminae = ExtResource("9_yfvqr")
+spawn_rate = 4
+low_level = 5
+upper_level = 8
 
 [node name="Region1" instance=ExtResource("1_rkdou")]
 
@@ -28,17 +53,22 @@ visible = false
 [node name="BrightstoneVillage" parent="." index="3" instance=ExtResource("2_aiqwn")]
 position = Vector2(-317, 164)
 node_label = "Brightstone Village"
-luminae_entries = Array[ExtResource("3_4qgtx")]([SubResource("Resource_mhjxo"), SubResource("Resource_37rg4")])
+luminae_entries = Array[ExtResource("3_4qgtx")]([ExtResource("4_shiam"), ExtResource("5_rcxqo"), SubResource("Resource_gvose")])
 
 [node name="GoldenMeadows" parent="." index="4" instance=ExtResource("2_aiqwn")]
 position = Vector2(-222, 37)
 node_label = "Golden Meadows"
+luminae_entries = Array[ExtResource("3_4qgtx")]([SubResource("Resource_ooflo"), SubResource("Resource_pi0mu")])
 
 [node name="DustyCrossroads" parent="." index="5" instance=ExtResource("2_aiqwn")]
 position = Vector2(-51, 121)
+node_label = "Dusty Crossroads"
+luminae_entries = Array[ExtResource("3_4qgtx")]([SubResource("Resource_iuyd6"), SubResource("Resource_l4thv")])
 
 [node name="CrackedIdol" parent="." index="6" instance=ExtResource("2_aiqwn")]
 position = Vector2(39, -52)
+node_label = "Cracked Idol"
 
 [node name="SunTempleRuins" parent="." index="7" instance=ExtResource("2_aiqwn")]
 position = Vector2(278, 39)
+node_label = "Sun Temple Ruins"

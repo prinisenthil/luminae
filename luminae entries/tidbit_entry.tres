@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LuminaeEntry" load_steps=3 format=3 uid="uid://b1cgewf7ykyqe"]
+
+[ext_resource type="Resource" uid="uid://bgyl3dtpcj6ag" path="res://luminae resources/tidbit.tres" id="1_gvhg6"]
+[ext_resource type="Script" path="res://scripts/luminae_entry.gd" id="1_rmakq"]
+
+[resource]
+script = ExtResource("1_rmakq")
+Luminae = ExtResource("1_gvhg6")
+spawn_rate = 2
+low_level = 5
+upper_level = 6

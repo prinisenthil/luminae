@@ -11,7 +11,9 @@ extends Node2D
 
 # executed upon battle start
 func _ready() -> void:
-	#enemy_luminae = GameState.current_enemy
+	print(GameState.current_enemy.luminae_data.name)
+	enemy_luminae.load_luminae(GameState.current_enemy)
+	print(enemy_luminae.luminae_data.name)
 	enemy_luminae.tapped.connect(_on_enemy_tapped)
 	player_luminae.spirit_orbs = 3
 	enemy_luminae.spirit_orbs = 3
@@ -113,8 +115,8 @@ func _unlock_next_node() -> void:
 			)
 
 func calc_spirit_orbs(damage: int, move_cost: int) -> int:
-	# Base: roughly 1 orb per 30 damage dealt
-	var base: float = damage / 30.0
+	# Base: roughly 1 orb per 20 damage dealt
+	var base: float = damage / 20.0
 	# Random multiplier between 0.85 and 1.15 (tighter range, less swingy)
 	var rng: float = randf_range(0.85, 1.15)
 	# Cost bonus rewards committing to expensive moves

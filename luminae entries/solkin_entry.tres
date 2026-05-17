@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LuminaeEntry" load_steps=3 format=3 uid="uid://cqqw0eiou78bj"]
+
+[ext_resource type="Resource" uid="uid://dk3iu6qmaw7a6" path="res://luminae resources/solkin.tres" id="1_yb6ml"]
+[ext_resource type="Script" path="res://scripts/luminae_entry.gd" id="2_byqv4"]
+
+[resource]
+script = ExtResource("2_byqv4")
+Luminae = ExtResource("1_yb6ml")
+spawn_rate = 2
+low_level = 5
+upper_level = 6

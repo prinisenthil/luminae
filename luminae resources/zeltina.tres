@@ -1,0 +1,122 @@
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=19 format=3 uid="uid://l8j6dm1bhumf"]
+
+[ext_resource type="Texture2D" uid="uid://3yl1egrh1ahv" path="res://art/placeholders/sprites/sprite6_attack.png" id="1_pnxfe"]
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="2_ymcdj"]
+[ext_resource type="Texture2D" uid="uid://dkw53ggd5cedo" path="res://art/placeholders/sprites/sprite6_idle.png" id="3_kdbrx"]
+[ext_resource type="Script" path="res://scripts/luminae_data.gd" id="4_itqsc"]
+[ext_resource type="Texture2D" uid="uid://cwx4wfo5qoixc" path="res://art/placeholders/sprites/sprite6.png" id="5_81w2n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_578eg"]
+atlas = ExtResource("1_pnxfe")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfjo3"]
+atlas = ExtResource("1_pnxfe")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3pvj"]
+atlas = ExtResource("1_pnxfe")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08btx"]
+atlas = ExtResource("1_pnxfe")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6fulg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_578eg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfjo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3pvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08btx")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_2oc1v"]
+script = ExtResource("2_ymcdj")
+display_name = "Stab"
+element = 5
+energy_cost = 0
+power = 25
+description = ""
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ds88"]
+atlas = ExtResource("3_kdbrx")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki5hy"]
+atlas = ExtResource("3_kdbrx")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcous"]
+atlas = ExtResource("3_kdbrx")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jdgi"]
+atlas = ExtResource("3_kdbrx")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yd4hq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ds88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ki5hy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcous")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jdgi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_blirm"]
+script = ExtResource("2_ymcdj")
+display_name = "Ice Shard"
+element = 3
+energy_cost = 3
+power = 45
+description = ""
+
+[sub_resource type="Resource" id="Resource_8wlen"]
+script = ExtResource("2_ymcdj")
+display_name = "Antler Dash"
+element = 3
+energy_cost = 5
+power = 65
+description = ""
+
+[resource]
+script = ExtResource("4_itqsc")
+name = "Zeltina"
+element = 3
+base_health = 150
+base_attack = 40
+base_defense = 35
+base_speed = 100
+base_exp = 64
+level = 5
+captured = false
+seen = false
+basic_attack = SubResource("Resource_2oc1v")
+special_attack1 = SubResource("Resource_blirm")
+special_attack2 = SubResource("Resource_8wlen")
+sprite = ExtResource("5_81w2n")
+idle = SubResource("SpriteFrames_yd4hq")
+attack = SubResource("SpriteFrames_6fulg")

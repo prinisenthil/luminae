@@ -3,6 +3,7 @@ class_name Luminae
 
 @export var luminae_data: LuminaeData
 @export var player: bool
+@export var nickname: String
 @export var level: int = 5
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -10,6 +11,7 @@ class_name Luminae
 @onready var hp_bar: TextureProgressBar = $HPBar
 @onready var attack_origin: Marker2D = $AttackOrigin
 @onready var impact_point: Marker2D = $ImpactPoint
+@onready var name_label: Label = $Panel/Label
 @onready var idle_anim: SpriteFrames = luminae_data.idle
 @onready var attack_anim: SpriteFrames = luminae_data.attack
 
@@ -23,6 +25,13 @@ var spirit_orbs
 signal tapped
 
 func _ready():
+	setup()
+
+func setup():
+	idle_anim = luminae_data.idle
+	attack_anim = luminae_data.attack
+	nickname = luminae_data.name
+	name_label.text = nickname
 	if not player:
 		sprite.flip_h = false
 	else:
@@ -37,6 +46,15 @@ static func create(luminae_data: LuminaeData, level: int, player: bool) -> Lumin
 	new_luminae.level = level
 	new_luminae.player = player
 	return new_luminae
+
+func load_luminae(luminae: Luminae) -> void:
+	luminae_data = luminae.luminae_data
+	level = luminae.level
+	player = luminae.player
+	hp_bar.max_value = max_health
+	hp_bar.value = health
+	setup()
+	
 
 func play_idle():
 	sprite.sprite_frames = idle_anim
