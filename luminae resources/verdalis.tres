@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://brder88m12cta" path="res://art/placeholders/sprites/sprite3_attack.png" id="1_8ch4f"]
 [ext_resource type="Texture2D" uid="uid://bdtwwqi16ew3f" path="res://art/placeholders/sprites/sprite3_idle.png" id="2_n0dyp"]
 [ext_resource type="Resource" uid="uid://c66s37jpvm2yx" path="res://move resources/basic_attack.tres" id="2_q5pf1"]
-[ext_resource type="Script" path="res://scripts/luminae_data.gd" id="2_yclv7"]
+[ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="2_yclv7"]
 [ext_resource type="Texture2D" uid="uid://lwnqgbivt8j" path="res://art/placeholders/sprites/sprite3.png" id="5_v7ymy"]
-[ext_resource type="Script" path="res://scripts/move_data.gd" id="5_wwc4g"]
+[ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="5_wwc4g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i2mnk"]
 atlas = ExtResource("1_8ch4f")

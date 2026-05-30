@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="LuminaeData" load_steps=19 format=3 uid="uid://bi653htthowdt"]
 
-[ext_resource type="Script" path="res://scripts/luminae_data.gd" id="1_m6jpa"]
+[ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="1_m6jpa"]
 [ext_resource type="Texture2D" uid="uid://co66fw3lv4b1u" path="res://art/placeholders/sprites/sprite10_attack.png" id="1_r1k4s"]
-[ext_resource type="Script" path="res://scripts/move_data.gd" id="2_5eaq1"]
+[ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="2_j1ds0"]
 [ext_resource type="Texture2D" uid="uid://b3v0ooh6ib6fl" path="res://art/placeholders/sprites/sprite10_idle.png" id="3_3v4f3"]
 [ext_resource type="Resource" uid="uid://cqo2f7as530hf" path="res://move resources/special_attack2.tres" id="5_834kt"]
 [ext_resource type="Texture2D" uid="uid://bu4piaol504af" path="res://art/placeholders/sprites/sprite10.png" id="6_3qjeq"]
@@ -44,7 +44,7 @@ animations = [{
 }]
 
 [sub_resource type="Resource" id="Resource_g5y2r"]
-script = ExtResource("2_5eaq1")
+script = ExtResource("2_j1ds0")
 display_name = "Boom"
 element = 5
 energy_cost = 0
@@ -88,7 +88,7 @@ animations = [{
 }]
 
 [sub_resource type="Resource" id="Resource_0keqm"]
-script = ExtResource("2_5eaq1")
+script = ExtResource("2_j1ds0")
 display_name = "Star Strike"
 element = 4
 energy_cost = 3

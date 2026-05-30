@@ -21,6 +21,32 @@ enum MoveElement {
 	NORMAL
 }
 
+enum ItemType {
+	HEALING,
+	OFFERING,
+	ARTIFACT
+}
+
+enum OfferingTier {
+	COMMON,
+	REFINED, 
+	RADIANT,
+	LEGENDARY
+}
+
+enum ArtifactType {
+	ELEMENTAL,
+	ETERNAL
+}
+
+enum ArtifactInfusion {
+	NONE,
+	SUN,
+	OCEAN,
+	NATURE,
+	SKY,
+	NIGHT
+}
 # battle type advantage chart
 # Sun > Nature > Ocean > Sky > Night > Sun
 const TYPE_ADVANTAGES: Dictionary = {

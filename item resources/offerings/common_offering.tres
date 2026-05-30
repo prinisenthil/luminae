@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://df8rmhx2krrry"]
+
+[ext_resource type="Texture2D" uid="uid://c3gbovt3dc22o" path="res://art/placeholders/Offerings/CommonFlower.png" id="1_2kx8f"]
+[ext_resource type="Script" path="res://scripts/resource scripts/item_data.gd" id="1_fuhcr"]
+
+[resource]
+script = ExtResource("1_fuhcr")
+name = "Common Offering"
+description = "used to catch common low level luminae"
+icon = ExtResource("1_2kx8f")
+item_type = 1
+usable_mid_battle = true
+stackable = false
+max_stack = 0
+hp_restore = 0
+full_restore = false
+clears_status = false
+offering_tier = 0
+bond_success_bonus = 0.0
+bond_level_increase = 0
+infused_element = 0
+artifact_type = 0
+element = 0
+element_bond_bonus = 0.0

@@ -88,10 +88,10 @@ position = Vector2(2.85714, -120)
 shape = SubResource("CapsuleShape2D_dhqv5")
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = -320.0
-offset_top = -251.429
-offset_right = -220.0
-offset_bottom = -211.429
+offset_left = -99.0
+offset_top = 50.0
+offset_right = 1.0
+offset_bottom = 81.0
 scale = Vector2(2, 2)
 
 [node name="Label" type="Label" parent="Panel"]
@@ -102,7 +102,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -50.0
-offset_top = -40.0
+offset_top = -30.0
 offset_right = 50.0
 grow_horizontal = 2
 grow_vertical = 0

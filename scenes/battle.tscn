@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bssje14pluqbd"]
+[gd_scene load_steps=8 format=3 uid="uid://bssje14pluqbd"]
 
 [ext_resource type="Texture2D" uid="uid://dwepyjsesdww4" path="res://art/placeholders/battle backgrounds/game_background_4.png" id="1_dm41r"]
 [ext_resource type="Script" path="res://scripts/battle.gd" id="1_ldc4u"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://ccfrpuysipx8x" path="res://luminae resources/fernling.tres" id="3_wilo0"]
 [ext_resource type="Resource" uid="uid://bgyl3dtpcj6ag" path="res://luminae resources/tidbit.tres" id="4_q0q50"]
 [ext_resource type="PackedScene" uid="uid://bki1g3shrsunx" path="res://scenes/attack.tscn" id="6_2f187"]
+[ext_resource type="PackedScene" uid="uid://c3sry06al1lic" path="res://scenes/item_menu.tscn" id="7_cddso"]
 
 [node name="battle" type="Node2D"]
 script = ExtResource("1_ldc4u")
@@ -16,12 +17,12 @@ texture = ExtResource("1_dm41r")
 centered = false
 
 [node name="player_luminae" parent="." instance=ExtResource("2_j3txc")]
-position = Vector2(219, 321)
+position = Vector2(200, 299)
 luminae_data = ExtResource("3_wilo0")
 player = true
 
 [node name="enemy_luminae" parent="." instance=ExtResource("2_j3txc")]
-position = Vector2(570, 201)
+position = Vector2(660, 212)
 luminae_data = ExtResource("4_q0q50")
 
 [node name="Spirit Orbs" type="Label" parent="."]
@@ -51,3 +52,18 @@ offset_bottom = 220.0
 
 [node name="attack2" parent="Control" instance=ExtResource("6_2f187")]
 position = Vector2(80, 0)
+
+[node name="ItemsBtn" type="Button" parent="."]
+offset_left = 6.0
+offset_top = 192.0
+offset_right = 93.0
+offset_bottom = 223.0
+text = "Items
+"
+
+[node name="ItemMenu" parent="." instance=ExtResource("7_cddso")]
+visible = false
+offset_left = 187.0
+offset_top = 28.0
+offset_right = 187.0
+offset_bottom = 28.0

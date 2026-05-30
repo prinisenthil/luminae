@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="LuminaeData" load_steps=19 format=3 uid="uid://l8j6dm1bhumf"]
 
 [ext_resource type="Texture2D" uid="uid://3yl1egrh1ahv" path="res://art/placeholders/sprites/sprite6_attack.png" id="1_pnxfe"]
-[ext_resource type="Script" path="res://scripts/move_data.gd" id="2_ymcdj"]
+[ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="2_hlftw"]
 [ext_resource type="Texture2D" uid="uid://dkw53ggd5cedo" path="res://art/placeholders/sprites/sprite6_idle.png" id="3_kdbrx"]
-[ext_resource type="Script" path="res://scripts/luminae_data.gd" id="4_itqsc"]
+[ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="4_itqsc"]
 [ext_resource type="Texture2D" uid="uid://cwx4wfo5qoixc" path="res://art/placeholders/sprites/sprite6.png" id="5_81w2n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_578eg"]
@@ -43,7 +43,7 @@ animations = [{
 }]
 
 [sub_resource type="Resource" id="Resource_2oc1v"]
-script = ExtResource("2_ymcdj")
+script = ExtResource("2_hlftw")
 display_name = "Stab"
 element = 5
 energy_cost = 0
@@ -87,7 +87,7 @@ animations = [{
 }]
 
 [sub_resource type="Resource" id="Resource_blirm"]
-script = ExtResource("2_ymcdj")
+script = ExtResource("2_hlftw")
 display_name = "Ice Shard"
 element = 3
 energy_cost = 3
@@ -95,7 +95,7 @@ power = 45
 description = ""
 
 [sub_resource type="Resource" id="Resource_8wlen"]
-script = ExtResource("2_ymcdj")
+script = ExtResource("2_hlftw")
 display_name = "Antler Dash"
 element = 3
 energy_cost = 5

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="LuminaeData" load_steps=20 format=3 uid="uid://bgyl3dtpcj6ag"]
 
 [ext_resource type="Texture2D" uid="uid://bh0ac6amhc04a" path="res://art/placeholders/sprites/sprite12_attack.png" id="1_1bmik"]
-[ext_resource type="Script" path="res://scripts/move_data.gd" id="1_sw4ea"]
+[ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="1_sw4ea"]
 [ext_resource type="Resource" uid="uid://pq1ba3bkltxn" path="res://luminae resources/wavren.tres" id="2_6syts"]
-[ext_resource type="Script" path="res://scripts/luminae_data.gd" id="2_8i0kj"]
+[ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="2_8i0kj"]
 [ext_resource type="Texture2D" uid="uid://ubiqc846mr0h" path="res://art/placeholders/sprites/sprite12_idle.png" id="3_w5sod"]
 [ext_resource type="Texture2D" uid="uid://ffxqq50yah0a" path="res://art/placeholders/sprites/sprite12.png" id="6_7oopq"]
 

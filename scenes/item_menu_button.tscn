@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://buj4pb6yojmd"]
+
+[ext_resource type="Script" path="res://scenes/item_menu_button.gd" id="1_cxr4j"]
+[ext_resource type="Texture2D" uid="uid://bsx2yk1h2xh0" path="res://art/placeholders/Offerings/RadiantFlower.png" id="1_exhor"]
+[ext_resource type="Resource" uid="uid://df8rmhx2krrry" path="res://item resources/offerings/common_offering.tres" id="2_xa4e6"]
+
+[node name="ItemMenuButton" type="Button"]
+custom_minimum_size = Vector2(91.5, 90.5)
+offset_right = 91.5
+offset_bottom = 90.5
+script = ExtResource("1_cxr4j")
+item = ExtResource("2_xa4e6")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(45.75, 39)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_exhor")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 74.0
+offset_right = 143.0
+offset_bottom = 97.0
+scale = Vector2(0.6, 0.6)
+text = "Common Offering"
+
+[node name="Quantity" type="Label" parent="."]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 23.0
+text = "1"
+horizontal_alignment = 1

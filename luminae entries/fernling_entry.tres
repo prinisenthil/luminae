@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="LuminaeEntry" load_steps=3 format=3 uid="uid://viva72tc4qlb"]
 
 [ext_resource type="Resource" uid="uid://ccfrpuysipx8x" path="res://luminae resources/fernling.tres" id="1_c7q2u"]
-[ext_resource type="Script" path="res://scripts/luminae_entry.gd" id="2_0qv3e"]
+[ext_resource type="Script" path="res://scripts/resource scripts/luminae_entry.gd" id="2_0qv3e"]
 
 [resource]
 script = ExtResource("2_0qv3e")

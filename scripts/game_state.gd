@@ -10,8 +10,13 @@ var current_enemy: Luminae = null
 
 var world = ""
 
+var item_inventory: Dictionary = {}  # { ItemData: int }
+
 func _ready() -> void:
 	_init_region_1()
+	add_item(preload("res://item resources/offerings/common_offering.tres"))
+	add_item(preload("res://item resources/offerings/common_offering.tres"))
+	add_item(preload("res://item resources/offerings/refined_offering.tres"))
 
 func _init_region_1() -> void:
 	# Only initialize if we haven't already (e.g. returning from battle)
@@ -30,6 +35,19 @@ func _init_region_1() -> void:
 		"GildedDunes":        MapNode.NodeState.LOCKED,
 		"SolaraThrone":       MapNode.NodeState.LOCKED,
 	}
+
+func add_item(item: ItemData, amount: int = 1) -> void:
+	if item in item_inventory:
+		item_inventory[item] += amount
+	else:
+		item_inventory[item] = amount
+
+func remove_item(item: ItemData, amount: int = 1) -> void:
+	if item not in item_inventory:
+		return
+	item_inventory[item] -= amount
+	if item_inventory[item] <= 0:
+		item_inventory.erase(item)
 
 func get_node_state(region: String, node_name: String) -> MapNode.NodeState:
 	if not node_states.has(region):

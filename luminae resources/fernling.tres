@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://ct0erdw13h0i2" path="res://art/placeholders/sprites/sprite1_attack.png" id="1_cojag"]
 [ext_resource type="Texture2D" uid="uid://cowl7s58pumnc" path="res://art/placeholders/sprites/sprite1_idle.png" id="1_r2hyw"]
-[ext_resource type="Script" path="res://scripts/move_data.gd" id="1_wh2e7"]
-[ext_resource type="Script" path="res://scripts/luminae_data.gd" id="2_e5fwg"]
+[ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="1_wh2e7"]
+[ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="2_e5fwg"]
 [ext_resource type="Resource" uid="uid://df48tnbb32j8b" path="res://luminae resources/mosshorn.tres" id="2_slpsh"]
 [ext_resource type="Texture2D" uid="uid://b2t8i0rojhpvs" path="res://art/placeholders/sprites/sprite1.png" id="6_7p2kq"]
 

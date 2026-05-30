@@ -7,7 +7,11 @@ extends Node2D
 @onready var attack1_btn: Button = $Control/attack1/Button
 @onready var attack2_btn: Button = $Control/attack2/Button
 @onready var attack2: Attack = $Control/attack2
+@onready var item_menu: ItemMenu = $ItemMenu
+@onready var items_btn: Button = $ItemsBtn
 @onready var player_turn = true
+
+var items_cancel_btn
 
 # executed upon battle start
 func _ready() -> void:
@@ -21,6 +25,7 @@ func _ready() -> void:
 
 	attack1_btn.pressed.connect(self._attack1_pressed)
 	attack2_btn.pressed.connect(self._attack2_pressed)
+	items_btn.pressed.connect(self.item_menu_pressed)
 	update_moves()
 	
 
@@ -35,6 +40,52 @@ func _attack1_pressed():
 # click special atk button 2 and use special attack 2
 func _attack2_pressed():
 	perform_attack(player_luminae.luminae_data.special_attack2)
+
+func item_menu_pressed():
+	player_turn = false
+	Fade("in", 0.3, item_menu)
+	item_menu.populate_items()
+	item_menu.item_selected.connect(self._on_item_selected)
+	items_cancel_btn = $ItemMenu/CancelBtn
+	items_cancel_btn.pressed.connect(self._itemsCancelBtn_pressed)
+
+func _on_item_selected(item: ItemData):
+	GameState.remove_item(item)
+	item_menu.populate_items()
+
+func _itemsCancelBtn_pressed():
+	Fade("out", 0.3, item_menu)
+	player_turn = true
+
+# helper function to fade menus in and out
+func Fade(str: String, secs: float, obj, obj2 = null):
+	match str:
+		"in":
+			obj.modulate.a = 0.0
+			var new_tween = create_tween()
+			new_tween.tween_property(obj, "modulate:a", 1.0, secs)\
+				.set_trans(Tween.TRANS_SINE)\
+				.set_ease(Tween.EASE_OUT)
+			obj.visible = true
+		"out":
+			if obj2:
+				var new_tween = create_tween()
+				new_tween.parallel().tween_property(obj, "modulate:a", 0.0, secs)\
+					.set_trans(Tween.TRANS_SINE)\
+					.set_ease(Tween.EASE_IN)
+				new_tween.parallel().tween_property(obj2, "modulate:a", 0.0, secs)\
+					.set_trans(Tween.TRANS_SINE)\
+					.set_ease(Tween.EASE_IN)
+				await new_tween.finished
+				obj.visible = false
+				obj2.visible = false
+			else:
+				var new_tween = create_tween()
+				new_tween.tween_property(obj, "modulate:a", 0.0, secs)\
+					.set_trans(Tween.TRANS_SINE)\
+					.set_ease(Tween.EASE_IN)
+				await new_tween.finished
+				obj.visible = false
 
 # helper function to perform and animate specific attack move
 func perform_attack(move: MoveData):
