@@ -28,9 +28,7 @@ func _ready():
 	setup()
 
 func setup():
-	idle_anim = luminae_data.idle
-	attack_anim = luminae_data.attack
-	nickname = luminae_data.name
+	set_variables()
 	name_label.text = nickname
 	if not player:
 		sprite.flip_h = false
@@ -40,11 +38,21 @@ func setup():
 	sprite.play()
 	set_stats()
 
-static func create(luminae_data: LuminaeData, level: int, player: bool) -> Luminae:
+func set_variables():
+	idle_anim = luminae_data.idle
+	attack_anim = luminae_data.attack
+	nickname = luminae_data.name
+
+static func create_luminae(luminae_data: LuminaeData, level: int, player: bool, health = null, nick = null) -> Luminae:
 	var new_luminae := Luminae.new()
 	new_luminae.luminae_data = luminae_data
+	new_luminae.set_variables()
 	new_luminae.level = level
 	new_luminae.player = player
+	if health != null:
+		new_luminae.health = health
+	if nick != null:
+		new_luminae.nickname = nick
 	return new_luminae
 
 func load_luminae(luminae: Luminae) -> void:

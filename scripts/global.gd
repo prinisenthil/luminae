@@ -47,6 +47,13 @@ enum ArtifactInfusion {
 	SKY,
 	NIGHT
 }
+
+enum BattleOutcome {
+	PLAYERWIN,
+	ENEMYWIN,
+	CAPTURE
+}
+
 # battle type advantage chart
 # Sun > Nature > Ocean > Sky > Night > Sun
 const TYPE_ADVANTAGES: Dictionary = {

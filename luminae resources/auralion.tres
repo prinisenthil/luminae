@@ -1,26 +1,19 @@
-[gd_resource type="Resource" script_class="LuminaeData" load_steps=19 format=3 uid="uid://bpg2dk8gp1dyw"]
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=17 format=3 uid="uid://bpg2dk8gp1dyw"]
 
-[ext_resource type="Texture2D" uid="uid://cx5f05yxle1rt" path="res://art/placeholders/sprites/sprite9_attack.png" id="1_ppgv7"]
 [ext_resource type="Resource" uid="uid://c66s37jpvm2yx" path="res://move resources/basic_attack.tres" id="2_j8gag"]
 [ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="2_k51xa"]
-[ext_resource type="Texture2D" uid="uid://bm745htkrt3wq" path="res://art/placeholders/sprites/sprite9_idle.png" id="2_t5bbl"]
 [ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="5_2j45v"]
-[ext_resource type="Texture2D" uid="uid://4w3isgfy60m3" path="res://art/placeholders/sprites/sprite9.png" id="5_ddxt4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypaly"]
-atlas = ExtResource("1_ppgv7")
 region = Rect2(0, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qldkg"]
-atlas = ExtResource("1_ppgv7")
 region = Rect2(96, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1dryc"]
-atlas = ExtResource("1_ppgv7")
 region = Rect2(192, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8wen"]
-atlas = ExtResource("1_ppgv7")
 region = Rect2(288, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_446l5"]
@@ -44,19 +37,15 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4nouo"]
-atlas = ExtResource("2_t5bbl")
 region = Rect2(0, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yk2oa"]
-atlas = ExtResource("2_t5bbl")
 region = Rect2(96, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wj6tn"]
-atlas = ExtResource("2_t5bbl")
 region = Rect2(192, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5k7qq"]
-atlas = ExtResource("2_t5bbl")
 region = Rect2(288, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xbn10"]
@@ -95,6 +84,9 @@ energy_cost = 5
 power = 65
 description = ""
 
+[sub_resource type="Resource" id="Resource_4mo1d"]
+metadata/__load_path__ = "res://art/placeholders/sprites/sprite9.png"
+
 [resource]
 script = ExtResource("2_k51xa")
 name = "Auralion"
@@ -110,6 +102,6 @@ seen = false
 basic_attack = ExtResource("2_j8gag")
 special_attack1 = SubResource("Resource_htq34")
 special_attack2 = SubResource("Resource_1jbnm")
-sprite = ExtResource("5_ddxt4")
+sprite = SubResource("Resource_4mo1d")
 idle = SubResource("SpriteFrames_xbn10")
 attack = SubResource("SpriteFrames_446l5")

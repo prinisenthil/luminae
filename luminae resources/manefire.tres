@@ -1,84 +1,49 @@
-[gd_resource type="Resource" script_class="LuminaeData" load_steps=20 format=3 uid="uid://bumhnajl34noa"]
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=15 format=3 uid="uid://bumhnajl34noa"]
 
-[ext_resource type="Texture2D" uid="uid://tqvvg6lluvyd" path="res://art/placeholders/sprites/sprite8_attack.png" id="1_gr34v"]
+[ext_resource type="Texture2D" uid="uid://tqvvg6lluvyd" path="res://art/placeholders/sprite animations/sprite8_attack.png" id="1_snos0"]
 [ext_resource type="Resource" uid="uid://c66s37jpvm2yx" path="res://move resources/basic_attack.tres" id="2_idsei"]
 [ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="2_tqr6n"]
 [ext_resource type="Resource" uid="uid://bpg2dk8gp1dyw" path="res://luminae resources/auralion.tres" id="2_xmdv1"]
-[ext_resource type="Texture2D" uid="uid://boocksnbsmn68" path="res://art/placeholders/sprites/sprite8_idle.png" id="3_r3wik"]
+[ext_resource type="Texture2D" uid="uid://gbfse4yl78aa" path="res://art/placeholders/sprite animations/sprite8.png" id="6_6jwkx"]
 [ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="6_84n3e"]
-[ext_resource type="Texture2D" uid="uid://gbfse4yl78aa" path="res://art/placeholders/sprites/sprite8.png" id="6_xcnyd"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s7sj5"]
-atlas = ExtResource("1_gr34v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_01qu3"]
+atlas = ExtResource("1_snos0")
 region = Rect2(0, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b70oy"]
-atlas = ExtResource("1_gr34v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dffv"]
+atlas = ExtResource("1_snos0")
 region = Rect2(96, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8irv8"]
-atlas = ExtResource("1_gr34v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_elix0"]
+atlas = ExtResource("1_snos0")
 region = Rect2(192, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t8myo"]
-atlas = ExtResource("1_gr34v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsskk"]
+atlas = ExtResource("1_snos0")
 region = Rect2(288, 0, 96, 96)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_12tvq"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_em2pb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s7sj5")
+"texture": SubResource("AtlasTexture_01qu3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b70oy")
+"texture": SubResource("AtlasTexture_0dffv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8irv8")
+"texture": SubResource("AtlasTexture_elix0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t8myo")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tbok6"]
-atlas = ExtResource("3_r3wik")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xlnlc"]
-atlas = ExtResource("3_r3wik")
-region = Rect2(96, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mflg3"]
-atlas = ExtResource("3_r3wik")
-region = Rect2(192, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vp2ls"]
-atlas = ExtResource("3_r3wik")
-region = Rect2(288, 0, 96, 96)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_abg2w"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tbok6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xlnlc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mflg3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vp2ls")
+"texture": SubResource("AtlasTexture_jsskk")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eq7ei"]
 
 [sub_resource type="Resource" id="Resource_6yyw7"]
 script = ExtResource("6_84n3e")
@@ -100,9 +65,9 @@ description = ""
 script = ExtResource("2_tqr6n")
 name = "Manefire"
 element = 0
-base_health = 11
-base_attack = 10
-base_defense = 10
+base_health = 150
+base_attack = 40
+base_defense = 35
 base_speed = 100
 base_exp = 64
 level = 5
@@ -112,6 +77,6 @@ basic_attack = ExtResource("2_idsei")
 special_attack1 = SubResource("Resource_6yyw7")
 special_attack2 = SubResource("Resource_0pug4")
 evolution = ExtResource("2_xmdv1")
-sprite = ExtResource("6_xcnyd")
-idle = SubResource("SpriteFrames_abg2w")
-attack = SubResource("SpriteFrames_12tvq")
+sprite = ExtResource("6_6jwkx")
+idle = SubResource("SpriteFrames_eq7ei")
+attack = SubResource("SpriteFrames_em2pb")

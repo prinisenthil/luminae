@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://l8j6dm1bhumf" path="res://luminae resources/zeltina.tres" id="6_dmlel"]
 [ext_resource type="Resource" uid="uid://b1cgewf7ykyqe" path="res://luminae entries/tidbit_entry.tres" id="6_mynqw"]
 [ext_resource type="Resource" uid="uid://bi653htthowdt" path="res://luminae resources/starburn.tres" id="7_g1y6p"]
-[ext_resource type="Resource" uid="uid://dictp81wxfi0w" path="res://luminae resources/deepcrest.tres" id="9_yfvqr"]
+[ext_resource type="Resource" uid="uid://pq1ba3bkltxn" path="res://luminae resources/wavren.tres" id="9_m4tm4"]
 
 [sub_resource type="Resource" id="Resource_ooflo"]
 script = ExtResource("3_4qgtx")
@@ -33,7 +33,7 @@ upper_level = 5
 
 [sub_resource type="Resource" id="Resource_l4thv"]
 script = ExtResource("3_4qgtx")
-Luminae = ExtResource("9_yfvqr")
+Luminae = ExtResource("9_m4tm4")
 spawn_rate = 4
 low_level = 5
 upper_level = 8

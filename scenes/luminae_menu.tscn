@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmkib5u18eoa0"]
+
+[ext_resource type="Script" path="res://scenes/luminae_menu.gd" id="1_7ayp4"]
+[ext_resource type="PackedScene" uid="uid://bl55y6qekiet5" path="res://scenes/luminae_menu_button.tscn" id="1_14htc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jtui"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmu4f"]
+bg_color = Color(0.811765, 0.156863, 0.196078, 1)
+
+[node name="LuminaeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7ayp4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 190.0
+offset_bottom = 203.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6jtui")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(183, 181)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 187.0
+offset_bottom = 205.0
+pivot_offset = Vector2(10, 0)
+
+[node name="LuminaeMenuButton" parent="GridContainer" instance=ExtResource("1_14htc")]
+layout_mode = 2
+
+[node name="LuminaeMenuButton2" parent="GridContainer" instance=ExtResource("1_14htc")]
+layout_mode = 2
+
+[node name="LuminaeMenuButton3" parent="GridContainer" instance=ExtResource("1_14htc")]
+layout_mode = 2
+
+[node name="CancelBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 161.0
+offset_right = 190.0
+offset_bottom = 29.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_qmu4f")
+text = "X"

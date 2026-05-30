@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl55y6qekiet5"]
+
+[ext_resource type="Texture2D" uid="uid://d03chuubjp8ft" path="res://art/placeholders/sprite pngs/front facing/gaffy front.PNG" id="1_bjvnv"]
+[ext_resource type="Script" path="res://scenes/luminae_menu_button.gd" id="1_m5v2m"]
+
+[node name="LuminaeMenuButton" type="Button"]
+custom_minimum_size = Vector2(140, 60)
+offset_right = 140.0
+offset_bottom = 60.0
+script = ExtResource("1_m5v2m")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(22, 2)
+texture = ExtResource("1_bjvnv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 21.0
+offset_right = 137.0
+offset_bottom = 44.0
+text = "Fernling"

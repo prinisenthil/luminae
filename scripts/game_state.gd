@@ -11,12 +11,15 @@ var current_enemy: Luminae = null
 var world = ""
 
 var item_inventory: Dictionary = {}  # { ItemData: int }
+var luminae_party: Array[Luminae] = []
+var luminae_roster: Array[Luminae] = []
 
 func _ready() -> void:
 	_init_region_1()
 	add_item(preload("res://item resources/offerings/common_offering.tres"))
 	add_item(preload("res://item resources/offerings/common_offering.tres"))
 	add_item(preload("res://item resources/offerings/refined_offering.tres"))
+	add_luminae(Luminae.create_luminae(preload("res://luminae resources/tidbit.tres"), 8, true))
 
 func _init_region_1() -> void:
 	# Only initialize if we haven't already (e.g. returning from battle)
@@ -48,6 +51,24 @@ func remove_item(item: ItemData, amount: int = 1) -> void:
 	item_inventory[item] -= amount
 	if item_inventory[item] <= 0:
 		item_inventory.erase(item)
+
+func capture_luminae(luminae: Luminae, nickname: String):
+	var new_luminae = Luminae.create_luminae(luminae.luminae_data, luminae.level, true, luminae.health, nickname)
+	add_luminae(new_luminae)
+
+# Add luminae to roster and/or party
+func add_luminae(luminae: Luminae):
+	if luminae in luminae_roster:
+		return
+	# add luminae to roster and party if free space
+	luminae_roster.append(luminae)
+	if luminae_party.size() < 4:
+		luminae_party.append(luminae)
+
+# remove (free) luminae from roster and party
+func remove_luminae(luminae: Luminae):
+	luminae_roster.erase(luminae)
+	luminae_party.erase(luminae)
 
 func get_node_state(region: String, node_name: String) -> MapNode.NodeState:
 	if not node_states.has(region):

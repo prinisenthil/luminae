@@ -122,7 +122,7 @@ func spawn_luminae():
 	
 	var level := randi_range(chosen.low_level, chosen.upper_level)
 	
-	return Luminae.create(chosen.Luminae, level, false)
+	return Luminae.create_luminae(chosen.Luminae, level, false)
 
 #func _apply_shimmer() -> void:
 #	if not _shimmer:
