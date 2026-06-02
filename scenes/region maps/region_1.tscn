@@ -1,67 +1,80 @@
-[gd_scene load_steps=14 format=3 uid="uid://xj1jmaybgg7y"]
+[gd_scene load_steps=17 format=3 uid="uid://xj1jmaybgg7y"]
 
 [ext_resource type="PackedScene" uid="uid://dfanv7awc5a11" path="res://scenes/region_map.tscn" id="1_rkdou"]
 [ext_resource type="PackedScene" uid="uid://dxmuip8jd0bf2" path="res://scenes/map_node.tscn" id="2_aiqwn"]
+[ext_resource type="Texture2D" uid="uid://dijymmxam66an" path="res://art/placeholders/region backgrounds/mountains.jpg" id="2_njqhp"]
 [ext_resource type="Script" path="res://scripts/resource scripts/luminae_entry.gd" id="3_4qgtx"]
-[ext_resource type="Resource" uid="uid://cqqw0eiou78bj" path="res://luminae entries/solkin_entry.tres" id="4_shiam"]
-[ext_resource type="Resource" uid="uid://viva72tc4qlb" path="res://luminae entries/fernling_entry.tres" id="5_rcxqo"]
-[ext_resource type="Resource" uid="uid://l8j6dm1bhumf" path="res://luminae resources/zeltina.tres" id="6_dmlel"]
-[ext_resource type="Resource" uid="uid://b1cgewf7ykyqe" path="res://luminae entries/tidbit_entry.tres" id="6_mynqw"]
-[ext_resource type="Resource" uid="uid://bi653htthowdt" path="res://luminae resources/starburn.tres" id="7_g1y6p"]
-[ext_resource type="Resource" uid="uid://pq1ba3bkltxn" path="res://luminae resources/wavren.tres" id="9_m4tm4"]
+[ext_resource type="Resource" uid="uid://cqqw0eiou78bj" path="res://resources/luminae entries/solkin_entry.tres" id="4_shiam"]
+[ext_resource type="Resource" uid="uid://viva72tc4qlb" path="res://resources/luminae entries/fernling_entry.tres" id="5_rcxqo"]
+[ext_resource type="Resource" uid="uid://l8j6dm1bhumf" path="res://resources/luminae resources/zeltina.tres" id="6_dmlel"]
+[ext_resource type="Resource" uid="uid://b1cgewf7ykyqe" path="res://resources/luminae entries/tidbit_entry.tres" id="6_mynqw"]
+[ext_resource type="Resource" uid="uid://bi653htthowdt" path="res://resources/luminae resources/starburn.tres" id="7_g1y6p"]
+[ext_resource type="Resource" uid="uid://dk3iu6qmaw7a6" path="res://resources/luminae resources/solkin.tres" id="8_uhnd7"]
+[ext_resource type="Resource" uid="uid://pq1ba3bkltxn" path="res://resources/luminae resources/wavren.tres" id="9_m4tm4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y8p5k"]
+texture = ExtResource("2_njqhp")
 
 [sub_resource type="Resource" id="Resource_ooflo"]
 script = ExtResource("3_4qgtx")
 Luminae = ExtResource("6_dmlel")
 spawn_rate = 1
-low_level = 5
-upper_level = 6
+low_level = 1
+upper_level = 2
 
 [sub_resource type="Resource" id="Resource_pi0mu"]
 script = ExtResource("3_4qgtx")
-Luminae = ExtResource("7_g1y6p")
+Luminae = ExtResource("8_uhnd7")
 spawn_rate = 2
-low_level = 5
-upper_level = 6
+low_level = 1
+upper_level = 2
 
 [sub_resource type="Resource" id="Resource_iuyd6"]
 script = ExtResource("3_4qgtx")
 Luminae = ExtResource("7_g1y6p")
 spawn_rate = 2
-low_level = 3
-upper_level = 5
+low_level = 2
+upper_level = 3
 
 [sub_resource type="Resource" id="Resource_l4thv"]
 script = ExtResource("3_4qgtx")
 Luminae = ExtResource("9_m4tm4")
 spawn_rate = 4
-low_level = 5
-upper_level = 8
+low_level = 2
+upper_level = 4
 
 [node name="Region1" instance=ExtResource("1_rkdou")]
 
-[node name="PlayerMarker" parent="." index="2"]
-visible = false
+[node name="Panel" parent="." index="0"]
+offset_left = -933.0
+offset_top = -532.0
+offset_right = 936.0
+offset_bottom = 537.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_y8p5k")
 
-[node name="BrightstoneVillage" parent="." index="3" instance=ExtResource("2_aiqwn")]
-position = Vector2(-317, 164)
+[node name="Camera2D" parent="." index="1"]
+position = Vector2(-406, 251)
+
+[node name="BrightstoneVillage" parent="." index="4" instance=ExtResource("2_aiqwn")]
+position = Vector2(-594, 373)
 node_label = "Brightstone Village"
 luminae_entries = Array[ExtResource("3_4qgtx")]([ExtResource("4_shiam"), ExtResource("5_rcxqo"), ExtResource("6_mynqw")])
 
-[node name="GoldenMeadows" parent="." index="4" instance=ExtResource("2_aiqwn")]
-position = Vector2(-222, 37)
+[node name="GoldenMeadows" parent="." index="5" instance=ExtResource("2_aiqwn")]
+position = Vector2(-462, 97)
 node_label = "Golden Meadows"
 luminae_entries = Array[ExtResource("3_4qgtx")]([SubResource("Resource_ooflo"), SubResource("Resource_pi0mu")])
 
-[node name="DustyCrossroads" parent="." index="5" instance=ExtResource("2_aiqwn")]
-position = Vector2(-51, 121)
+[node name="DustyCrossroads" parent="." index="6" instance=ExtResource("2_aiqwn")]
+position = Vector2(-47, 2)
 node_label = "Dusty Crossroads"
 luminae_entries = Array[ExtResource("3_4qgtx")]([SubResource("Resource_iuyd6"), SubResource("Resource_l4thv")])
 
-[node name="CrackedIdol" parent="." index="6" instance=ExtResource("2_aiqwn")]
-position = Vector2(39, -52)
+[node name="CrackedIdol" parent="." index="7" instance=ExtResource("2_aiqwn")]
+position = Vector2(274, -112)
 node_label = "Cracked Idol"
 
-[node name="SunTempleRuins" parent="." index="7" instance=ExtResource("2_aiqwn")]
-position = Vector2(278, 39)
+[node name="SunTempleRuins" parent="." index="8" instance=ExtResource("2_aiqwn")]
+position = Vector2(719, 4)
 node_label = "Sun Temple Ruins"

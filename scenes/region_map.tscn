@@ -6,11 +6,18 @@
 [node name="RegionMap" type="Node2D"]
 script = ExtResource("1_1efa8")
 
+[node name="Panel" type="Panel" parent="."]
+offset_left = -424.0
+offset_top = -199.0
+offset_right = 423.0
+offset_bottom = 194.0
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="PathLine" type="Line2D" parent="."]
 
 [node name="PlayerMarker" type="Node2D" parent="."]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerMarker"]
 scale = Vector2(0.5, 0.5)

@@ -87,14 +87,14 @@ monitorable = false
 position = Vector2(2.85714, -120)
 shape = SubResource("CapsuleShape2D_dhqv5")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="NamePanel" type="Panel" parent="."]
 offset_left = -99.0
 offset_top = 50.0
 offset_right = 1.0
 offset_bottom = 81.0
 scale = Vector2(2, 2)
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="NamePanel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -107,6 +107,21 @@ offset_right = 50.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Fernling"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelPanel" type="Panel" parent="."]
+offset_left = -190.0
+offset_top = 50.0
+offset_right = -150.0
+offset_bottom = 81.0
+scale = Vector2(2, 2)
+
+[node name="Label" type="Label" parent="LevelPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 31.0
+text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 

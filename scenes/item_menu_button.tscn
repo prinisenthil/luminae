@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://buj4pb6yojmd"]
 
-[ext_resource type="Script" path="res://scenes/item_menu_button.gd" id="1_cxr4j"]
-[ext_resource type="Texture2D" uid="uid://bsx2yk1h2xh0" path="res://art/placeholders/Offerings/RadiantFlower.png" id="1_exhor"]
-[ext_resource type="Resource" uid="uid://df8rmhx2krrry" path="res://item resources/offerings/common_offering.tres" id="2_xa4e6"]
+[ext_resource type="Script" path="res://scripts/item_menu_button.gd" id="1_cxr4j"]
+[ext_resource type="Texture2D" uid="uid://bsx2yk1h2xh0" path="res://art/placeholders/item icons/offerings/RadiantFlower.png" id="1_exhor"]
+[ext_resource type="Resource" uid="uid://df8rmhx2krrry" path="res://resources/item resources/offerings/common_offering.tres" id="2_xa4e6"]
 
 [node name="ItemMenuButton" type="Button"]
 custom_minimum_size = Vector2(91.5, 90.5)

@@ -24,10 +24,12 @@ enum MoveElement {
 enum ItemType {
 	HEALING,
 	OFFERING,
+	EXPERIENCE,
+	ECHO,
 	ARTIFACT
 }
 
-enum OfferingTier {
+enum ItemTier {
 	COMMON,
 	REFINED, 
 	RADIANT,

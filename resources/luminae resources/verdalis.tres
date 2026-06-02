@@ -1,0 +1,115 @@
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=19 format=3 uid="uid://dg63shnrrgw18"]
+
+[ext_resource type="Texture2D" uid="uid://brder88m12cta" path="res://art/placeholders/sprite animations/sprite3_attack.png" id="1_8ch4f"]
+[ext_resource type="Texture2D" uid="uid://bdtwwqi16ew3f" path="res://art/placeholders/sprite animations/sprite3_idle.png" id="2_n0dyp"]
+[ext_resource type="Resource" uid="uid://c66s37jpvm2yx" path="res://resources/move resources/basic_attack.tres" id="2_q5pf1"]
+[ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="2_yclv7"]
+[ext_resource type="Texture2D" uid="uid://lwnqgbivt8j" path="res://art/placeholders/sprite animations/sprite3.png" id="5_v7ymy"]
+[ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="5_wwc4g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2mnk"]
+atlas = ExtResource("1_8ch4f")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0os3"]
+atlas = ExtResource("1_8ch4f")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8pl5"]
+atlas = ExtResource("1_8ch4f")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksk4t"]
+atlas = ExtResource("1_8ch4f")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7nv3p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2mnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0os3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8pl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksk4t")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37le7"]
+atlas = ExtResource("2_n0dyp")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8tgm"]
+atlas = ExtResource("2_n0dyp")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8omg"]
+atlas = ExtResource("2_n0dyp")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msyi2"]
+atlas = ExtResource("2_n0dyp")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ti1a4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37le7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8tgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8omg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msyi2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_o21q0"]
+script = ExtResource("5_wwc4g")
+display_name = "Big Boom"
+element = 2
+energy_cost = 3
+power = 45
+description = ""
+
+[sub_resource type="Resource" id="Resource_5p7ap"]
+script = ExtResource("5_wwc4g")
+display_name = "Bigger Boom"
+element = 2
+energy_cost = 5
+power = 65
+description = ""
+
+[resource]
+script = ExtResource("2_yclv7")
+name = "Verdalis"
+element = 2
+base_health = 40
+base_attack = 8
+base_defense = 6
+base_speed = 10
+base_exp = 20
+level = 1
+captured = false
+seen = false
+basic_attack = ExtResource("2_q5pf1")
+special_attack1 = SubResource("Resource_o21q0")
+special_attack2 = SubResource("Resource_5p7ap")
+sprite = ExtResource("5_v7ymy")
+idle = SubResource("SpriteFrames_ti1a4")
+attack = SubResource("SpriteFrames_7nv3p")

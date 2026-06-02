@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://fh6qv1i586sg"]
+
+[ext_resource type="Script" path="res://scripts/home.gd" id="1_ovn00"]
+[ext_resource type="Texture2D" uid="uid://ctowvg167jthx" path="res://art/placeholders/home backgrounds/forest swamp background.jpg" id="1_swx58"]
+[ext_resource type="PackedScene" uid="uid://d14bmibjd6ga5" path="res://scenes/luminae_home_menu.tscn" id="2_wmhpj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3udfn"]
+texture = ExtResource("1_swx58")
+
+[node name="home" type="Node2D"]
+script = ExtResource("1_ovn00")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 846.0
+offset_bottom = 392.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_3udfn")
+
+[node name="LuminaeHomeMenu" parent="." instance=ExtResource("2_wmhpj")]
+
+[node name="MapButton" type="Button" parent="."]
+offset_left = 293.0
+offset_right = 573.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 30
+text = "Region Map"

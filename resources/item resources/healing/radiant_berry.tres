@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://br8dyykbtkemg"]
+
+[ext_resource type="Script" path="res://scripts/resource scripts/item_data.gd" id="1_3bgvr"]
+[ext_resource type="Script" path="res://scripts/resource scripts/crafting_entry.gd" id="1_ibmmx"]
+
+[resource]
+script = ExtResource("1_3bgvr")
+name = "Radiant Berry"
+description = "Heals 100% HP"
+item_type = 0
+item_tier = 2
+craftable = null
+crafting_recipe = Array[ExtResource("1_ibmmx")]([])
+usable_mid_battle = true
+stackable = false
+max_stack = 99
+hp_restore_percent = 1.0
+full_restore = false
+clears_status = false
+infused_element = 0
+artifact_type = 0
+element = 0
+element_bond_bonus = 0.0

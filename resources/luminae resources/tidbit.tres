@@ -1,0 +1,124 @@
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=20 format=3 uid="uid://bgyl3dtpcj6ag"]
+
+[ext_resource type="Texture2D" uid="uid://bh0ac6amhc04a" path="res://art/placeholders/sprite animations/sprite12_attack.png" id="1_4jpny"]
+[ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="1_sw4ea"]
+[ext_resource type="Resource" uid="uid://pq1ba3bkltxn" path="res://resources/luminae resources/wavren.tres" id="2_6syts"]
+[ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="2_8i0kj"]
+[ext_resource type="Texture2D" uid="uid://ubiqc846mr0h" path="res://art/placeholders/sprite animations/sprite12_idle.png" id="4_lruyx"]
+[ext_resource type="Texture2D" uid="uid://dugr2w58t8mcp" path="res://art/placeholders/sprite pngs/front facing/flauna front.PNG" id="6_3oyi3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiq0a"]
+atlas = ExtResource("1_4jpny")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3x1r"]
+atlas = ExtResource("1_4jpny")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhlv8"]
+atlas = ExtResource("1_4jpny")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsdcl"]
+atlas = ExtResource("1_4jpny")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjkmd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kiq0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3x1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhlv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsdcl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_n521w"]
+script = ExtResource("1_sw4ea")
+display_name = "Splash"
+element = 5
+energy_cost = 0
+power = 25
+description = ""
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4agxq"]
+atlas = ExtResource("4_lruyx")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7l7x"]
+atlas = ExtResource("4_lruyx")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br4s6"]
+atlas = ExtResource("4_lruyx")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfb1a"]
+atlas = ExtResource("4_lruyx")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lypxn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4agxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7l7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br4s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfb1a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_be6ya"]
+script = ExtResource("1_sw4ea")
+display_name = "Bubble"
+element = 1
+energy_cost = 3
+power = 45
+description = ""
+
+[sub_resource type="Resource" id="Resource_daupb"]
+script = ExtResource("1_sw4ea")
+display_name = "Water Whirl"
+element = 1
+energy_cost = 6
+power = 65
+description = ""
+
+[resource]
+script = ExtResource("2_8i0kj")
+name = "Tidbit"
+element = 1
+base_health = 40
+base_attack = 8
+base_defense = 6
+base_speed = 10
+base_exp = 20
+level = 1
+captured = false
+seen = false
+basic_attack = SubResource("Resource_n521w")
+special_attack1 = SubResource("Resource_be6ya")
+special_attack2 = SubResource("Resource_daupb")
+evolution = ExtResource("2_6syts")
+sprite = ExtResource("6_3oyi3")
+idle = SubResource("SpriteFrames_lypxn")
+attack = SubResource("SpriteFrames_vjkmd")

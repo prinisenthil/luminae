@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://fqewd7wococ6"]
+
+[ext_resource type="Script" path="res://scripts/resource scripts/crafting_entry.gd" id="1_rkf3m"]
+[ext_resource type="Script" path="res://scripts/resource scripts/item_data.gd" id="2_hh327"]
+
+[resource]
+script = ExtResource("2_hh327")
+name = "Healing Seed"
+description = "heals 30% HP"
+item_type = 0
+item_tier = 0
+craftable = null
+crafting_recipe = Array[ExtResource("1_rkf3m")]([])
+usable_mid_battle = true
+stackable = false
+max_stack = 99
+hp_restore_percent = 0.3
+full_restore = false
+clears_status = false
+infused_element = 0
+artifact_type = 0
+element = 0
+element_bond_bonus = 0.0

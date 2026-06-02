@@ -1,0 +1,124 @@
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=20 format=3 uid="uid://dk3iu6qmaw7a6"]
+
+[ext_resource type="Texture2D" uid="uid://tfd7i5d12o5l" path="res://art/placeholders/sprite animations/sprite7_attack.png" id="1_0kh86"]
+[ext_resource type="Resource" uid="uid://bumhnajl34noa" path="res://resources/luminae resources/manefire.tres" id="2_4d4ik"]
+[ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="2_csn27"]
+[ext_resource type="Texture2D" uid="uid://6jipr22upybt" path="res://art/placeholders/sprite animations/sprite7_idle.png" id="4_l22gw"]
+[ext_resource type="Texture2D" uid="uid://clm0di3ly5vi8" path="res://art/placeholders/sprite pngs/front facing/torty front.PNG" id="6_0vg56"]
+[ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="6_d88sg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7oly"]
+atlas = ExtResource("1_0kh86")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2j58"]
+atlas = ExtResource("1_0kh86")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbhr4"]
+atlas = ExtResource("1_0kh86")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp7hb"]
+atlas = ExtResource("1_0kh86")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hrxno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7oly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2j58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbhr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp7hb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_5jfvn"]
+script = ExtResource("6_d88sg")
+display_name = "Sol Smash"
+element = 0
+energy_cost = 0
+power = 25
+description = ""
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p647s"]
+atlas = ExtResource("4_l22gw")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68n5x"]
+atlas = ExtResource("4_l22gw")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdxgt"]
+atlas = ExtResource("4_l22gw")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03ljg"]
+atlas = ExtResource("4_l22gw")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yul41"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p647s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68n5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdxgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03ljg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_vaj57"]
+script = ExtResource("6_d88sg")
+display_name = "Big Boom"
+element = 0
+energy_cost = 3
+power = 45
+description = ""
+
+[sub_resource type="Resource" id="Resource_1cp3u"]
+script = ExtResource("6_d88sg")
+display_name = "Bigger Boom"
+element = 0
+energy_cost = 5
+power = 65
+description = ""
+
+[resource]
+script = ExtResource("2_csn27")
+name = "Solkin"
+element = 0
+base_health = 40
+base_attack = 8
+base_defense = 6
+base_speed = 10
+base_exp = 20
+level = 1
+captured = false
+seen = false
+basic_attack = SubResource("Resource_5jfvn")
+special_attack1 = SubResource("Resource_vaj57")
+special_attack2 = SubResource("Resource_1cp3u")
+evolution = ExtResource("2_4d4ik")
+sprite = ExtResource("6_0vg56")
+idle = SubResource("SpriteFrames_yul41")
+attack = SubResource("SpriteFrames_hrxno")

@@ -16,10 +16,14 @@ var luminae_roster: Array[Luminae] = []
 
 func _ready() -> void:
 	_init_region_1()
-	add_item(preload("res://item resources/offerings/common_offering.tres"))
-	add_item(preload("res://item resources/offerings/common_offering.tres"))
-	add_item(preload("res://item resources/offerings/refined_offering.tres"))
-	add_luminae(Luminae.create_luminae(preload("res://luminae resources/tidbit.tres"), 8, true))
+	add_item(preload("res://resources/item resources/offerings/common_offering.tres"))
+	add_item(preload("res://resources/item resources/offerings/common_offering.tres"))
+	add_item(preload("res://resources/item resources/offerings/refined_offering.tres"))
+	add_item(preload("res://resources/item resources/healing/healing_seed.tres"))
+	add_item(preload("res://resources/item resources/healing/radiant_berry.tres"))
+	add_item(preload("res://resources/item resources/experience/refined_crystal.tres"))
+	add_luminae(Luminae.create_luminae(preload("res://resources/luminae resources/tidbit.tres"), 1, true))
+	add_luminae(Luminae.create_luminae(preload("res://resources/luminae resources/fernling.tres"), 2, true))
 
 func _init_region_1() -> void:
 	# Only initialize if we haven't already (e.g. returning from battle)
@@ -53,7 +57,11 @@ func remove_item(item: ItemData, amount: int = 1) -> void:
 		item_inventory.erase(item)
 
 func capture_luminae(luminae: Luminae, nickname: String):
-	var new_luminae = Luminae.create_luminae(luminae.luminae_data, luminae.level, true, luminae.health, nickname)
+	#var new_luminae = Luminae.create_luminae(luminae.luminae_data, luminae.level, true, luminae.health, nickname)
+	var new_luminae = Luminae.new()
+	new_luminae.load_luminae(luminae)
+	new_luminae.nickname = nickname
+	new_luminae.player = true
 	add_luminae(new_luminae)
 
 # Add luminae to roster and/or party
@@ -69,6 +77,17 @@ func add_luminae(luminae: Luminae):
 func remove_luminae(luminae: Luminae):
 	luminae_roster.erase(luminae)
 	luminae_party.erase(luminae)
+
+# Swap current battling luminae with selected party luminae
+func swap_luminae(current: Luminae, selected: Luminae) -> void:
+	var selected_index = luminae_party.find(selected)
+	if selected_index == -1:
+		return
+	var temp = luminae_party[0]
+	temp.load_luminae(current)
+	luminae_party[0] = selected
+	luminae_party[selected_index] = temp
+
 
 func get_node_state(region: String, node_name: String) -> MapNode.NodeState:
 	if not node_states.has(region):

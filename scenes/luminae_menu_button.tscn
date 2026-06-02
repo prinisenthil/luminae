@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bl55y6qekiet5"]
 
 [ext_resource type="Texture2D" uid="uid://d03chuubjp8ft" path="res://art/placeholders/sprite pngs/front facing/gaffy front.PNG" id="1_bjvnv"]
-[ext_resource type="Script" path="res://scenes/luminae_menu_button.gd" id="1_m5v2m"]
+[ext_resource type="Script" path="res://scripts/luminae_menu_button.gd" id="1_m5v2m"]
 
 [node name="LuminaeMenuButton" type="Button"]
 custom_minimum_size = Vector2(140, 60)

@@ -3,12 +3,11 @@ extends TextureProgressBar
 
 var max_hp: int
 
-func setup(p_max_hp: int) -> void:
+func setup(p_hp: int, p_max_hp: int) -> void:
 	max_hp = p_max_hp
 	min_value = 0
 	max_value = max_hp
-	value = max_hp
-	print("setup")
+	value = p_hp
 
 func take_damage(amount: int) -> void:
 	var tween = create_tween()

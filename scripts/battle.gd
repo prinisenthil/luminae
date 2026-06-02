@@ -21,8 +21,8 @@ var luminae_cancel_btn
 func _ready() -> void:
 	# Load first player luminae & decided enemy
 	print(GameState.current_enemy.luminae_data.name)
-	enemy_luminae.load_luminae(GameState.current_enemy)
-	player_luminae.load_luminae(GameState.luminae_party[0])
+	enemy_luminae.load_luminae(GameState.current_enemy, true)
+	player_luminae.load_luminae(GameState.luminae_party[0], true)
 	print(enemy_luminae.luminae_data.name)
 	# Connect attack buttons & update orbs
 	enemy_luminae.tapped.connect(_on_enemy_tapped)
@@ -58,7 +58,14 @@ func luminae_menu_pressed():
 	luminae_cancel_btn.pressed.connect(self._luminaeCancelBtn_pressed)
 
 func _on_luminae_selected(luminae: Luminae):
-	pass
+	if luminae.health <= 0:
+		print("This luminae has fainted.")
+		return
+	# Replace the active luminae
+	GameState.swap_luminae(player_luminae, luminae)
+	player_luminae.load_luminae(GameState.luminae_party[0], true)
+
+	close_luminae_menu()
 
 func _luminaeCancelBtn_pressed():
 	close_luminae_menu()
@@ -76,10 +83,16 @@ func item_menu_pressed():
 	items_cancel_btn.pressed.connect(self._itemsCancelBtn_pressed)
 
 func _on_item_selected(item: ItemData):
-	if item.item_type == Global.ItemType.OFFERING:
-		close_item_menu()
-		print("CAPTURE IN PROGRESS")
-		capture_process(item)
+	if item.usable_mid_battle == false:
+		print("Can't use that right now!")
+		return
+	match item.item_type:
+		Global.ItemType.OFFERING:
+			close_item_menu()
+			print("CAPTURE IN PROGRESS")
+			capture_process(item)
+		Global.ItemType.HEALING:
+			player_luminae.use_item(item)
 	GameState.remove_item(item)
 	item_menu.populate_items()
 
@@ -114,14 +127,14 @@ func capture_process(item: ItemData):
 		#	return
 
 func calc_capture_chance(offering: ItemData, player: Luminae, enemy: Luminae) -> float:
-	if offering.offering_tier == Global.OfferingTier.LEGENDARY:
+	if offering.item_tier == Global.ItemTier.LEGENDARY:
 		return 1.0
 	# base chance by offering tier
 	var base_chance: float
-	match offering.offering_tier:
-		Global.OfferingTier.COMMON: base_chance = 0.5
-		Global.OfferingTier.REFINED: base_chance = 0.7
-		Global.OfferingTier.RADIANT: base_chance = 0.85
+	match offering.item_tier:
+		Global.ItemTier.COMMON: base_chance = 0.5
+		Global.ItemTier.REFINED: base_chance = 0.7
+		Global.ItemTier.RADIANT: base_chance = 0.85
 	# higher level player relative to enemy = easier to bond
 	var level_diff = player.level - enemy.level
 	var level_modifier = clamp(1.0 + (level_diff * 0.05), 0.6, 1.4)
@@ -190,14 +203,28 @@ func player_attack(move: MoveData):
 		return
 
 func enemy_attack():
-	execute_move(enemy_luminae, enemy_luminae.luminae_data.basic_attack, player_luminae)
+	await execute_move(enemy_luminae, enemy_luminae.luminae_data.basic_attack, player_luminae)
 	await get_tree().create_timer(0.5).timeout
-	print(player_luminae.health)
-	if player_luminae.health == 0:
+	print("Current health: ", player_luminae.health, " ", player_luminae.nickname)
+	if player_luminae.health <= 0:
+		await player_fainted()
+	player_turn = true
+
+func player_fainted():
+	GameState.luminae_party[0].load_luminae(player_luminae)
+	check_available_luminae()
+	if GameState.luminae_party[0].health <= 0:
 		battle_over = true
 		end_battle(Global.BattleOutcome.ENEMYWIN)
-		return
-	player_turn = true
+
+func check_available_luminae():
+	for luminae in GameState.luminae_party:
+		if luminae == GameState.luminae_party[0]:
+			continue
+		if luminae.health > 0: 
+			await GameState.swap_luminae(player_luminae, luminae)
+			player_luminae.load_luminae(GameState.luminae_party[0], true)
+			break
 
 # helper function to apply damage and execute move then update player spirit orbs
 func execute_move(attacker: Luminae, move: MoveData, defender: Luminae):
@@ -220,9 +247,10 @@ func calc_dmg(attacker: Luminae, defender: Luminae, move: MoveData) -> int:
 	
 	var base: float = float(move.power) * float(attacker.attack) / float(defender.defense)
 	base *= level_scalar
+	base *= 0.4  # global damage scalar — tune this until fights feel right
 	if same_element:
 		base *= 1.2
-	return int(base * type_mult)
+	return max(1, int(base * type_mult))  # always deal at least 1 damage
 
 func get_type_multiplier(move_element: Global.MoveElement, defender_element: Global.LuminaeElement) -> float:
 	# Normal moves have no type interaction
@@ -247,6 +275,8 @@ func end_battle(outcome: Global.BattleOutcome):
 		battle_capture()
 
 func win_battle() -> void:
+	GameState.luminae_party[0].load_luminae(player_luminae)
+	distribute_battle_exp(enemy_luminae)
 	GameState.complete_node(GameState.current_region, GameState.current_node)
 	_unlock_next_node()
 	GameState.change_scene(GameState.current_region)
@@ -292,8 +322,36 @@ func update_orbs():
 		attack2.set_availability(false)
 	else:
 		attack2.set_availability(true)
-	
 
 func update_moves():
 	attack1.setup(player_luminae.luminae_data.special_attack1)
 	attack2.setup(player_luminae.luminae_data.special_attack2)
+
+func distribute_battle_exp(enemy: Luminae) -> void:
+	var full_exp = calc_battle_exp(enemy, GameState.luminae_party[0])
+	var bench_exp = int(full_exp * 0.5)
+	
+	for i in range(GameState.luminae_party.size()):
+		var luminae = GameState.luminae_party[i]
+		if not is_instance_valid(luminae):
+			continue
+		if i == 0:
+			luminae.gain_exp(full_exp)
+		else:
+			luminae.gain_exp(bench_exp)
+
+func calc_battle_exp(enemy: Luminae, player: Luminae) -> int:
+	# base exp from enemy's data and level
+	var base = enemy.luminae_data.base_exp * enemy.level
+	
+	# bonus for outlevel - higher exp if enemy is higher level than player
+	var level_diff = enemy.level - player.level
+	var level_bonus = clamp(1.0 + (level_diff * 0.1), 0.5, 2.0)
+	
+	# bonus for evolved luminae
+	var evolution_bonus = 1.0
+	if enemy.luminae_data.evolution == null:
+		# no further evolution = final stage = higher exp
+		evolution_bonus = 1.5
+	
+	return int(base * level_bonus * evolution_bonus)
