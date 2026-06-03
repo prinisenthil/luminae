@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3sry06al1lic"]
+
+[ext_resource type="PackedScene" uid="uid://buj4pb6yojmd" path="res://scenes/ui scenes/item_menu_button.tscn" id="1_5tego"]
+[ext_resource type="Script" path="res://scripts/item_menu.gd" id="1_djc5o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mivs8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tx1g6"]
+bg_color = Color(0.811765, 0.156863, 0.196078, 1)
+
+[node name="ItemMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_djc5o")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 408.0
+offset_bottom = 240.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mivs8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(183, 181)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 32.0
+offset_right = 379.0
+offset_bottom = 213.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(183, 181)
+layout_mode = 2
+columns = 4
+
+[node name="ItemMenuButton2" parent="ScrollContainer/GridContainer" instance=ExtResource("1_5tego")]
+layout_mode = 2
+
+[node name="ItemMenuButton" parent="ScrollContainer/GridContainer" instance=ExtResource("1_5tego")]
+layout_mode = 2
+
+[node name="ItemMenuButton3" parent="ScrollContainer/GridContainer" instance=ExtResource("1_5tego")]
+layout_mode = 2
+
+[node name="ItemMenuButton4" parent="ScrollContainer/GridContainer" instance=ExtResource("1_5tego")]
+layout_mode = 2
+
+[node name="CancelBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 379.0
+offset_right = 408.0
+offset_bottom = 29.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_tx1g6")
+text = "X"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 211.0
+offset_bottom = 32.0
+text = "ITEMS"

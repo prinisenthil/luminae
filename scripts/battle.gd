@@ -1,8 +1,10 @@
 extends Node2D
 
-@onready var player_luminae: Luminae = $player_luminae
-@onready var enemy_luminae: Luminae = $enemy_luminae
-@onready var orbs_text: Label = $"Spirit Orbs"
+@onready var player_luminae: Luminae = $PlayerLuminae
+@onready var enemy_luminae: Luminae = $EnemyLuminae
+@onready var orbs_text: Label = $SpiritOrbs
+@onready var player_control = $PlayerControl
+@onready var rewards_menu = $RewardsMenu
 @onready var attack1: Attack = $PlayerControl/attack1
 @onready var attack1_btn: Button = $PlayerControl/attack1/Button
 @onready var attack2_btn: Button = $PlayerControl/attack2/Button
@@ -16,6 +18,7 @@ extends Node2D
 var battle_over: bool = false
 var items_cancel_btn
 var luminae_cancel_btn
+var rewards: Dictionary
 
 # executed upon battle start
 func _ready() -> void:
@@ -275,15 +278,42 @@ func end_battle(outcome: Global.BattleOutcome):
 		battle_capture()
 
 func win_battle() -> void:
+	display_rewards()
 	GameState.luminae_party[0].load_luminae(player_luminae)
 	distribute_battle_exp(enemy_luminae)
 	GameState.complete_node(GameState.current_region, GameState.current_node)
 	_unlock_next_node()
-	GameState.change_scene(GameState.current_region)
+	#GameState.change_scene(GameState.current_region)
+
+func display_rewards() -> void:
+	hide_battle()
+	rewards = {
+		Global.RewardType.GOLD : 10,
+		Global.RewardType.LUMENCRYSTAL : 3
+	}
+	rewards_menu.populate_rewards(rewards)
+	rewards_menu.visible = true
+	var rewardsClaimBtn = $RewardsMenu/ClaimButton
+	rewardsClaimBtn.pressed.connect(self._on_claim_pressed)
+
+func _on_claim_pressed():
+	for reward in rewards:
+		match reward:
+			Global.RewardType.GOLD:
+				GameState.add_gold(rewards[reward])
+			Global.RewardType.LUMENCRYSTAL:
+				GameState.add_lumen_crystals(rewards[reward])
+	GameState.change_scene("home")
+
+func hide_battle() -> void:
+	player_luminae.visible = false
+	enemy_luminae.visible = false
+	orbs_text.visible = false
+	player_control.visible = false
 
 func lose_battle() -> void:
 	print("Battle Lost.")
-	GameState.change_scene(GameState.current_region)
+	GameState.change_scene("home")
 
 func battle_capture() -> void:
 	print("Enemy Captured.")

@@ -1,5 +1,10 @@
 extends Node
 
+# Currency values
+var gold = 50
+var lumen_crystals = 5
+var keys = 2
+
 # Keyed by region name, then node name, then NodeState value
 # e.g. { "region_1": { "BrightstoneVillage": 2, "GoldenMeadows": 1 } }
 var node_states: Dictionary = {}
@@ -22,7 +27,7 @@ func _ready() -> void:
 	add_item(preload("res://resources/item resources/healing/healing_seed.tres"))
 	add_item(preload("res://resources/item resources/healing/radiant_berry.tres"))
 	add_item(preload("res://resources/item resources/experience/refined_crystal.tres"))
-	add_luminae(Luminae.create_luminae(preload("res://resources/luminae resources/tidbit.tres"), 1, true))
+	add_luminae(Luminae.create_luminae(preload("res://resources/luminae resources/tidbit.tres"), 5, true))
 	add_luminae(Luminae.create_luminae(preload("res://resources/luminae resources/fernling.tres"), 2, true))
 
 func _init_region_1() -> void:
@@ -42,6 +47,24 @@ func _init_region_1() -> void:
 		"GildedDunes":        MapNode.NodeState.LOCKED,
 		"SolaraThrone":       MapNode.NodeState.LOCKED,
 	}
+
+func add_gold(amount: int):
+	gold += amount
+
+func remove_gold(amount: int):
+	gold -= amount
+
+func add_lumen_crystals(amount: int):
+	lumen_crystals += amount
+
+func remove_lumen_crystals(amount: int):
+	lumen_crystals -= amount
+
+func add_keys(amount: int):
+	keys += amount
+
+func remove_keys(amount: int):
+	keys -= amount
 
 func add_item(item: ItemData, amount: int = 1) -> void:
 	if item in item_inventory:
@@ -114,3 +137,6 @@ func change_scene(scene):
 		"region_1":
 			get_tree().change_scene_to_file("res://scenes/region maps/region_1.tscn")
 			world = "map"
+		"home":
+			get_tree().change_scene_to_file("res://scenes/home.tscn")
+			world = "home"

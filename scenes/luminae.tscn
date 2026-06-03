@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://n3nolitr13ll"]
+[gd_scene load_steps=13 format=3 uid="uid://n3nolitr13ll"]
 
 [ext_resource type="Script" path="res://scripts/luminae.gd" id="1_tl2rs"]
 [ext_resource type="Texture2D" uid="uid://cowl7s58pumnc" path="res://art/placeholders/sprite animations/sprite1_idle.png" id="2_gb2jy"]
-[ext_resource type="Texture2D" uid="uid://f2xjtji3xwah" path="res://art/placeholders/ui/Bar_Body_2.png" id="3_u83px"]
-[ext_resource type="Texture2D" uid="uid://bkc6em6k74vvr" path="res://art/placeholders/ui/Bar_Fill_Green.png" id="4_kveov"]
+[ext_resource type="Texture2D" uid="uid://f2xjtji3xwah" path="res://art/placeholders/ui/ui attacks/Bar_Body_2.png" id="3_u83px"]
+[ext_resource type="Texture2D" uid="uid://bkc6em6k74vvr" path="res://art/placeholders/ui/ui attacks/Bar_Fill_Green.png" id="4_kveov"]
 [ext_resource type="Script" path="res://scripts/hp_bar.gd" id="5_phxmd"]
+[ext_resource type="FontFile" uid="uid://dsdbxm78lspd3" path="res://art/placeholders/ui/fonts/Sora-Bold.otf" id="6_sbwrb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3q01x"]
 atlas = ExtResource("2_gb2jy")
@@ -106,6 +107,7 @@ offset_top = -30.0
 offset_right = 50.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_sbwrb")
 text = "Fernling"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -121,6 +123,7 @@ scale = Vector2(2, 2)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("6_sbwrb")
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1

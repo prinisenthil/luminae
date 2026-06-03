@@ -8,4 +8,4 @@ script = ExtResource("2_iwlg2")
 Luminae = ExtResource("1_6415e")
 spawn_rate = 2
 low_level = 1
-upper_level = 7
+upper_level = 1

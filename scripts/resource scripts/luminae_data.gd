@@ -3,6 +3,7 @@ class_name LuminaeData
 
 @export var name: String
 @export var element: Global.LuminaeElement
+@export var rarity: Global.LuminaeRarity
 
 # Base stats used for stat calculation in battle
 @export var base_health: int = 60		# Base HP Stat

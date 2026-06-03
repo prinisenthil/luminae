@@ -10,7 +10,7 @@ func populate_items():
 		grid.remove_child(child)
 	for item in item_inv:
 		var quantity = item_inv[item]
-		var btn = preload("res://scenes/item_menu_button.tscn").instantiate()
+		var btn = preload("res://scenes/ui scenes/item_menu_button.tscn").instantiate()
 		btn.setup(item, quantity)
 		btn.pressed.connect(func(): emit_signal("item_selected", item))
 		grid.add_child(btn)

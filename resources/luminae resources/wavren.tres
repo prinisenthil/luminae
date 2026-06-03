@@ -100,6 +100,7 @@ description = ""
 script = ExtResource("2_vkogl")
 name = "Wavren"
 element = 0
+rarity = 0
 base_health = 40
 base_attack = 8
 base_defense = 6

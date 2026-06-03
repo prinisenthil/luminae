@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 class_name Attack
 @export var move: MoveData
 @export var available: bool = false
@@ -7,7 +7,6 @@ class_name Attack
 @export var texture_available: Texture2D
 @export var texture_locked: Texture2D
 
-@onready var _sprite = $Panel
 @onready var btn = $Button
 @onready var _label = $Label
 
@@ -21,13 +20,13 @@ func set_availability(new_state: bool) -> void:
 	btn.disabled = not new_state
 
 func _apply_state() -> void:
-		if available:
-			if texture_available:
-				_sprite.texture = texture_available
-			_sprite.modulate = Color.WHITE
-			_label.modulate = Color.WHITE
-		else:
-			if texture_locked:
-				_sprite.texture = texture_locked
-			_sprite.modulate = Color(1.0, 1.0, 1.0, 0.4)
-			_label.modulate = Color(1.0, 1.0, 1.0, 0.4)
+	if available:
+		if texture_available:
+			btn.texture = texture_available
+		btn.modulate = Color.WHITE
+		_label.modulate = Color.WHITE
+	else:
+		if texture_locked:
+			btn.texture = texture_locked
+		btn.modulate = Color(1.0, 1.0, 1.0, 0.4)
+		_label.modulate = Color(1.0, 1.0, 1.0, 0.4)

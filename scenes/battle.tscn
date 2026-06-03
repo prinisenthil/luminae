@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bssje14pluqbd"]
+[gd_scene load_steps=8 format=3 uid="uid://bssje14pluqbd"]
 
 [ext_resource type="Texture2D" uid="uid://dwepyjsesdww4" path="res://art/placeholders/battle backgrounds/game_background_4.png" id="1_dm41r"]
 [ext_resource type="Script" path="res://scripts/battle.gd" id="1_ldc4u"]
 [ext_resource type="PackedScene" uid="uid://n3nolitr13ll" path="res://scenes/luminae.tscn" id="2_j3txc"]
 [ext_resource type="Resource" uid="uid://ccfrpuysipx8x" path="res://resources/luminae resources/fernling.tres" id="3_wilo0"]
-[ext_resource type="PackedScene" uid="uid://baemyp0qiyrkc" path="res://scenes/player_control.tscn" id="6_1rmjo"]
+[ext_resource type="FontFile" uid="uid://dsdbxm78lspd3" path="res://art/placeholders/ui/fonts/Sora-Bold.otf" id="5_djukg"]
+[ext_resource type="PackedScene" uid="uid://baemyp0qiyrkc" path="res://scenes/ui scenes/player_control.tscn" id="6_1rmjo"]
+[ext_resource type="PackedScene" uid="uid://blowxjhofwhus" path="res://scenes/ui scenes/rewards_menu.tscn" id="7_iydi0"]
 
 [node name="battle" type="Node2D"]
 script = ExtResource("1_ldc4u")
@@ -14,28 +16,39 @@ scale = Vector2(0.220052, 0.181481)
 texture = ExtResource("1_dm41r")
 centered = false
 
-[node name="player_luminae" parent="." instance=ExtResource("2_j3txc")]
+[node name="PlayerLuminae" parent="." instance=ExtResource("2_j3txc")]
 position = Vector2(200, 299)
 luminae_data = ExtResource("3_wilo0")
 player = true
 
-[node name="enemy_luminae" parent="." instance=ExtResource("2_j3txc")]
-position = Vector2(660, 212)
+[node name="EnemyLuminae" parent="." instance=ExtResource("2_j3txc")]
+position = Vector2(624, 206)
 luminae_data = ExtResource("3_wilo0")
 
-[node name="Spirit Orbs" type="Label" parent="."]
+[node name="SpiritOrbs" type="Label" parent="."]
 offset_left = 297.0
 offset_top = 326.0
 offset_right = 323.0
 offset_bottom = 349.0
 scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("5_djukg")
 text = "5"
 
-[node name="Label" type="Label" parent="Spirit Orbs"]
+[node name="Label" type="Label" parent="SpiritOrbs"]
 layout_mode = 0
 offset_left = 20.0
 offset_right = 103.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_djukg")
 text = "Spirit Orbs"
 
 [node name="PlayerControl" parent="." instance=ExtResource("6_1rmjo")]
+custom_minimum_size = Vector2(0, 0)
+
+[node name="RewardsMenu" parent="." instance=ExtResource("7_iydi0")]
+visible = false
+offset_left = 137.0
+offset_top = 94.0
+offset_right = 137.0
+offset_bottom = 94.0
+scale = Vector2(1.2, 1.2)

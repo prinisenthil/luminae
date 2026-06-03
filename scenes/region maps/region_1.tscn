@@ -20,14 +20,14 @@ script = ExtResource("3_4qgtx")
 Luminae = ExtResource("6_dmlel")
 spawn_rate = 1
 low_level = 1
-upper_level = 2
+upper_level = 1
 
 [sub_resource type="Resource" id="Resource_pi0mu"]
 script = ExtResource("3_4qgtx")
 Luminae = ExtResource("8_uhnd7")
 spawn_rate = 2
 low_level = 1
-upper_level = 2
+upper_level = 1
 
 [sub_resource type="Resource" id="Resource_iuyd6"]
 script = ExtResource("3_4qgtx")

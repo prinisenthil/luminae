@@ -1,0 +1,110 @@
+[gd_scene load_steps=13 format=3 uid="uid://blowxjhofwhus"]
+
+[ext_resource type="Script" path="res://scenes/ui scenes/rewards_menu.gd" id="1_2x7yw"]
+[ext_resource type="Texture2D" uid="uid://dt8pkd8gjvkqc" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Panels/panel_cyan.png" id="1_ph6yf"]
+[ext_resource type="Texture2D" uid="uid://cislmeqsqyakw" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Headers/headerBow_cyan.png" id="2_8w338"]
+[ext_resource type="FontFile" uid="uid://dsdbxm78lspd3" path="res://art/placeholders/ui/fonts/Sora-Bold.otf" id="3_udb5e"]
+[ext_resource type="PackedScene" uid="uid://dphyh0kx172dj" path="res://scenes/ui scenes/reward_icon.tscn" id="4_qs82i"]
+[ext_resource type="Texture2D" uid="uid://bqjts8vfrhin0" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/button_green.png" id="5_xktyd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bj1bl"]
+texture = ExtResource("1_ph6yf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2tgdi"]
+texture = ExtResource("2_8w338")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hpv6r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vyw3q"]
+texture = ExtResource("5_xktyd")
+modulate_color = Color(0.851769, 0.851769, 0.851769, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vxf2w"]
+texture = ExtResource("5_xktyd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dcy5w"]
+texture = ExtResource("5_xktyd")
+
+[node name="RewardsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2x7yw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 473.0
+offset_bottom = 174.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_bj1bl")
+
+[node name="Banner" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 129.0
+offset_top = -23.0
+offset_right = 340.0
+offset_bottom = 33.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2tgdi")
+
+[node name="Label" type="Label" parent="Banner"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 9.0
+offset_right = 192.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("3_udb5e")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_hpv6r")
+text = "Rewards"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(463, 90)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 41.0
+offset_right = 468.0
+offset_bottom = 131.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+columns = 6
+
+[node name="RewardIcon" parent="ScrollContainer/GridContainer" instance=ExtResource("4_qs82i")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RewardIcon2" parent="ScrollContainer/GridContainer" instance=ExtResource("4_qs82i")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RewardIcon3" parent="ScrollContainer/GridContainer" instance=ExtResource("4_qs82i")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ClaimButton" type="Button" parent="."]
+custom_minimum_size = Vector2(111, 50)
+layout_mode = 0
+offset_left = 180.0
+offset_top = 140.0
+offset_right = 291.0
+offset_bottom = 190.0
+theme_override_colors/font_disabled_color = Color(0.354054, 0.377256, 0.378429, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.354054, 0.377256, 0.378429, 1)
+theme_override_colors/font_hover_color = Color(0.101402, 0.11106, 0.11155, 1)
+theme_override_colors/font_pressed_color = Color(0.354054, 0.377256, 0.378429, 1)
+theme_override_colors/font_focus_color = Color(0.354054, 0.377256, 0.378429, 1)
+theme_override_colors/font_color = Color(0.354054, 0.377256, 0.378429, 1)
+theme_override_colors/font_outline_color = Color(0.354054, 0.377256, 0.378429, 1)
+theme_override_fonts/font = ExtResource("3_udb5e")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxTexture_vyw3q")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vxf2w")
+theme_override_styles/normal = SubResource("StyleBoxTexture_dcy5w")
+text = "Claim"

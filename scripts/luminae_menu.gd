@@ -11,7 +11,7 @@ func populate_luminaes():
 	for luminae in luminae_party:
 		if luminae == GameState.luminae_party[0]:
 			continue
-		var btn = preload("res://scenes/luminae_menu_button.tscn").instantiate()
+		var btn = preload("res://scenes/ui scenes/luminae_menu_button.tscn").instantiate()
 		btn.setup(luminae)
 		btn.pressed.connect(func(): emit_signal("luminae_selected", luminae))
 		grid.add_child(btn)

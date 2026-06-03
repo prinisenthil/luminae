@@ -21,6 +21,14 @@ enum MoveElement {
 	NORMAL
 }
 
+enum LuminaeRarity {
+	COMMON,
+	REFINED,
+	RADIANT,
+	LEGENDARY,
+	ETERNAL
+}
+
 enum ItemType {
 	HEALING,
 	OFFERING,
@@ -34,6 +42,12 @@ enum ItemTier {
 	REFINED, 
 	RADIANT,
 	LEGENDARY
+}
+
+enum RewardType {
+	GOLD,
+	LUMENCRYSTAL,
+	ITEM
 }
 
 enum ArtifactType {
@@ -84,3 +98,6 @@ var unlock_map: Dictionary = {
 	"MirageLake":         ["ScorchedCanyon", "GildedDunes"],
 	"ScorchedCanyon":     ["SolaraThrone"],
 }
+
+var coin_texture: Texture2D = preload("res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/coin_icon_64px.png")
+var lumenCrystal_texture: Texture2D = preload("res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/gem_icon_64px.png")
