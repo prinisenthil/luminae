@@ -17,8 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://scripts/global.gd"
-GameState="*res://scripts/game_state.gd"
+Global="*res://scripts/autoload scripts/global.gd"
+GameState="*res://scripts/autoload scripts/game_state.gd"
+SceneTransition="*res://scenes/autoload scenes/scene_transition.tscn"
 
 [display]
 

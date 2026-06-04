@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3g5j43pr3ahr"]
+
+[ext_resource type="Script" path="res://scripts/ui scripts/pop_up_menu.gd" id="1_0go35"]
+[ext_resource type="Texture2D" uid="uid://dp4e6fafiw2ej" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Modals/modalSimple_v2.png" id="1_so1ow"]
+[ext_resource type="Texture2D" uid="uid://crjv2k2mip1ue" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Headers/header_cyan.png" id="2_13vk2"]
+[ext_resource type="FontFile" uid="uid://dsdbxm78lspd3" path="res://art/placeholders/ui/fonts/Sora-Bold.otf" id="3_hoegl"]
+[ext_resource type="Texture2D" uid="uid://08ruxv6eyosd" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/button_cyan.png" id="4_ptk1x"]
+[ext_resource type="Texture2D" uid="uid://c757w3japuouf" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/buttonAdvanced_cyan.png" id="5_3m0v4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1cq1b"]
+texture = ExtResource("1_so1ow")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ai42o"]
+texture = ExtResource("2_13vk2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hv3q0"]
+texture = ExtResource("4_ptk1x")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ip1q8"]
+texture = ExtResource("5_3m0v4")
+
+[node name="PopUpMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_0go35")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 318.0
+offset_bottom = 211.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_1cq1b")
+
+[node name="Header" type="Panel" parent="."]
+layout_mode = 0
+offset_top = -50.0
+offset_right = 313.0
+offset_bottom = 6.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ai42o")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 10.0
+offset_right = 301.0
+offset_bottom = 117.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_hoegl")
+theme_override_font_sizes/font_size = 30
+text = "Hello"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="OkayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 150.0
+offset_right = 218.0
+offset_bottom = 202.0
+theme_override_fonts/font = ExtResource("3_hoegl")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxTexture_hv3q0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ip1q8")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hv3q0")
+text = "Okay"

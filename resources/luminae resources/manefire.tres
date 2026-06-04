@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="LuminaeData" load_steps=15 format=3 uid="uid://bumhnajl34noa"]
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=17 format=3 uid="uid://bumhnajl34noa"]
 
 [ext_resource type="Texture2D" uid="uid://tqvvg6lluvyd" path="res://art/placeholders/sprite animations/sprite8_attack.png" id="1_snos0"]
 [ext_resource type="Resource" uid="uid://c66s37jpvm2yx" path="res://resources/move resources/basic_attack.tres" id="2_idsei"]
 [ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="2_tqr6n"]
 [ext_resource type="Resource" uid="uid://bpg2dk8gp1dyw" path="res://resources/luminae resources/auralion.tres" id="2_xmdv1"]
-[ext_resource type="Texture2D" uid="uid://gbfse4yl78aa" path="res://art/placeholders/sprite animations/sprite8.png" id="6_6jwkx"]
+[ext_resource type="Script" path="res://scripts/resource scripts/evolution_entry.gd" id="4_n1nq7"]
 [ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="6_84n3e"]
+[ext_resource type="Texture2D" uid="uid://dce4ltetqmamw" path="res://art/placeholders/sprite pngs/front facing/manefire front.png" id="7_d8bku"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01qu3"]
 atlas = ExtResource("1_snos0")
@@ -43,6 +44,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_egnix"]
+script = ExtResource("4_n1nq7")
+evolution = ExtResource("2_xmdv1")
+level = 34
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_eq7ei"]
 
 [sub_resource type="Resource" id="Resource_6yyw7"]
@@ -70,14 +76,13 @@ base_health = 40
 base_attack = 8
 base_defense = 6
 base_speed = 10
-base_exp = 20
 level = 1
 captured = false
 seen = false
 basic_attack = ExtResource("2_idsei")
 special_attack1 = SubResource("Resource_6yyw7")
 special_attack2 = SubResource("Resource_0pug4")
-evolution = ExtResource("2_xmdv1")
-sprite = ExtResource("6_6jwkx")
+evolution = SubResource("Resource_egnix")
+sprite = ExtResource("7_d8bku")
 idle = SubResource("SpriteFrames_eq7ei")
 attack = SubResource("SpriteFrames_em2pb")

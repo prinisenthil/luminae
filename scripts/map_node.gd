@@ -1,4 +1,4 @@
-extends Area2D
+extends Button
 class_name MapNode
 
 #  Enums & Constants
@@ -48,6 +48,7 @@ func _ready() -> void:
 	_apply_state()
 #	_apply_shimmer()
 	_label.text = node_label
+	pressed.connect(self._on_pressed)
 
 
 func set_state(new_state: NodeState) -> void:
@@ -65,12 +66,8 @@ func get_node_type() -> NodeType:
 
 #  Input
 
-func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+func _on_pressed():
 	if state == NodeState.LOCKED:
-		return
-	if not event is InputEventScreenTouch:
-		return
-	if not event.pressed:
 		return
 
 	# Ask the parent map whether this touch was actually a drag
@@ -90,16 +87,19 @@ func _apply_state() -> void:
 				_sprite.texture = texture_available
 			_sprite.modulate = Color.WHITE
 			_label.modulate = Color.WHITE
+			disabled = false
 		NodeState.COMPLETED:
 			if texture_completed:
 				_sprite.texture = texture_completed
 			_sprite.modulate = Color.WHITE
 			_label.modulate = Color.WHITE
+			disabled = false
 		NodeState.LOCKED:
 			if texture_locked:
 				_sprite.texture = texture_locked
-			_sprite.modulate = Color(1.0, 1.0, 1.0, 0.4)
-			_label.modulate = Color(1.0, 1.0, 1.0, 0.4)
+			#_sprite.modulate = Color(1.0, 1.0, 1.0, 0.4)
+			#_label.modulate = Color(1.0, 1.0, 1.0, 0.4)
+			disabled = true
 
 func spawn_luminae():
 	if luminae_entries.is_empty():

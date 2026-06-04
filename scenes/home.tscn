@@ -1,23 +1,16 @@
-[gd_scene load_steps=33 format=3 uid="uid://fh6qv1i586sg"]
+[gd_scene load_steps=20 format=3 uid="uid://fh6qv1i586sg"]
 
 [ext_resource type="Script" path="res://scripts/home.gd" id="1_ovn00"]
 [ext_resource type="Texture2D" uid="uid://ctowvg167jthx" path="res://art/placeholders/home backgrounds/forest swamp background.jpg" id="1_swx58"]
 [ext_resource type="PackedScene" uid="uid://d14bmibjd6ga5" path="res://scenes/ui scenes/luminae_home_menu.tscn" id="2_wmhpj"]
 [ext_resource type="Texture2D" uid="uid://ppib487odjqc" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Panels/mail_green.png" id="4_di8gj"]
 [ext_resource type="Texture2D" uid="uid://fp1ugnmbk4io" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/adventure_1ButtonDefault.png" id="4_jybl6"]
-[ext_resource type="Texture2D" uid="uid://btv5r4x2vgtli" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/adventureButtonPressed.png" id="4_ribdy"]
 [ext_resource type="Texture2D" uid="uid://bt8clar0ljyvu" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/adventure_icon_64px.png" id="5_rveeb"]
-[ext_resource type="Texture2D" uid="uid://b2emhqd8dr8i4" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/shop_1ButtonDefault.png" id="6_jay28"]
-[ext_resource type="Texture2D" uid="uid://bvy1is5sxf5wa" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/shopButtonPressed.png" id="7_hwpf3"]
-[ext_resource type="Texture2D" uid="uid://dvr6mlm1srnhv" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/shop_icon_64px.png" id="8_d041e"]
+[ext_resource type="Texture2D" uid="uid://oyk71ajdojea" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/store_icon_64px.png" id="8_oj4b4"]
+[ext_resource type="Texture2D" uid="uid://com0y7lexw87r" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/store_1ButtonDefault.png" id="9_ujpfw"]
 [ext_resource type="Texture2D" uid="uid://7wp1g8fgyos0" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/equipment_1ButtonDefault.png" id="10_hws8o"]
-[ext_resource type="Texture2D" uid="uid://swyvo5b2watn" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/equipmentButtonPressed.png" id="11_xnefl"]
 [ext_resource type="Texture2D" uid="uid://bhl3ux2166xbh" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/armor_icon_64px.png" id="12_xbfm8"]
-[ext_resource type="Texture2D" uid="uid://bagp7t4whyn1w" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Labels/coin_label.png" id="14_m12ef"]
-[ext_resource type="FontFile" uid="uid://dsdbxm78lspd3" path="res://art/placeholders/ui/fonts/Sora-Bold.otf" id="15_ibfim"]
-[ext_resource type="Texture2D" uid="uid://cl8duqqrtcp6k" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Labels/gem_label.png" id="16_8wgrj"]
-[ext_resource type="Texture2D" uid="uid://by5u81xytgdd0" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Labels/energy_label.png" id="17_xwqwd"]
-[ext_resource type="Texture2D" uid="uid://dv0c8sb6h74vg" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/key_icon_64px.png" id="18_6dw82"]
+[ext_resource type="PackedScene" uid="uid://cfuqhxc0k162q" path="res://scenes/ui scenes/currency_ui.tscn" id="14_477bq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3udfn"]
 texture = ExtResource("1_swx58")
@@ -25,41 +18,23 @@ texture = ExtResource("1_swx58")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vx1xx"]
 texture = ExtResource("4_di8gj")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1wlc"]
-texture = ExtResource("4_jybl6")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u76p3"]
-texture = ExtResource("4_ribdy")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5rjp"]
 texture = ExtResource("5_rveeb")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4crmq"]
-texture = ExtResource("6_jay28")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1wlc"]
+texture = ExtResource("4_jybl6")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u2xc7"]
-texture = ExtResource("7_hwpf3")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fduge"]
+texture = ExtResource("8_oj4b4")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yju31"]
-texture = ExtResource("8_d041e")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qsnns"]
-texture = ExtResource("10_hws8o")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5bxcc"]
-texture = ExtResource("11_xnefl")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g0wh3"]
+texture = ExtResource("9_ujpfw")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vf56e"]
 texture = ExtResource("12_xbfm8")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ntg8"]
-texture = ExtResource("14_m12ef")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mcnnv"]
-texture = ExtResource("16_8wgrj")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ebk5u"]
-texture = ExtResource("17_xwqwd")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qsnns"]
+texture = ExtResource("10_hws8o")
 
 [node name="home" type="Node2D"]
 script = ExtResource("1_ovn00")
@@ -70,103 +45,53 @@ offset_bottom = 392.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_3udfn")
 
 [node name="LuminaeHomeMenu" parent="." instance=ExtResource("2_wmhpj")]
-offset_top = 29.0
-offset_bottom = 29.0
+offset_left = 2.0
+offset_top = -22.0
+offset_right = 2.0
+offset_bottom = -22.0
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="MenuButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="Panel" parent="MenuButtons"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 7.0
 offset_right = 208.0
 offset_bottom = 83.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vx1xx")
 
-[node name="GridContainer" type="GridContainer" parent="Panel2"]
+[node name="GridContainer" type="GridContainer" parent="MenuButtons"]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 11.0
-offset_right = 189.0
-offset_bottom = 61.0
+offset_left = 22.0
+offset_top = 18.0
+offset_right = 199.0
+offset_bottom = 68.0
 theme_override_constants/h_separation = 10
 columns = 3
 
-[node name="BattleButton" type="Button" parent="Panel2/GridContainer"]
+[node name="BattleButton" type="Button" parent="MenuButtons/GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxTexture_y1wlc")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_u76p3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_g5rjp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y1wlc")
 theme_override_styles/normal = SubResource("StyleBoxTexture_g5rjp")
 
-[node name="ShopButton" type="Button" parent="Panel2/GridContainer"]
+[node name="ShopButton" type="Button" parent="MenuButtons/GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxTexture_4crmq")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_u2xc7")
-theme_override_styles/normal = SubResource("StyleBoxTexture_yju31")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fduge")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g0wh3")
+theme_override_styles/normal = SubResource("StyleBoxTexture_fduge")
 
-[node name="BagButton" type="Button" parent="Panel2/GridContainer"]
+[node name="BagButton" type="Button" parent="MenuButtons/GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxTexture_qsnns")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_5bxcc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vf56e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qsnns")
 theme_override_styles/normal = SubResource("StyleBoxTexture_vf56e")
 
-[node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 440.0
-offset_top = 18.0
-offset_right = 810.0
-offset_bottom = 68.0
-theme_override_constants/h_separation = 20
-columns = 3
-
-[node name="Gold" type="Panel" parent="GridContainer"]
-custom_minimum_size = Vector2(110, 50)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_2ntg8")
-
-[node name="Label" type="Label" parent="GridContainer/Gold"]
-layout_mode = 0
-offset_left = 44.0
-offset_top = 12.0
-offset_right = 102.0
-offset_bottom = 36.0
-theme_override_fonts/font = ExtResource("15_ibfim")
-theme_override_font_sizes/font_size = 18
-text = "1.6k"
-horizontal_alignment = 1
-
-[node name="LumenCrystals" type="Panel" parent="GridContainer"]
-custom_minimum_size = Vector2(110, 50)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_mcnnv")
-
-[node name="Label" type="Label" parent="GridContainer/LumenCrystals"]
-layout_mode = 0
-offset_left = 44.0
-offset_top = 12.0
-offset_right = 102.0
-offset_bottom = 36.0
-theme_override_fonts/font = ExtResource("15_ibfim")
-theme_override_font_sizes/font_size = 18
-text = "1.6k"
-horizontal_alignment = 1
-
-[node name="Keys" type="Panel" parent="GridContainer"]
-custom_minimum_size = Vector2(110, 50)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ebk5u")
-
-[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Keys"]
-position = Vector2(15, 20)
-scale = Vector2(0.754545, 0.798507)
-texture = ExtResource("18_6dw82")
-
-[node name="Label" type="Label" parent="GridContainer/Keys"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 11.0
-offset_right = 99.0
-offset_bottom = 35.0
-theme_override_fonts/font = ExtResource("15_ibfim")
-theme_override_font_sizes/font_size = 18
-text = "30"
-horizontal_alignment = 1
+[node name="CurrencyUI" parent="." instance=ExtResource("14_477bq")]

@@ -1,0 +1,7 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://m1nw0nma3403"]
+
+[ext_resource type="Texture2D" uid="uid://dlivq00y6x74o" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Panels/panelEpic_green.png" id="1_0sv1b"]
+
+[resource]
+texture = ExtResource("1_0sv1b")
+modulate_color = Color(0.82606, 0.82606, 0.82606, 1)

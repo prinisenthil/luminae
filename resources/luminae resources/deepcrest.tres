@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://c66s37jpvm2yx" path="res://resources/move resources/basic_attack.tres" id="2_ek3q1"]
 [ext_resource type="Texture2D" uid="uid://d28t8q55iqebq" path="res://art/placeholders/sprite animations/sprite14_idle.png" id="3_e1ka1"]
 [ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="5_wmlvs"]
-[ext_resource type="Texture2D" uid="uid://gelmbnjnprno" path="res://art/placeholders/sprite animations/sprite14.png" id="6_113gg"]
+[ext_resource type="Texture2D" uid="uid://behja1vwp4tar" path="res://art/placeholders/sprite pngs/front facing/deepcrest front.png" id="6_chp6r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_11kou"]
 atlas = ExtResource("1_aao6d")
@@ -104,13 +104,12 @@ base_health = 40
 base_attack = 8
 base_defense = 6
 base_speed = 10
-base_exp = 20
 level = 1
 captured = false
 seen = false
 basic_attack = ExtResource("2_ek3q1")
 special_attack1 = SubResource("Resource_m4kp1")
 special_attack2 = SubResource("Resource_tcw7r")
-sprite = ExtResource("6_113gg")
+sprite = ExtResource("6_chp6r")
 idle = SubResource("SpriteFrames_obga8")
 attack = SubResource("SpriteFrames_hrs7l")

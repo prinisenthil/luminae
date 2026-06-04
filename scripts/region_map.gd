@@ -43,6 +43,10 @@ var _last_drag_pos: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	_register_nodes()
 	_load_node_states()
+	$Camera2D/MenuButtons/GridContainer/HomeButton.pressed.connect(self._home_button_pressed)
+
+func _home_button_pressed():
+	GameState.change_scene("home")
 
 
 func _load_node_states() -> void:

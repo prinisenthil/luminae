@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_sh7lg")
-display_name = "Big Boom"
+display_name = "Seed Throw"
 element = 2
-energy_cost = 3
-power = 45
+energy_cost = 5
+power = 60
 description = ""

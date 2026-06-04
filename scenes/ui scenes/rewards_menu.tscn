@@ -1,11 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://blowxjhofwhus"]
+[gd_scene load_steps=15 format=3 uid="uid://blowxjhofwhus"]
 
-[ext_resource type="Script" path="res://scenes/ui scenes/rewards_menu.gd" id="1_2x7yw"]
+[ext_resource type="Script" path="res://scripts/ui scripts/rewards_menu.gd" id="1_2x7yw"]
 [ext_resource type="Texture2D" uid="uid://dt8pkd8gjvkqc" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Panels/panel_cyan.png" id="1_ph6yf"]
 [ext_resource type="Texture2D" uid="uid://cislmeqsqyakw" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Headers/headerBow_cyan.png" id="2_8w338"]
+[ext_resource type="Texture2D" uid="uid://cauvmgbrhqcel" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Effects/effect_cyan.png" id="2_qntst"]
 [ext_resource type="FontFile" uid="uid://dsdbxm78lspd3" path="res://art/placeholders/ui/fonts/Sora-Bold.otf" id="3_udb5e"]
 [ext_resource type="PackedScene" uid="uid://dphyh0kx172dj" path="res://scenes/ui scenes/reward_icon.tscn" id="4_qs82i"]
 [ext_resource type="Texture2D" uid="uid://bqjts8vfrhin0" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/button_green.png" id="5_xktyd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ifqgj"]
+texture = ExtResource("2_qntst")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bj1bl"]
 texture = ExtResource("1_ph6yf")
@@ -33,6 +37,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2x7yw")
+
+[node name="Effect" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = -100.0
+offset_right = 300.0
+offset_bottom = 150.0
+scale = Vector2(1.505, 1.505)
+theme_override_styles/panel = SubResource("StyleBoxTexture_ifqgj")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0

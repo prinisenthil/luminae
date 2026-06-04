@@ -7,16 +7,16 @@
 [resource]
 script = ExtResource("3_sjdyp")
 name = "Radiant Crystal"
-description = "gives 500 EXP"
+description = "heals full HP & revives luminae"
 icon = ExtResource("2_1e5b0")
-item_type = 2
+item_type = 0
 item_tier = 2
 craftable = true
 crafting_recipe = Array[ExtResource("1_sytha")]([])
-usable_mid_battle = false
+usable_mid_battle = true
 stackable = true
 max_stack = 99
-hp_restore_percent = 0.3
+hp_restore_percent = 1.0
 full_restore = false
 clears_status = false
 infused_element = 0

@@ -35,9 +35,9 @@ text = "Items
 [node name="ItemMenu" parent="." instance=ExtResource("2_f5loh")]
 visible = false
 layout_mode = 1
-offset_left = -133.0
+offset_left = -141.0
 offset_top = -192.0
-offset_right = -133.0
+offset_right = -141.0
 offset_bottom = -192.0
 
 [node name="LuminaePartyBtn" type="Button" parent="."]

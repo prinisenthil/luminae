@@ -1,7 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfanv7awc5a11"]
+[gd_scene load_steps=18 format=3 uid="uid://dfanv7awc5a11"]
 
 [ext_resource type="Script" path="res://scripts/region_map.gd" id="1_1efa8"]
+[ext_resource type="PackedScene" uid="uid://cfuqhxc0k162q" path="res://scenes/ui scenes/currency_ui.tscn" id="2_6o5kb"]
 [ext_resource type="Texture2D" uid="uid://8djlyp7d84rn" path="res://art/placeholders/sprite animations/sprite4.png" id="2_28fym"]
+[ext_resource type="Texture2D" uid="uid://ppib487odjqc" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Panels/mail_green.png" id="3_hrmhu"]
+[ext_resource type="Texture2D" uid="uid://dvr6mlm1srnhv" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/shop_icon_64px.png" id="4_jb0oo"]
+[ext_resource type="Texture2D" uid="uid://b2emhqd8dr8i4" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/shop_1ButtonDefault.png" id="5_u7vuh"]
+[ext_resource type="Texture2D" uid="uid://oyk71ajdojea" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/store_icon_64px.png" id="6_8r8dr"]
+[ext_resource type="Texture2D" uid="uid://com0y7lexw87r" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/store_1ButtonDefault.png" id="7_4xhru"]
+[ext_resource type="Texture2D" uid="uid://bhl3ux2166xbh" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/armor_icon_64px.png" id="8_j4stj"]
+[ext_resource type="Texture2D" uid="uid://7wp1g8fgyos0" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/equipment_1ButtonDefault.png" id="9_d6sks"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qri4m"]
+texture = ExtResource("3_hrmhu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cchcf"]
+texture = ExtResource("4_jb0oo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3eylo"]
+texture = ExtResource("5_u7vuh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_khi5i"]
+texture = ExtResource("6_8r8dr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yqwtc"]
+texture = ExtResource("7_4xhru")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rxj7g"]
+texture = ExtResource("8_j4stj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fe3gq"]
+texture = ExtResource("9_d6sks")
 
 [node name="RegionMap" type="Node2D"]
 script = ExtResource("1_1efa8")
@@ -13,6 +42,57 @@ offset_right = 423.0
 offset_bottom = 194.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CurrencyUI" parent="Camera2D" instance=ExtResource("2_6o5kb")]
+offset_left = -402.0
+offset_top = -195.0
+offset_right = -402.0
+offset_bottom = -195.0
+
+[node name="MenuButtons" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -416.0
+offset_top = -191.0
+offset_right = -376.0
+offset_bottom = -161.0
+
+[node name="Background" type="Panel" parent="Camera2D/MenuButtons"]
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 208.0
+offset_bottom = 83.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_qri4m")
+
+[node name="GridContainer" type="GridContainer" parent="Camera2D/MenuButtons"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 18.0
+offset_right = 199.0
+offset_bottom = 68.0
+theme_override_constants/h_separation = 10
+columns = 3
+
+[node name="HomeButton" type="Button" parent="Camera2D/MenuButtons/GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_cchcf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3eylo")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cchcf")
+
+[node name="ShopButton" type="Button" parent="Camera2D/MenuButtons/GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_khi5i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yqwtc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_khi5i")
+
+[node name="BagButton" type="Button" parent="Camera2D/MenuButtons/GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_rxj7g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fe3gq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rxj7g")
 
 [node name="PathLine" type="Line2D" parent="."]
 

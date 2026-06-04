@@ -1,0 +1,130 @@
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=22 format=3 uid="uid://bdm5lfuorosyt"]
+
+[ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="1_3d1g6"]
+[ext_resource type="Texture2D" uid="uid://bqe1lc5hra30s" path="res://art/placeholders/sprite animations/sprite15_attack.png" id="1_7ptni"]
+[ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="2_4b43e"]
+[ext_resource type="Texture2D" uid="uid://bnsrabai1305m" path="res://art/placeholders/sprite animations/sprite15_idle.png" id="2_fo4r1"]
+[ext_resource type="Resource" uid="uid://b6l3kyld6im2w" path="res://resources/luminae resources/buzzwad.tres" id="3_mwx70"]
+[ext_resource type="Texture2D" uid="uid://51v4up1woabu" path="res://art/placeholders/sprite pngs/front facing/sneed front.PNG" id="4_vhy2j"]
+[ext_resource type="Script" path="res://scripts/resource scripts/evolution_entry.gd" id="4_xcgkq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkkq1"]
+atlas = ExtResource("1_7ptni")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jthi4"]
+atlas = ExtResource("1_7ptni")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vrph"]
+atlas = ExtResource("1_7ptni")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3yi7"]
+atlas = ExtResource("1_7ptni")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x4hry"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkkq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jthi4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vrph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3yi7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_njt5m"]
+script = ExtResource("2_4b43e")
+display_name = "Boom"
+element = 2
+energy_cost = 0
+power = 25
+description = ""
+
+[sub_resource type="Resource" id="Resource_3po7a"]
+script = ExtResource("4_xcgkq")
+evolution = ExtResource("3_mwx70")
+level = 16
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0qj0"]
+atlas = ExtResource("2_fo4r1")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26uqs"]
+atlas = ExtResource("2_fo4r1")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn80t"]
+atlas = ExtResource("2_fo4r1")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j46r5"]
+atlas = ExtResource("2_fo4r1")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hhk6g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0qj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26uqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn80t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j46r5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_10v7d"]
+script = ExtResource("2_4b43e")
+display_name = "Leaf Slap"
+element = 2
+energy_cost = 3
+power = 45
+description = ""
+
+[sub_resource type="Resource" id="Resource_liv0v"]
+script = ExtResource("2_4b43e")
+display_name = "Thorn Poke"
+element = 2
+energy_cost = 5
+power = 65
+description = ""
+
+[resource]
+script = ExtResource("1_3d1g6")
+name = "Sneed"
+element = 2
+rarity = 0
+base_health = 60
+base_attack = 6
+base_defense = 6
+base_speed = 10
+level = 1
+captured = false
+seen = false
+basic_attack = SubResource("Resource_njt5m")
+special_attack1 = SubResource("Resource_10v7d")
+special_attack2 = SubResource("Resource_liv0v")
+evolution = SubResource("Resource_3po7a")
+sprite = ExtResource("4_vhy2j")
+idle = SubResource("SpriteFrames_hhk6g")
+attack = SubResource("SpriteFrames_x4hry")

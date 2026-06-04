@@ -13,6 +13,19 @@ class_name Attack
 func setup(this_move):
 	move = this_move
 	$Label.text = str(move.energy_cost)
+	match move.element:
+		Global.MoveElement.NATURE:
+			btn.add_theme_stylebox_override("normal", Global.nature_attack_texture)
+			btn.add_theme_stylebox_override("hover", Global.nature_attack_texture)
+			btn.add_theme_stylebox_override("pressed", Global.nature_attack_pressed_texture)
+		Global.MoveElement.OCEAN:
+			btn.add_theme_stylebox_override("normal", Global.ocean_attack_texture)
+			btn.add_theme_stylebox_override("hover", Global.ocean_attack_texture)
+			btn.add_theme_stylebox_override("pressed", Global.ocean_attack_pressed_texture)
+		Global.MoveElement.SUN:
+			btn.add_theme_stylebox_override("normal", Global.sun_attack_texture)
+			btn.add_theme_stylebox_override("hover", Global.sun_attack_texture)
+			btn.add_theme_stylebox_override("pressed", Global.sun_attack_pressed_texture)
 
 func set_availability(new_state: bool) -> void:
 	available = new_state
@@ -22,7 +35,7 @@ func set_availability(new_state: bool) -> void:
 func _apply_state() -> void:
 	if available:
 		if texture_available:
-			btn.texture = texture_available
+			btn.icon = texture_available
 		btn.modulate = Color.WHITE
 		_label.modulate = Color.WHITE
 	else:

@@ -1,39 +1,59 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxmuip8jd0bf2"]
+[gd_scene load_steps=10 format=3 uid="uid://dxmuip8jd0bf2"]
 
 [ext_resource type="Texture2D" uid="uid://hdx8w8f2tqye" path="res://art/placeholders/ui/ui attacks/attack1.png" id="1_6v1d5"]
+[ext_resource type="Texture2D" uid="uid://beo0bwqp2ustj" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/buttonCircle_yellow.png" id="1_kdq1c"]
 [ext_resource type="Script" path="res://scripts/map_node.gd" id="1_p13n2"]
+[ext_resource type="Texture2D" uid="uid://dfrokyxbeay61" path="res://art/placeholders/ui/ui attacks/attack2.png" id="3_1putr"]
+[ext_resource type="FontFile" uid="uid://dsdbxm78lspd3" path="res://art/placeholders/ui/fonts/Sora-Bold.otf" id="4_h73ym"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wk3w3"]
-radius = 42.0
-height = 84.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2xxgx"]
 
-[node name="MapNode" type="Area2D"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qvnct"]
+texture = ExtResource("1_kdq1c")
+modulate_color = Color(0.401968, 0.401968, 0.401968, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxx5m"]
+texture = ExtResource("1_kdq1c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sufwu"]
+texture = ExtResource("1_kdq1c")
+modulate_color = Color(0.775063, 0.775063, 0.775063, 1)
+
+[node name="MapNode" type="Button"]
+offset_left = -42.0
+offset_top = -73.0
+offset_right = 78.0
+offset_bottom = 47.0
+scale = Vector2(0.7, 0.7)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2xxgx")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_qvnct")
+theme_override_styles/hover = SubResource("StyleBoxTexture_uxx5m")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_sufwu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_uxx5m")
 script = ExtResource("1_p13n2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -31)
-scale = Vector2(1.2, 1.2)
-shape = SubResource("CapsuleShape2D_wk3w3")
+texture_available = ExtResource("3_1putr")
+texture_completed = ExtResource("3_1putr")
+texture_locked = ExtResource("1_6v1d5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(60, 92.8571)
 texture = ExtResource("1_6v1d5")
 offset = Vector2(0, -40)
 
 [node name="Label" type="Label" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.500595
+anchor_top = 0.789286
+anchor_right = 0.500595
+anchor_bottom = 0.789286
 offset_left = -31.5
 offset_top = -19.0
 offset_right = 31.5
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_h73ym")
 text = "Sunspot"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[connection signal="input_event" from="." to="." method="_input_event"]

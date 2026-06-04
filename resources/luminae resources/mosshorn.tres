@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="LuminaeData" load_steps=20 format=3 uid="uid://df48tnbb32j8b"]
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=22 format=3 uid="uid://df48tnbb32j8b"]
 
 [ext_resource type="Texture2D" uid="uid://n7r3xy1hu1oa" path="res://art/placeholders/sprite animations/sprite2_attack.png" id="1_yoklg"]
 [ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="2_o5iye"]
 [ext_resource type="Resource" uid="uid://c66s37jpvm2yx" path="res://resources/move resources/basic_attack.tres" id="2_oraum"]
 [ext_resource type="Resource" uid="uid://dg63shnrrgw18" path="res://resources/luminae resources/verdalis.tres" id="3_cnsfa"]
+[ext_resource type="Script" path="res://scripts/resource scripts/evolution_entry.gd" id="4_j050p"]
 [ext_resource type="Texture2D" uid="uid://bnsv3m71ndv7l" path="res://art/placeholders/sprite animations/sprite2_idle.png" id="4_rw4ir"]
 [ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="5_ufmgg"]
-[ext_resource type="Texture2D" uid="uid://d2p3k4xgeasx0" path="res://art/placeholders/sprite animations/sprite2.png" id="7_njg2q"]
+[ext_resource type="Texture2D" uid="uid://14cdltwnpe26" path="res://art/placeholders/sprite pngs/front facing/gaffingus front.png" id="8_t83ej"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xq6h7"]
 atlas = ExtResource("1_yoklg")
@@ -43,6 +44,11 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Resource" id="Resource_xd80s"]
+script = ExtResource("4_j050p")
+evolution = ExtResource("3_cnsfa")
+level = 34
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3nln6"]
 atlas = ExtResource("4_rw4ir")
@@ -105,14 +111,13 @@ base_health = 40
 base_attack = 8
 base_defense = 6
 base_speed = 10
-base_exp = 20
 level = 1
 captured = false
 seen = false
 basic_attack = ExtResource("2_oraum")
 special_attack1 = SubResource("Resource_o3d4g")
 special_attack2 = SubResource("Resource_rbon4")
-evolution = ExtResource("3_cnsfa")
-sprite = ExtResource("7_njg2q")
+evolution = SubResource("Resource_xd80s")
+sprite = ExtResource("8_t83ej")
 idle = SubResource("SpriteFrames_l8hi1")
 attack = SubResource("SpriteFrames_qd0ba")

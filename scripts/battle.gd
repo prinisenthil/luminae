@@ -13,6 +13,8 @@ extends Node2D
 @onready var items_btn: Button = $PlayerControl/ItemsBtn
 @onready var luminae_menu: LuminaeMenu = $PlayerControl/LuminaeMenu
 @onready var luminaes_btn: Button = $PlayerControl/LuminaePartyBtn
+@onready var battle_popup = $BattlePopUpMenu
+
 @onready var player_turn: bool = true
 
 var battle_over: bool = false
@@ -63,10 +65,12 @@ func luminae_menu_pressed():
 func _on_luminae_selected(luminae: Luminae):
 	if luminae.health <= 0:
 		print("This luminae has fainted.")
+		display_popup("This luminae has fainted.")
 		return
 	# Replace the active luminae
 	GameState.swap_luminae(player_luminae, luminae)
 	player_luminae.load_luminae(GameState.luminae_party[0], true)
+	update_moves()
 
 	close_luminae_menu()
 
@@ -79,6 +83,7 @@ func close_luminae_menu():
 
 func item_menu_pressed():
 	player_turn = false
+	hide_buttons()
 	Fade("in", 0.3, item_menu)
 	item_menu.populate_items()
 	item_menu.item_selected.connect(self._on_item_selected)
@@ -103,7 +108,8 @@ func _itemsCancelBtn_pressed():
 	close_item_menu()
 
 func close_item_menu():
-	Fade("out", 0.3, item_menu)
+	Fade("out", 0.2, item_menu)
+	unhide_buttons()
 	player_turn = true
 
 func capture_process(item: ItemData):
@@ -113,6 +119,7 @@ func capture_process(item: ItemData):
 	if rand < chance:
 		print("CAPTURE SUCCESS")
 		end_battle(Global.BattleOutcome.CAPTURE)
+		#end_battle(Global.BattleOutcome.CAPTURE)
 		# success
 	else:
 		print("CAPTURE FAILED")
@@ -216,6 +223,7 @@ func enemy_attack():
 func player_fainted():
 	GameState.luminae_party[0].load_luminae(player_luminae)
 	check_available_luminae()
+	update_moves()
 	if GameState.luminae_party[0].health <= 0:
 		battle_over = true
 		end_battle(Global.BattleOutcome.ENEMYWIN)
@@ -246,11 +254,11 @@ func calc_dmg(attacker: Luminae, defender: Luminae, move: MoveData) -> int:
 	var type_mult: float = get_type_multiplier(move.element, defender.luminae_data.element)
 	var same_element: bool = (move.element != Global.MoveElement.NORMAL 
 		and int(move.element) == int(attacker.luminae_data.element))
-	var level_scalar: float = float(attacker.level) / float(defender.level)
+	var level_scalar: float = max(float(attacker.level) / float(defender.level), 1.5)
 	
 	var base: float = float(move.power) * float(attacker.attack) / float(defender.defense)
 	base *= level_scalar
-	base *= 0.4  # global damage scalar — tune this until fights feel right
+	base *= 0.2  # global damage scalar — tune this until fights feel right
 	if same_element:
 		base *= 1.2
 	return max(1, int(base * type_mult))  # always deal at least 1 damage
@@ -280,7 +288,7 @@ func end_battle(outcome: Global.BattleOutcome):
 func win_battle() -> void:
 	display_rewards()
 	GameState.luminae_party[0].load_luminae(player_luminae)
-	distribute_battle_exp(enemy_luminae)
+#	distribute_battle_exp(enemy_luminae)
 	GameState.complete_node(GameState.current_region, GameState.current_node)
 	_unlock_next_node()
 	#GameState.change_scene(GameState.current_region)
@@ -292,7 +300,7 @@ func display_rewards() -> void:
 		Global.RewardType.LUMENCRYSTAL : 3
 	}
 	rewards_menu.populate_rewards(rewards)
-	rewards_menu.visible = true
+	Fade("in", 0.3, rewards_menu)
 	var rewardsClaimBtn = $RewardsMenu/ClaimButton
 	rewardsClaimBtn.pressed.connect(self._on_claim_pressed)
 
@@ -303,7 +311,7 @@ func _on_claim_pressed():
 				GameState.add_gold(rewards[reward])
 			Global.RewardType.LUMENCRYSTAL:
 				GameState.add_lumen_crystals(rewards[reward])
-	GameState.change_scene("home")
+	GameState.change_scene(GameState.current_region)
 
 func hide_battle() -> void:
 	player_luminae.visible = false
@@ -318,8 +326,11 @@ func lose_battle() -> void:
 func battle_capture() -> void:
 	print("Enemy Captured.")
 	GameState.capture_luminae(enemy_luminae, "Peeb")
+	GameState.luminae_party[0].load_luminae(player_luminae)
 	print(GameState.luminae_party)
-	GameState.change_scene(GameState.current_region)
+	hide_battle()
+	display_popup("%s captured!" % enemy_luminae.nickname)
+	$BattlePopUpMenu/OkayButton.pressed.connect(self._on_claim_pressed)
 
 func _unlock_next_node() -> void:
 	var completed = GameState.current_node
@@ -357,31 +368,55 @@ func update_moves():
 	attack1.setup(player_luminae.luminae_data.special_attack1)
 	attack2.setup(player_luminae.luminae_data.special_attack2)
 
-func distribute_battle_exp(enemy: Luminae) -> void:
-	var full_exp = calc_battle_exp(enemy, GameState.luminae_party[0])
-	var bench_exp = int(full_exp * 0.5)
-	
-	for i in range(GameState.luminae_party.size()):
-		var luminae = GameState.luminae_party[i]
-		if not is_instance_valid(luminae):
-			continue
-		if i == 0:
-			luminae.gain_exp(full_exp)
-		else:
-			luminae.gain_exp(bench_exp)
+#func distribute_battle_exp(enemy: Luminae) -> void:
+#	var full_exp = calc_battle_exp(enemy, GameState.luminae_party[0])
+#	var bench_exp = int(full_exp * 0.5)
+#	
+#	for i in range(GameState.luminae_party.size()):
+#		var luminae = GameState.luminae_party[i]
+#		if not is_instance_valid(luminae):
+#			continue
+#		if i == 0:
+#			luminae.gain_exp(full_exp)
+#		else:
+#			luminae.gain_exp(bench_exp)
 
-func calc_battle_exp(enemy: Luminae, player: Luminae) -> int:
+#func calc_battle_exp(enemy: Luminae, player: Luminae) -> int:
 	# base exp from enemy's data and level
-	var base = enemy.luminae_data.base_exp * enemy.level
-	
-	# bonus for outlevel - higher exp if enemy is higher level than player
-	var level_diff = enemy.level - player.level
-	var level_bonus = clamp(1.0 + (level_diff * 0.1), 0.5, 2.0)
-	
-	# bonus for evolved luminae
-	var evolution_bonus = 1.0
-	if enemy.luminae_data.evolution == null:
-		# no further evolution = final stage = higher exp
-		evolution_bonus = 1.5
-	
-	return int(base * level_bonus * evolution_bonus)
+#	var base = enemy.luminae_data.base_exp * enemy.level
+#	
+#	# bonus for outlevel - higher exp if enemy is higher level than player
+#	var level_diff = enemy.level - player.level
+#	var level_bonus = clamp(1.0 + (level_diff * 0.1), 0.5, 2.0)
+#	
+#	# bonus for evolved luminae
+#	var evolution_bonus = 1.0
+#	if enemy.luminae_data.evolution == null:
+#		# no further evolution = final stage = higher exp
+#		evolution_bonus = 1.5
+#	
+#	return int(base * level_bonus * evolution_bonus)
+
+func display_popup(text: String):
+	luminae_menu.disable_buttons()
+	$BattlePopUpMenu/Label.text = text
+	Fade("in", 0.2, battle_popup)
+	#battle_popup.visible = true
+	$BattlePopUpMenu/OkayButton.pressed.connect(self._on_popup_okay_pressed)
+
+func _on_popup_okay_pressed():
+	Fade("out", 0.2, battle_popup)
+	#battle_popup.visible = false
+	luminae_menu.enable_buttons()
+
+func hide_buttons():
+	Fade("out", 0.1, luminaes_btn)
+	Fade("out", 0.1, items_btn)
+	#luminaes_btn.visible = false
+	#items_btn.visible = false
+
+func unhide_buttons():
+	Fade("in", 0.1, luminaes_btn)
+	Fade("in", 0.1, items_btn)
+	#luminaes_btn.visible = true
+	#items_btn.visible = true

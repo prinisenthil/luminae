@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_f8xlm")
 display_name = "Shadow Grab"
-element = 4
+element = 2
 energy_cost = 5
 power = 65
 description = ""

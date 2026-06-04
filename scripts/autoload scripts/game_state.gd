@@ -19,16 +19,18 @@ var item_inventory: Dictionary = {}  # { ItemData: int }
 var luminae_party: Array[Luminae] = []
 var luminae_roster: Array[Luminae] = []
 
+signal currency_changed
+
 func _ready() -> void:
 	_init_region_1()
 	add_item(preload("res://resources/item resources/offerings/common_offering.tres"))
 	add_item(preload("res://resources/item resources/offerings/common_offering.tres"))
 	add_item(preload("res://resources/item resources/offerings/refined_offering.tres"))
-	add_item(preload("res://resources/item resources/healing/healing_seed.tres"))
-	add_item(preload("res://resources/item resources/healing/radiant_berry.tres"))
-	add_item(preload("res://resources/item resources/experience/refined_crystal.tres"))
-	add_luminae(Luminae.create_luminae(preload("res://resources/luminae resources/tidbit.tres"), 5, true))
-	add_luminae(Luminae.create_luminae(preload("res://resources/luminae resources/fernling.tres"), 2, true))
+	add_item(preload("res://resources/item resources/healing/common_crystal.tres"))
+	add_item(preload("res://resources/item resources/healing/refined_crystal.tres"))
+	add_luminae(Luminae.create_luminae(preload("res://resources/luminae resources/tidbit.tres"), 1, true))
+	#add_luminae(Luminae.create_luminae(preload("res://resources/luminae resources/fernling.tres"), 2, true))
+	#add_luminae(Luminae.create_luminae(preload("res://resources/luminae resources/solkin.tres"), 2, true))
 
 func _init_region_1() -> void:
 	# Only initialize if we haven't already (e.g. returning from battle)
@@ -50,21 +52,27 @@ func _init_region_1() -> void:
 
 func add_gold(amount: int):
 	gold += amount
+	currency_changed.emit()
 
 func remove_gold(amount: int):
 	gold -= amount
+	currency_changed.emit()
 
 func add_lumen_crystals(amount: int):
 	lumen_crystals += amount
+	currency_changed.emit()
 
 func remove_lumen_crystals(amount: int):
 	lumen_crystals -= amount
+	currency_changed.emit()
 
 func add_keys(amount: int):
 	keys += amount
+	currency_changed.emit()
 
 func remove_keys(amount: int):
 	keys -= amount
+	currency_changed.emit()
 
 func add_item(item: ItemData, amount: int = 1) -> void:
 	if item in item_inventory:
@@ -83,7 +91,7 @@ func capture_luminae(luminae: Luminae, nickname: String):
 	#var new_luminae = Luminae.create_luminae(luminae.luminae_data, luminae.level, true, luminae.health, nickname)
 	var new_luminae = Luminae.new()
 	new_luminae.load_luminae(luminae)
-	new_luminae.nickname = nickname
+	#new_luminae.nickname = nickname
 	new_luminae.player = true
 	add_luminae(new_luminae)
 
@@ -132,11 +140,11 @@ func complete_node(region: String, node_name: String) -> void:
 func change_scene(scene):
 	match scene:
 		"battle":
-			get_tree().change_scene_to_file("res://scenes/battle.tscn")
+			SceneTransition.change_scene("res://scenes/battle.tscn")
 			world = "battle"
 		"region_1":
-			get_tree().change_scene_to_file("res://scenes/region maps/region_1.tscn")
+			SceneTransition.change_scene("res://scenes/region maps/region_1.tscn")
 			world = "map"
 		"home":
-			get_tree().change_scene_to_file("res://scenes/home.tscn")
+			SceneTransition.change_scene("res://scenes/home.tscn")
 			world = "home"

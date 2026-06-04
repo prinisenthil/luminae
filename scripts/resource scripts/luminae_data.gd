@@ -10,7 +10,7 @@ class_name LuminaeData
 @export var base_attack: int = 6		# Base Attack Stat
 @export var base_defense: int = 6		# Base Defense Stat
 @export var base_speed: int = 10		# Base Speed Stat
-@export var base_exp: int = 20
+#@export var base_exp: int = 20
 
 @export var level: int = 1				# Default starting level
 
@@ -22,7 +22,7 @@ class_name LuminaeData
 @export var basic_attack: MoveData
 @export var special_attack1: MoveData
 @export var special_attack2: MoveData
-@export var evolution: LuminaeData
+@export var evolution: EvolutionEntry
 
 # Sprites/Animations
 @export var sprite: Texture2D

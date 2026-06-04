@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bssje14pluqbd"]
+[gd_scene load_steps=9 format=3 uid="uid://bssje14pluqbd"]
 
 [ext_resource type="Texture2D" uid="uid://dwepyjsesdww4" path="res://art/placeholders/battle backgrounds/game_background_4.png" id="1_dm41r"]
 [ext_resource type="Script" path="res://scripts/battle.gd" id="1_ldc4u"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://dsdbxm78lspd3" path="res://art/placeholders/ui/fonts/Sora-Bold.otf" id="5_djukg"]
 [ext_resource type="PackedScene" uid="uid://baemyp0qiyrkc" path="res://scenes/ui scenes/player_control.tscn" id="6_1rmjo"]
 [ext_resource type="PackedScene" uid="uid://blowxjhofwhus" path="res://scenes/ui scenes/rewards_menu.tscn" id="7_iydi0"]
+[ext_resource type="PackedScene" uid="uid://c3g5j43pr3ahr" path="res://scenes/ui scenes/pop_up_menu.tscn" id="8_ilpaj"]
 
 [node name="battle" type="Node2D"]
 script = ExtResource("1_ldc4u")
@@ -52,3 +53,11 @@ offset_top = 94.0
 offset_right = 137.0
 offset_bottom = 94.0
 scale = Vector2(1.2, 1.2)
+
+[node name="BattlePopUpMenu" parent="." instance=ExtResource("8_ilpaj")]
+visible = false
+offset_left = 276.0
+offset_top = 121.0
+offset_right = 378.0
+offset_bottom = 199.0
+scale = Vector2(0.8, 0.8)

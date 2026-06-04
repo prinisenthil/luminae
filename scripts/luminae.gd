@@ -19,10 +19,18 @@ class_name Luminae
 # Calculated stats based on level and base values
 var attack: int
 var defense: int
+var speed: int
+var crit_chance: int
 var max_health: int
+
+var attack_boost: int
+var defense_boost: int
+var crit_chance_boost: int
+var max_health_boost: int
 var health: int
-var max_exp: int
-var exp: int
+var level_up_cost: int
+#var max_exp: int
+#var exp: int
 var spirit_orbs
 
 signal tapped
@@ -67,6 +75,7 @@ func load_luminae(luminae: Luminae, battling=false) -> void:
 	luminae_data = luminae.luminae_data
 	level = luminae.level
 	player = luminae.player
+	set_variables()
 	set_stats(luminae)
 	if battling:
 		setup()
@@ -88,12 +97,15 @@ func _on_tap(viewport, event, shape_idx) -> void:
 func set_stats(luminae: Luminae = null):
 	if luminae:
 		level = luminae.level
-		attack = luminae.attack
-		defense = luminae.defense
-		max_health = luminae.max_health
+		attack_boost = luminae.attack_boost
+		defense_boost = luminae.defense_boost
+		crit_chance_boost = luminae.crit_chance_boost
+		max_health_boost = luminae.max_health_boost
 		health = luminae.health
-		max_exp = luminae.max_exp
-		exp = luminae.exp
+		level_up_cost = getLevelUpCost()
+		recalc_stats()
+#		max_exp = luminae.max_exp
+#		exp = luminae.exp
 	else:
 		recalc_stats()
 		health = max_health
@@ -101,35 +113,43 @@ func set_stats(luminae: Luminae = null):
 		hp_bar.setup(health, max_health)
 
 func recalc_stats():
-	attack = calc_stat(luminae_data.base_attack)
-	defense = calc_stat(luminae_data.base_defense)
+	attack = calc_stat(luminae_data.base_attack, attack_boost)
+	defense = calc_stat(luminae_data.base_defense, defense_boost)
 	max_health = calc_hp()
-	max_exp = exp_to_next_level()
+	level_up_cost = getLevelUpCost()
+#	max_exp = exp_to_next_level()
 
 # level 1 returns base stat exactly, grows linearly each level
-func calc_stat(base_stat: int) -> int:
-	return base_stat + int((base_stat * 0.15) * (level - 1))
+func calc_stat(base_stat: int, boost: int) -> int:
+	return base_stat + int((base_stat * 0.15) * (level - 1)) + boost
 
 # HP grows slightly faster than other stats
 func calc_hp() -> int:
-	return luminae_data.base_health + int((luminae_data.base_health * 0.2) * (level - 1))
+	return luminae_data.base_health + int((luminae_data.base_health * 0.2) * (level - 1)) + max_health_boost
 
-func exp_to_next_level() -> int:
-	return int(luminae_data.base_exp * (level * level) * 0.5)
+#func exp_to_next_level() -> int:
+#	return int(luminae_data.base_exp * (level * level) * 0.5)
 
 func update_health(dmg):
 	health = max(0, health - dmg)
 	hp_bar.take_damage(dmg)
 
-func gain_exp(amount: int) -> void:
-	exp += amount
-	while exp >= exp_to_next_level():
-		exp -= exp_to_next_level()
-		level_up()
+#func gain_exp(amount: int) -> void:
+#	exp += amount
+#	while exp >= exp_to_next_level():
+#		exp -= exp_to_next_level()
+#		levelUp()
 
-func level_up() -> void:
+func levelUp() -> void:
+	var level_up_cost = getLevelUpCost()
+	if GameState.gold < level_up_cost:
+		return
 	level += 1
+	var max_health_initial = max_health
 	recalc_stats()
+	if health > 0:
+		health += max_health - max_health_initial
+	GameState.remove_gold(level_up_cost)
 	# trigger level up animation/signal here
 
 func use_item(item: ItemData):
@@ -141,3 +161,15 @@ func restore_health(hp_restore: int, battling=false):
 	health = min(health + hp_restore, max_health)
 	if battling:
 		hp_bar.heal(hp_restore)
+
+func getLevelUpCost():
+	var rarity_mult = 1.0
+	var base_cost = 40
+	match luminae_data.rarity:
+		Global.LuminaeRarity.REFINED:
+			rarity_mult = 1.2
+		Global.LuminaeRarity.RADIANT:
+			rarity_mult = 1.4
+		Global.LuminaeRarity.ETERNAL:
+			rarity_mult = 1.6
+	return int(base_cost * pow(level, 1.5) * rarity_mult)

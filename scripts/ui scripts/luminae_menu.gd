@@ -15,3 +15,13 @@ func populate_luminaes():
 		btn.setup(luminae)
 		btn.pressed.connect(func(): emit_signal("luminae_selected", luminae))
 		grid.add_child(btn)
+
+func enable_buttons():
+	for btn in grid.get_children():
+		btn.disabled = false
+	$CancelBtn.disabled = false
+
+func disable_buttons():
+	for btn in grid.get_children():
+		btn.disabled = true
+	$CancelBtn.disabled = true

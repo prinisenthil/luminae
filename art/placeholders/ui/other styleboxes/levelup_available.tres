@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://ttoaxrykepuy"]
+
+[ext_resource type="Texture2D" uid="uid://dlivq00y6x74o" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Panels/panelEpic_green.png" id="1_4md86"]
+
+[resource]
+texture = ExtResource("1_4md86")

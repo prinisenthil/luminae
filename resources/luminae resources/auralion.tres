@@ -2,6 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://c66s37jpvm2yx" path="res://resources/move resources/basic_attack.tres" id="2_j8gag"]
 [ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="2_k51xa"]
+[ext_resource type="Texture2D" uid="uid://53d6732b3cdw" path="res://art/placeholders/sprite pngs/front facing/auralion front.png" id="4_0ve1h"]
 [ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="5_2j45v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypaly"]
@@ -84,9 +85,6 @@ energy_cost = 5
 power = 65
 description = ""
 
-[sub_resource type="Resource" id="Resource_4mo1d"]
-metadata/__load_path__ = "res://art/placeholders/sprites/sprite9.png"
-
 [resource]
 script = ExtResource("2_k51xa")
 name = "Auralion"
@@ -96,13 +94,12 @@ base_health = 40
 base_attack = 8
 base_defense = 6
 base_speed = 10
-base_exp = 20
 level = 1
 captured = false
 seen = false
 basic_attack = ExtResource("2_j8gag")
 special_attack1 = SubResource("Resource_htq34")
 special_attack2 = SubResource("Resource_1jbnm")
-sprite = SubResource("Resource_4mo1d")
+sprite = ExtResource("4_0ve1h")
 idle = SubResource("SpriteFrames_xbn10")
 attack = SubResource("SpriteFrames_446l5")

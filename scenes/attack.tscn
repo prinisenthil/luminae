@@ -1,25 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://bki1g3shrsunx"]
+[gd_scene load_steps=5 format=3 uid="uid://bki1g3shrsunx"]
 
 [ext_resource type="Script" path="res://scripts/attack.gd" id="1_1ohym"]
-[ext_resource type="Texture2D" uid="uid://hdx8w8f2tqye" path="res://art/placeholders/ui/ui attacks/attack1.png" id="1_wjthl"]
-[ext_resource type="Texture2D" uid="uid://dr4r17133nmcg" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/buttonAdvanced_cream.png" id="2_7lxnq"]
-[ext_resource type="Texture2D" uid="uid://cwfshu28isokf" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/button_cream.png" id="3_je2md"]
+[ext_resource type="Texture2D" uid="uid://dfrokyxbeay61" path="res://art/placeholders/ui/ui attacks/attack2.png" id="2_j2swo"]
+[ext_resource type="StyleBox" uid="uid://ymyrjed6jx4t" path="res://art/placeholders/ui/attack buttons/button styles/nature_button.tres" id="3_pvabg"]
 [ext_resource type="FontFile" uid="uid://dsdbxm78lspd3" path="res://art/placeholders/ui/fonts/Sora-Bold.otf" id="3_yj2nl"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_raofd"]
-texture = ExtResource("2_7lxnq")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vxa3s"]
-texture = ExtResource("3_je2md")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_78fts"]
-texture = ExtResource("3_je2md")
 
 [node name="attack" type="Control"]
 custom_minimum_size = Vector2(60, 100)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_1ohym")
+texture_available = ExtResource("2_j2swo")
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(60, 100)
@@ -29,16 +20,14 @@ anchor_right = 0.0666667
 anchor_bottom = 0.12
 offset_right = 60.0
 offset_bottom = 100.0
-theme_override_icons/icon = ExtResource("1_wjthl")
-theme_override_styles/hover = SubResource("StyleBoxTexture_raofd")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_vxa3s")
-theme_override_styles/normal = SubResource("StyleBoxTexture_78fts")
+theme_override_icons/icon = ExtResource("2_j2swo")
+theme_override_styles/normal = ExtResource("3_pvabg")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05
+anchor_left = 0.0166667
 anchor_top = 0.09
 anchor_right = 0.0166667
 anchor_bottom = 0.09

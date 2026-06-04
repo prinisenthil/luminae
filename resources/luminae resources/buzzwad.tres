@@ -1,0 +1,115 @@
+[gd_resource type="Resource" script_class="LuminaeData" load_steps=19 format=3 uid="uid://b6l3kyld6im2w"]
+
+[ext_resource type="Script" path="res://scripts/resource scripts/luminae_data.gd" id="1_qnh1s"]
+[ext_resource type="Texture2D" uid="uid://c7y4jfdsip4vj" path="res://art/placeholders/sprite animations/sprite16_attack.png" id="1_r45pu"]
+[ext_resource type="Script" path="res://scripts/resource scripts/move_data.gd" id="2_ws5r4"]
+[ext_resource type="Texture2D" uid="uid://c678rxiki3hgq" path="res://art/placeholders/sprite animations/sprite16_idle.png" id="3_pwduu"]
+[ext_resource type="Resource" uid="uid://b08emltttsmye" path="res://resources/move resources/special_attack1.tres" id="5_8qfug"]
+[ext_resource type="Texture2D" uid="uid://dnlx8uklwnltp" path="res://art/placeholders/sprite pngs/front facing/buzzwad front.PNG" id="6_6e3yy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3seq"]
+atlas = ExtResource("1_r45pu")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywjrf"]
+atlas = ExtResource("1_r45pu")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcskp"]
+atlas = ExtResource("1_r45pu")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asgo3"]
+atlas = ExtResource("1_r45pu")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dype7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3seq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywjrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcskp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asgo3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_r3p2q"]
+script = ExtResource("2_ws5r4")
+display_name = "Wing Snip"
+element = 3
+energy_cost = 0
+power = 30
+description = ""
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53mwk"]
+atlas = ExtResource("3_pwduu")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpg00"]
+atlas = ExtResource("3_pwduu")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2t12"]
+atlas = ExtResource("3_pwduu")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l820r"]
+atlas = ExtResource("3_pwduu")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u1e2w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53mwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpg00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2t12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l820r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_jpvnj"]
+script = ExtResource("2_ws5r4")
+display_name = "Root Punch"
+element = 2
+energy_cost = 10
+power = 75
+description = ""
+
+[resource]
+script = ExtResource("1_qnh1s")
+name = "Buzzwad"
+element = 2
+rarity = 1
+base_health = 70
+base_attack = 10
+base_defense = 10
+base_speed = 10
+level = 1
+captured = false
+seen = false
+basic_attack = SubResource("Resource_r3p2q")
+special_attack1 = ExtResource("5_8qfug")
+special_attack2 = SubResource("Resource_jpvnj")
+sprite = ExtResource("6_6e3yy")
+idle = SubResource("SpriteFrames_u1e2w")
+attack = SubResource("SpriteFrames_dype7")

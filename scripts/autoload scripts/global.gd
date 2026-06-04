@@ -101,3 +101,25 @@ var unlock_map: Dictionary = {
 
 var coin_texture: Texture2D = preload("res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/coin_icon_64px.png")
 var lumenCrystal_texture: Texture2D = preload("res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/gem_icon_64px.png")
+
+# attack button textures
+var nature_attack_texture: StyleBoxTexture = preload("res://art/placeholders/ui/attack buttons/button styles/nature_button.tres")
+var nature_attack_pressed_texture: StyleBoxTexture = preload("res://art/placeholders/ui/attack buttons/hover styles/nature_hover.tres")
+var ocean_attack_texture: StyleBoxTexture = preload("res://art/placeholders/ui/attack buttons/button styles/ocean_button.tres")
+var ocean_attack_pressed_texture: StyleBoxTexture = preload("res://art/placeholders/ui/attack buttons/hover styles/ocean_hover.tres")
+var sun_attack_texture: StyleBoxTexture = preload("res://art/placeholders/ui/attack buttons/button styles/sun_button.tres")
+var sun_attack_pressed_texture: StyleBoxTexture = preload("res://art/placeholders/ui/attack buttons/hover styles/sun_hover.tres")
+
+# luminae menu style textures
+var nature_luminae_menu = preload("res://art/placeholders/ui/luminae button styles/nature_style.tres")
+var nature_luminae_menu_pressed = preload("res://art/placeholders/ui/luminae button styles/nature_style_pressed.tres")
+var ocean_luminae_menu = preload("res://art/placeholders/ui/luminae button styles/ocean_style.tres")
+var ocean_luminae_menu_pressed = preload("res://art/placeholders/ui/luminae button styles/ocean_style_pressed.tres")
+var sun_luminae_menu = preload("res://art/placeholders/ui/luminae button styles/sun_style.tres")
+var sun_luminae_menu_pressed = preload("res://art/placeholders/ui/luminae button styles/sun_style_pressed.tres")
+
+# level up button styles
+var level_up_texture = preload("res://art/placeholders/ui/other styleboxes/levelup.tres")
+var level_up_pressed = preload("res://art/placeholders/ui/other styleboxes/levelup_pressed.tres")
+var level_up_available_texture = preload("res://art/placeholders/ui/other styleboxes/levelup_available.tres")
+var level_up_available_pressed = preload("res://art/placeholders/ui/other styleboxes/levelup_available_pressed.tres")

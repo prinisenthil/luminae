@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://brkt3t182bbwb"]
+
+[ext_resource type="Texture2D" uid="uid://cddrsmtxdia3g" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/buttonAdvanced_yellow.png" id="1_grcyu"]
+
+[resource]
+texture = ExtResource("1_grcyu")

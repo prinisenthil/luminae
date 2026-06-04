@@ -1,10 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://1kmfs2h4tug5"]
+[gd_scene load_steps=20 format=3 uid="uid://1kmfs2h4tug5"]
 
-[ext_resource type="Script" path="res://scripts/luminae_home_avatar.gd" id="1_t436k"]
+[ext_resource type="Script" path="res://scripts/ui scripts/luminae_home_avatar.gd" id="1_t436k"]
 [ext_resource type="Texture2D" uid="uid://cowl7s58pumnc" path="res://art/placeholders/sprite animations/sprite1_idle.png" id="2_jx7ox"]
 [ext_resource type="FontFile" uid="uid://dsdbxm78lspd3" path="res://art/placeholders/ui/fonts/Sora-Bold.otf" id="3_ex7e4"]
-[ext_resource type="Texture2D" uid="uid://ciit7mfj85ym2" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Panels/panelEpicAdv_green.png" id="3_fnabf"]
-[ext_resource type="Texture2D" uid="uid://dlivq00y6x74o" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Panels/panelEpic_green.png" id="3_jvvce"]
+[ext_resource type="Script" path="res://scripts/ui scripts/luminae_avatar_info.gd" id="5_cjq6m"]
+[ext_resource type="Texture2D" uid="uid://dbxshg1qhhagt" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Containers/cardContainer_cyan.png" id="6_btu11"]
+[ext_resource type="PackedScene" uid="uid://m4wfamgs62gm" path="res://scenes/ui scenes/luminae_avatar_info.tscn" id="6_e7nas"]
+[ext_resource type="Texture2D" uid="uid://bhcuqei2pgby4" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/ProgressBars/progressBar_black.png" id="7_7xyr3"]
+[ext_resource type="Texture2D" uid="uid://5m8ko4keo8ms" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/ProgressBars/progressBar_green.png" id="8_m3w85"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s3dal"]
 
@@ -44,29 +47,28 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6qysa"]
-radius = 67.0
-height = 134.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e0sfp"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kpjwn"]
-texture = ExtResource("3_fnabf")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8rnr"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ddba"]
-texture = ExtResource("3_jvvce")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gaki5"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vc4hy"]
-texture = ExtResource("3_jvvce")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_52uq6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_brwas"]
+texture = ExtResource("6_btu11")
 
 [node name="LuminaeHomeAvatar" type="Panel"]
-custom_minimum_size = Vector2(200, 234)
+custom_minimum_size = Vector2(200, 200)
 offset_right = 200.0
-offset_bottom = 234.0
+offset_bottom = 285.0
+scale = Vector2(1.4, 1.4)
 theme_override_styles/panel = SubResource("StyleBoxTexture_s3dal")
 script = ExtResource("1_t436k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(4, 0)
-scale = Vector2(2, 2)
+position = Vector2(-53.5714, 33.5714)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_71lj1")
 frame = 1
 frame_progress = 0.932624
@@ -74,6 +76,7 @@ centered = false
 flip_h = true
 
 [node name="NamePanel" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_top = 177.0
 offset_right = 199.0
@@ -89,28 +92,55 @@ text = "Fernling"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(103, 99)
-shape = SubResource("CapsuleShape2D_6qysa")
-
-[node name="LevelUp" type="Button" parent="."]
+[node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 41.0
-offset_top = 13.0
-offset_right = 163.0
-offset_bottom = 51.0
-theme_override_colors/font_disabled_color = Color(0, 0.198808, 0.0759039, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0.198808, 0.0759039, 1)
-theme_override_colors/font_hover_color = Color(0.133333, 0.470588, 0.184314, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.198808, 0.0759039, 1)
-theme_override_colors/font_focus_color = Color(0, 0.198808, 0.0759039, 1)
-theme_override_colors/font_color = Color(0, 0.198808, 0.0759039, 1)
-theme_override_colors/font_outline_color = Color(0, 0.198808, 0.0759039, 1)
+offset_left = 14.0
+offset_top = 55.0
+offset_right = 176.0
+offset_bottom = 255.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e0sfp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_f8rnr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gaki5")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_52uq6")
+
+[node name="InfoPanel" parent="." instance=ExtResource("6_e7nas")]
+visible = false
+layout_mode = 1
+offset_left = 182.857
+offset_top = 12.8572
+offset_right = 292.857
+offset_bottom = 128.857
+scale = Vector2(0.8, 0.8)
+script = ExtResource("5_cjq6m")
+
+[node name="Tag" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 69.2857
+offset_top = 57.8571
+offset_right = 217.286
+offset_bottom = 146.857
+scale = Vector2(0.7, 0.7)
+theme_override_styles/panel = SubResource("StyleBoxTexture_brwas")
+
+[node name="LevelText" type="Label" parent="Tag"]
+layout_mode = 0
+offset_left = 7.06125
+offset_top = 28.0
+offset_right = 400.061
+offset_bottom = 110.0
+scale = Vector2(0.35, 0.35)
+theme_override_colors/font_color = Color(0.199596, 0.114761, 4.81308e-08, 1)
 theme_override_fonts/font = ExtResource("3_ex7e4")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/hover = SubResource("StyleBoxTexture_kpjwn")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_7ddba")
-theme_override_styles/normal = SubResource("StyleBoxTexture_vc4hy")
-text = "Level Up"
+theme_override_font_sizes/font_size = 60
+text = "Level 17"
+
+[node name="HPBar" type="TextureProgressBar" parent="Tag"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 57.0
+offset_right = 576.0
+offset_bottom = 147.0
+scale = Vector2(0.23, 0.23)
+value = 100.0
+texture_under = ExtResource("7_7xyr3")
+texture_progress = ExtResource("8_m3w85")

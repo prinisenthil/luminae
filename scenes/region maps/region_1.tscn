@@ -53,28 +53,50 @@ offset_bottom = 537.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_y8p5k")
 
-[node name="Camera2D" parent="." index="1"]
-position = Vector2(-406, 251)
-
-[node name="BrightstoneVillage" parent="." index="4" instance=ExtResource("2_aiqwn")]
-position = Vector2(-594, 373)
+[node name="BrightstoneVillage" parent="." index="1" instance=ExtResource("2_aiqwn")]
+offset_left = -683.0
+offset_top = 285.0
+offset_right = -554.0
+offset_bottom = 412.0
 node_label = "Brightstone Village"
 luminae_entries = Array[ExtResource("3_4qgtx")]([ExtResource("4_shiam"), ExtResource("5_rcxqo"), ExtResource("6_mynqw")])
 
-[node name="GoldenMeadows" parent="." index="5" instance=ExtResource("2_aiqwn")]
-position = Vector2(-462, 97)
+[node name="GoldenMeadows" parent="." index="2" instance=ExtResource("2_aiqwn")]
+offset_left = -631.0
+offset_top = 186.0
+offset_right = -502.0
+offset_bottom = 313.0
 node_label = "Golden Meadows"
 luminae_entries = Array[ExtResource("3_4qgtx")]([SubResource("Resource_ooflo"), SubResource("Resource_pi0mu")])
 
-[node name="DustyCrossroads" parent="." index="6" instance=ExtResource("2_aiqwn")]
-position = Vector2(-47, 2)
+[node name="DustyCrossroads" parent="." index="3" instance=ExtResource("2_aiqwn")]
+offset_left = -544.0
+offset_top = 114.0
+offset_right = -415.0
+offset_bottom = 241.0
 node_label = "Dusty Crossroads"
 luminae_entries = Array[ExtResource("3_4qgtx")]([SubResource("Resource_iuyd6"), SubResource("Resource_l4thv")])
 
-[node name="CrackedIdol" parent="." index="7" instance=ExtResource("2_aiqwn")]
-position = Vector2(274, -112)
+[node name="CrackedIdol" parent="." index="4" instance=ExtResource("2_aiqwn")]
+offset_left = -422.0
+offset_top = 73.0
+offset_right = -293.0
+offset_bottom = 200.0
 node_label = "Cracked Idol"
 
-[node name="SunTempleRuins" parent="." index="8" instance=ExtResource("2_aiqwn")]
-position = Vector2(719, 4)
+[node name="SunTempleRuins" parent="." index="5" instance=ExtResource("2_aiqwn")]
+offset_left = -329.0
+offset_top = 20.0
+offset_right = -200.0
+offset_bottom = 147.0
 node_label = "Sun Temple Ruins"
+
+[node name="Camera2D" parent="." index="6"]
+position = Vector2(-406, 251)
+
+[node name="Background" parent="Camera2D/MenuButtons" index="0"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 198.0
+offset_bottom = 76.0
