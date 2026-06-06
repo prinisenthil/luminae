@@ -31,9 +31,14 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_uxx5m")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_sufwu")
 theme_override_styles/normal = SubResource("StyleBoxTexture_uxx5m")
 script = ExtResource("1_p13n2")
+node_label = null
+node_type = null
+state = null
 texture_available = ExtResource("3_1putr")
 texture_completed = ExtResource("3_1putr")
 texture_locked = ExtResource("1_6v1d5")
+luminae_entries = null
+is_post_eternal = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(60, 92.8571)

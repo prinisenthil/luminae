@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://baemyp0qiyrkc"]
+[gd_scene load_steps=10 format=3 uid="uid://baemyp0qiyrkc"]
 
 [ext_resource type="PackedScene" uid="uid://bki1g3shrsunx" path="res://scenes/attack.tscn" id="1_w5oxp"]
 [ext_resource type="PackedScene" uid="uid://c3sry06al1lic" path="res://scenes/ui scenes/item_menu.tscn" id="2_f5loh"]
 [ext_resource type="FontFile" uid="uid://dsdbxm78lspd3" path="res://art/placeholders/ui/fonts/Sora-Bold.otf" id="2_unxra"]
 [ext_resource type="PackedScene" uid="uid://dmkib5u18eoa0" path="res://scenes/ui scenes/luminae_menu.tscn" id="3_vr3ie"]
+[ext_resource type="Texture2D" uid="uid://dj33hl61if2gi" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/button_blue.png" id="5_xm0xi"]
+[ext_resource type="Texture2D" uid="uid://csho7og21dtrh" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/buttonAdvanced_blue.png" id="6_36iyj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h4fs8"]
+texture = ExtResource("5_xm0xi")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gwjrr"]
+texture = ExtResource("6_36iyj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r1aer"]
+texture = ExtResource("5_xm0xi")
 
 [node name="PlayerControl" type="Control"]
 custom_minimum_size = Vector2(200, 100)
@@ -11,26 +22,79 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 320.0
 offset_top = 220.0
-offset_right = 320.0
-offset_bottom = 220.0
+offset_right = 520.0
+offset_bottom = 320.0
 
-[node name="attack1" parent="." instance=ExtResource("1_w5oxp")]
-
-[node name="attack2" parent="." instance=ExtResource("1_w5oxp")]
-offset_left = 71.0
-offset_top = 1.0
-offset_right = 71.0
-offset_bottom = 1.0
-
-[node name="ItemsBtn" type="Button" parent="."]
+[node name="Background" type="Panel" parent="."]
 layout_mode = 0
-offset_left = -314.0
-offset_top = -28.0
-offset_right = -227.0
-offset_bottom = 3.0
+offset_left = -320.0
+offset_top = 76.0
+offset_right = 522.0
+offset_bottom = 172.0
+
+[node name="Attacks" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.05
+offset_left = 349.0
+offset_top = 103.0
+offset_right = 479.0
+offset_bottom = 213.0
+scale = Vector2(0.6, 0.6)
+theme_override_constants/h_separation = 20
+columns = 3
+
+[node name="attack1" parent="Attacks" instance=ExtResource("1_w5oxp")]
+layout_mode = 2
+
+[node name="attack2" parent="Attacks" instance=ExtResource("1_w5oxp")]
+layout_mode = 2
+
+[node name="Buttons" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = -305.0
+offset_top = 84.0
+offset_right = -240.0
+offset_bottom = 149.0
+theme_override_constants/v_separation = 5
+
+[node name="ItemsBtn" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(65, 30)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_unxra")
-text = "Items
-"
+theme_override_styles/hover = SubResource("StyleBoxTexture_h4fs8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gwjrr")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h4fs8")
+
+[node name="Label" type="Label" parent="Buttons/ItemsBtn"]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 97.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("2_unxra")
+theme_override_font_sizes/font_size = 60
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LuminaePartyBtn" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(65, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_unxra")
+theme_override_styles/hover = SubResource("StyleBoxTexture_r1aer")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gwjrr")
+theme_override_styles/normal = SubResource("StyleBoxTexture_r1aer")
+
+[node name="Label" type="Label" parent="Buttons/LuminaePartyBtn"]
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 100.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("2_unxra")
+theme_override_font_sizes/font_size = 60
+text = "Swap"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ItemMenu" parent="." instance=ExtResource("2_f5loh")]
 visible = false
@@ -40,15 +104,6 @@ offset_top = -192.0
 offset_right = -141.0
 offset_bottom = -192.0
 
-[node name="LuminaePartyBtn" type="Button" parent="."]
-layout_mode = 0
-offset_left = -314.0
-offset_top = 10.0
-offset_right = -214.0
-offset_bottom = 45.0
-theme_override_fonts/font = ExtResource("2_unxra")
-text = "Luminaes"
-
 [node name="LuminaeMenu" parent="." instance=ExtResource("3_vr3ie")]
 visible = false
 layout_mode = 1
@@ -56,3 +111,26 @@ offset_left = -320.0
 offset_top = -40.0
 offset_right = -320.0
 offset_bottom = -40.0
+
+[node name="SpiritOrbs" type="Label" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 133.0
+offset_right = 358.0
+offset_bottom = 210.0
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("2_unxra")
+theme_override_font_sizes/font_size = 60
+text = "Spirit Orbs"
+
+[node name="Quantity" type="Label" parent="SpiritOrbs"]
+layout_mode = 0
+offset_left = 92.5
+offset_top = -80.0
+offset_right = 249.5
+offset_bottom = -3.0
+theme_override_fonts/font = ExtResource("2_unxra")
+theme_override_font_sizes/font_size = 60
+text = "8"
+horizontal_alignment = 1
+vertical_alignment = 1

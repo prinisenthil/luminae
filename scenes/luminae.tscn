@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://n3nolitr13ll"]
+[gd_scene load_steps=15 format=3 uid="uid://n3nolitr13ll"]
 
 [ext_resource type="Script" path="res://scripts/luminae.gd" id="1_tl2rs"]
 [ext_resource type="Texture2D" uid="uid://cowl7s58pumnc" path="res://art/placeholders/sprite animations/sprite1_idle.png" id="2_gb2jy"]
 [ext_resource type="Texture2D" uid="uid://f2xjtji3xwah" path="res://art/placeholders/ui/ui attacks/Bar_Body_2.png" id="3_u83px"]
 [ext_resource type="Texture2D" uid="uid://bkc6em6k74vvr" path="res://art/placeholders/ui/ui attacks/Bar_Fill_Green.png" id="4_kveov"]
 [ext_resource type="Script" path="res://scripts/ui scripts/hp_bar.gd" id="5_phxmd"]
+[ext_resource type="Texture2D" uid="uid://db48xusx1xj3m" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Panels/panel_green.png" id="6_am852"]
 [ext_resource type="FontFile" uid="uid://dsdbxm78lspd3" path="res://art/placeholders/ui/fonts/Sora-Bold.otf" id="6_sbwrb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3q01x"]
@@ -47,6 +48,9 @@ animations = [{
 radius = 117.143
 height = 234.286
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_07ojj"]
+texture = ExtResource("6_am852")
+
 [node name="luminae" type="Node2D"]
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_tl2rs")
@@ -63,15 +67,32 @@ position = Vector2(60, -80)
 [node name="ImpactPoint" type="Marker2D" parent="."]
 position = Vector2(50, -80)
 
-[node name="HPBar" type="TextureProgressBar" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.85714, -120)
+shape = SubResource("CapsuleShape2D_dhqv5")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -300.0
+offset_right = 40.0
+offset_bottom = -260.0
+
+[node name="HPBar" type="TextureProgressBar" parent="Control"]
 custom_minimum_size = Vector2(50, 0)
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_bottom = 16.0
+offset_left = -110.0
+offset_top = 17.1429
+offset_right = -10.0
+offset_bottom = 33.1429
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(4, 4)
@@ -81,50 +102,53 @@ texture_progress = ExtResource("4_kveov")
 texture_progress_offset = Vector2(2, 3)
 script = ExtResource("5_phxmd")
 
-[node name="Area2D" type="Area2D" parent="."]
-monitorable = false
+[node name="NamePanel" type="Panel" parent="Control"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+offset_left = -260.0
+offset_top = 48.5714
+offset_right = -160.0
+offset_bottom = 78.5714
+scale = Vector2(1.5, 1.5)
+theme_override_styles/panel = SubResource("StyleBoxTexture_07ojj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2.85714, -120)
-shape = SubResource("CapsuleShape2D_dhqv5")
-
-[node name="NamePanel" type="Panel" parent="."]
-offset_left = -99.0
-offset_top = 50.0
-offset_right = 1.0
-offset_bottom = 81.0
-scale = Vector2(2, 2)
-
-[node name="Label" type="Label" parent="NamePanel"]
+[node name="Name" type="Label" parent="Control/NamePanel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -30.0
-offset_right = 50.0
+offset_left = -48.095
+offset_top = -23.0
+offset_right = 244.905
+offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.2, 0.2)
 theme_override_fonts/font = ExtResource("6_sbwrb")
+theme_override_font_sizes/font_size = 60
 text = "Fernling"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LevelPanel" type="Panel" parent="."]
-offset_left = -190.0
-offset_top = 50.0
-offset_right = -150.0
-offset_bottom = 81.0
-scale = Vector2(2, 2)
-
-[node name="Label" type="Label" parent="LevelPanel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 31.0
+[node name="Level" type="Label" parent="Control/NamePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 13.81
+offset_top = -8.0
+offset_right = 167.81
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
 theme_override_fonts/font = ExtResource("6_sbwrb")
-text = "5"
+theme_override_font_sizes/font_size = 60
+text = "Lvl. 5"
 horizontal_alignment = 1
 vertical_alignment = 1
 

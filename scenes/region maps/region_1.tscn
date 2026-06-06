@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://xj1jmaybgg7y"]
+[gd_scene load_steps=35 format=3 uid="uid://xj1jmaybgg7y"]
 
 [ext_resource type="PackedScene" uid="uid://dfanv7awc5a11" path="res://scenes/region_map.tscn" id="1_rkdou"]
 [ext_resource type="PackedScene" uid="uid://dxmuip8jd0bf2" path="res://scenes/map_node.tscn" id="2_aiqwn"]
@@ -9,25 +9,53 @@
 [ext_resource type="Resource" uid="uid://l8j6dm1bhumf" path="res://resources/luminae resources/zeltina.tres" id="6_dmlel"]
 [ext_resource type="Resource" uid="uid://b1cgewf7ykyqe" path="res://resources/luminae entries/tidbit_entry.tres" id="6_mynqw"]
 [ext_resource type="Resource" uid="uid://bi653htthowdt" path="res://resources/luminae resources/starburn.tres" id="7_g1y6p"]
+[ext_resource type="Script" path="res://scripts/resource scripts/reward_entry.gd" id="8_1akfc"]
 [ext_resource type="Resource" uid="uid://dk3iu6qmaw7a6" path="res://resources/luminae resources/solkin.tres" id="8_uhnd7"]
 [ext_resource type="Resource" uid="uid://pq1ba3bkltxn" path="res://resources/luminae resources/wavren.tres" id="9_m4tm4"]
+[ext_resource type="Resource" uid="uid://dtocsglwyy85x" path="res://resources/item resources/healing/common_crystal.tres" id="11_taq10"]
+[ext_resource type="Resource" uid="uid://fph86oq7v4fu" path="res://resources/item resources/offerings/refined_offering.tres" id="14_cnxk4"]
+[ext_resource type="Resource" uid="uid://bdm5lfuorosyt" path="res://resources/luminae resources/sneed.tres" id="15_kirfb"]
+[ext_resource type="Resource" uid="uid://df48tnbb32j8b" path="res://resources/luminae resources/mosshorn.tres" id="16_qlw0i"]
+[ext_resource type="Resource" uid="uid://df8rmhx2krrry" path="res://resources/item resources/offerings/common_offering.tres" id="17_y8tlx"]
+[ext_resource type="Resource" uid="uid://b6l3kyld6im2w" path="res://resources/luminae resources/buzzwad.tres" id="18_ycl4s"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y8p5k"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o6r66"]
 texture = ExtResource("2_njqhp")
+
+[sub_resource type="Resource" id="Resource_e7jot"]
+script = ExtResource("8_1akfc")
+reward_type = 0
+quantity = 30
+
+[sub_resource type="Resource" id="Resource_dss54"]
+script = ExtResource("8_1akfc")
+reward_type = 1
+quantity = 5
 
 [sub_resource type="Resource" id="Resource_ooflo"]
 script = ExtResource("3_4qgtx")
 Luminae = ExtResource("6_dmlel")
 spawn_rate = 1
-low_level = 1
-upper_level = 1
+low_level = 2
+upper_level = 3
 
 [sub_resource type="Resource" id="Resource_pi0mu"]
 script = ExtResource("3_4qgtx")
 Luminae = ExtResource("8_uhnd7")
 spawn_rate = 2
 low_level = 1
-upper_level = 1
+upper_level = 2
+
+[sub_resource type="Resource" id="Resource_xvhh7"]
+script = ExtResource("8_1akfc")
+reward_type = 0
+quantity = 50
+
+[sub_resource type="Resource" id="Resource_v7o7c"]
+script = ExtResource("8_1akfc")
+reward_type = 2
+item = ExtResource("11_taq10")
+quantity = 2
 
 [sub_resource type="Resource" id="Resource_iuyd6"]
 script = ExtResource("3_4qgtx")
@@ -40,18 +68,60 @@ upper_level = 3
 script = ExtResource("3_4qgtx")
 Luminae = ExtResource("9_m4tm4")
 spawn_rate = 4
-low_level = 2
+low_level = 3
 upper_level = 4
+
+[sub_resource type="Resource" id="Resource_cnjpo"]
+script = ExtResource("8_1akfc")
+reward_type = 0
+quantity = 50
+
+[sub_resource type="Resource" id="Resource_iwh8w"]
+script = ExtResource("8_1akfc")
+reward_type = 2
+item = ExtResource("14_cnxk4")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_er1bw"]
+script = ExtResource("3_4qgtx")
+Luminae = ExtResource("15_kirfb")
+spawn_rate = 2
+low_level = 3
+upper_level = 4
+
+[sub_resource type="Resource" id="Resource_jwtqf"]
+script = ExtResource("3_4qgtx")
+Luminae = ExtResource("16_qlw0i")
+spawn_rate = 2
+low_level = 3
+upper_level = 3
+
+[sub_resource type="Resource" id="Resource_wys0f"]
+script = ExtResource("8_1akfc")
+reward_type = 0
+quantity = 50
+
+[sub_resource type="Resource" id="Resource_rt4ae"]
+script = ExtResource("8_1akfc")
+reward_type = 2
+item = ExtResource("17_y8tlx")
+quantity = 2
+
+[sub_resource type="Resource" id="Resource_qyy8x"]
+script = ExtResource("3_4qgtx")
+Luminae = ExtResource("18_ycl4s")
+spawn_rate = 1
+low_level = 4
+upper_level = 5
 
 [node name="Region1" instance=ExtResource("1_rkdou")]
 
 [node name="Panel" parent="." index="0"]
-offset_left = -933.0
-offset_top = -532.0
-offset_right = 936.0
-offset_bottom = 537.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_y8p5k")
+offset_left = -987.0
+offset_top = -158.0
+offset_right = 447.0
+offset_bottom = 653.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_o6r66")
 
 [node name="BrightstoneVillage" parent="." index="1" instance=ExtResource("2_aiqwn")]
 offset_left = -683.0
@@ -60,6 +130,7 @@ offset_right = -554.0
 offset_bottom = 412.0
 node_label = "Brightstone Village"
 luminae_entries = Array[ExtResource("3_4qgtx")]([ExtResource("4_shiam"), ExtResource("5_rcxqo"), ExtResource("6_mynqw")])
+rewards = Array[ExtResource("8_1akfc")]([SubResource("Resource_e7jot"), SubResource("Resource_dss54")])
 
 [node name="GoldenMeadows" parent="." index="2" instance=ExtResource("2_aiqwn")]
 offset_left = -631.0
@@ -68,6 +139,7 @@ offset_right = -502.0
 offset_bottom = 313.0
 node_label = "Golden Meadows"
 luminae_entries = Array[ExtResource("3_4qgtx")]([SubResource("Resource_ooflo"), SubResource("Resource_pi0mu")])
+rewards = Array[ExtResource("8_1akfc")]([SubResource("Resource_xvhh7"), SubResource("Resource_v7o7c")])
 
 [node name="DustyCrossroads" parent="." index="3" instance=ExtResource("2_aiqwn")]
 offset_left = -544.0
@@ -76,6 +148,7 @@ offset_right = -415.0
 offset_bottom = 241.0
 node_label = "Dusty Crossroads"
 luminae_entries = Array[ExtResource("3_4qgtx")]([SubResource("Resource_iuyd6"), SubResource("Resource_l4thv")])
+rewards = Array[ExtResource("8_1akfc")]([SubResource("Resource_cnjpo"), SubResource("Resource_iwh8w")])
 
 [node name="CrackedIdol" parent="." index="4" instance=ExtResource("2_aiqwn")]
 offset_left = -422.0
@@ -83,6 +156,8 @@ offset_top = 73.0
 offset_right = -293.0
 offset_bottom = 200.0
 node_label = "Cracked Idol"
+luminae_entries = Array[ExtResource("3_4qgtx")]([SubResource("Resource_er1bw"), SubResource("Resource_jwtqf")])
+rewards = Array[ExtResource("8_1akfc")]([SubResource("Resource_wys0f"), SubResource("Resource_rt4ae")])
 
 [node name="SunTempleRuins" parent="." index="5" instance=ExtResource("2_aiqwn")]
 offset_left = -329.0
@@ -90,13 +165,11 @@ offset_top = 20.0
 offset_right = -200.0
 offset_bottom = 147.0
 node_label = "Sun Temple Ruins"
+luminae_entries = Array[ExtResource("3_4qgtx")]([SubResource("Resource_qyy8x")])
 
 [node name="Camera2D" parent="." index="6"]
 position = Vector2(-406, 251)
 
-[node name="Background" parent="Camera2D/MenuButtons" index="0"]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 198.0
-offset_bottom = 76.0
+[node name="CurrencyUI" parent="Camera2D" index="0"]
+offset_left = -8.0
+offset_right = -8.0

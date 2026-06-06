@@ -29,6 +29,7 @@ enum NodeType {
 
 # Available Luminae and spawn rates
 @export var luminae_entries: Array[LuminaeEntry] = []
+@export var rewards: Array[RewardEntry] = []
 
 # Post-Eternal shimmer — assign if this is a POST_ETERNAL node
 @export var is_post_eternal: bool = false

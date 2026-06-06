@@ -2,17 +2,17 @@ extends Node2D
 
 @onready var player_luminae: Luminae = $PlayerLuminae
 @onready var enemy_luminae: Luminae = $EnemyLuminae
-@onready var orbs_text: Label = $SpiritOrbs
+@onready var orbs_text: Label = $PlayerControl/SpiritOrbs/Quantity
 @onready var player_control = $PlayerControl
 @onready var rewards_menu = $RewardsMenu
-@onready var attack1: Attack = $PlayerControl/attack1
-@onready var attack1_btn: Button = $PlayerControl/attack1/Button
-@onready var attack2_btn: Button = $PlayerControl/attack2/Button
-@onready var attack2: Attack = $PlayerControl/attack2
+@onready var attack1: Attack = $PlayerControl/Attacks/attack1
+@onready var attack1_btn: Button = $PlayerControl/Attacks/attack1/Button
+@onready var attack2_btn: Button = $PlayerControl/Attacks/attack2/Button
+@onready var attack2: Attack = $PlayerControl/Attacks/attack2
 @onready var item_menu: ItemMenu = $PlayerControl/ItemMenu
-@onready var items_btn: Button = $PlayerControl/ItemsBtn
+@onready var items_btn: Button = $PlayerControl/Buttons/ItemsBtn
 @onready var luminae_menu: LuminaeMenu = $PlayerControl/LuminaeMenu
-@onready var luminaes_btn: Button = $PlayerControl/LuminaePartyBtn
+@onready var luminaes_btn: Button = $PlayerControl/Buttons/LuminaePartyBtn
 @onready var battle_popup = $BattlePopUpMenu
 
 @onready var player_turn: bool = true
@@ -99,9 +99,9 @@ func _on_item_selected(item: ItemData):
 			close_item_menu()
 			print("CAPTURE IN PROGRESS")
 			capture_process(item)
+			GameState.remove_item(item)
 		Global.ItemType.HEALING:
-			player_luminae.use_item(item)
-	GameState.remove_item(item)
+			player_luminae.use_item(item, true)
 	item_menu.populate_items()
 
 func _itemsCancelBtn_pressed():
@@ -295,22 +295,23 @@ func win_battle() -> void:
 
 func display_rewards() -> void:
 	hide_battle()
-	rewards = {
-		Global.RewardType.GOLD : 10,
-		Global.RewardType.LUMENCRYSTAL : 3
-	}
-	rewards_menu.populate_rewards(rewards)
+	rewards_menu.populate_rewards()
 	Fade("in", 0.3, rewards_menu)
 	var rewardsClaimBtn = $RewardsMenu/ClaimButton
 	rewardsClaimBtn.pressed.connect(self._on_claim_pressed)
 
 func _on_claim_pressed():
-	for reward in rewards:
-		match reward:
+	claim_rewards()
+
+func claim_rewards():
+	for entry in GameState.node_rewards:
+		match entry.reward_type:
 			Global.RewardType.GOLD:
-				GameState.add_gold(rewards[reward])
+				GameState.add_gold(entry.quantity)
 			Global.RewardType.LUMENCRYSTAL:
-				GameState.add_lumen_crystals(rewards[reward])
+				GameState.add_lumen_crystals(entry.quantity)
+			Global.RewardType.ITEM:
+				GameState.add_item(entry.item, entry.quantity)
 	GameState.change_scene(GameState.current_region)
 
 func hide_battle() -> void:
@@ -320,7 +321,11 @@ func hide_battle() -> void:
 	player_control.visible = false
 
 func lose_battle() -> void:
+	display_popup("Battle Lost.")
+	$BattlePopUpMenu/OkayButton.pressed.connect(go_to_home)
 	print("Battle Lost.")
+
+func go_to_home():
 	GameState.change_scene("home")
 
 func battle_capture() -> void:

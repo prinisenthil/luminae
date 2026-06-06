@@ -118,6 +118,7 @@ base_health = 60
 base_attack = 6
 base_defense = 6
 base_speed = 10
+base_crit = 5
 level = 1
 captured = false
 seen = false

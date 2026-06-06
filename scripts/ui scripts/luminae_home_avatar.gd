@@ -2,7 +2,7 @@ extends Panel
 class_name LuminaeHomeAvatar
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var name_panel: Panel = $NamePanel
+@onready var name_panel: Panel = $Tag
 
 var luminae: Luminae
 
@@ -18,7 +18,6 @@ func setup(luminae_input: Luminae):
 	sprite = $AnimatedSprite2D
 	sprite.sprite_frames = luminae.idle_anim
 	sprite.play()
-	$NamePanel/Label.text = luminae.nickname
 	$InfoPanel.setup(luminae)
 	$InfoPanel/CancelBtn.pressed.connect(self._on_cancel_pressed)
 	$InfoPanel.leveledUp.connect(self.updateTag)
@@ -26,14 +25,18 @@ func setup(luminae_input: Luminae):
 	updateTag()
 
 func updateTag():
-	$Tag/LevelText.text = "Level %d" % luminae.level
+	$Tag/NameText.text = luminae.nickname
+	$Tag/LevelText.text = "Lv. %d" % luminae.level
 	$Tag/HPBar.max_value = luminae.max_health
 	$Tag/HPBar.value = luminae.health
 
 func _on_pressed():
 	tapped.emit()
+	name_panel.visible = false
 	$InfoPanel.visible = true
 
 func _on_cancel_pressed():
 	closed.emit()
 	$InfoPanel.visible = false
+	updateTag()
+	name_panel.visible = true

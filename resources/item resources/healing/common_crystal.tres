@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("3_qxycb")
 name = "Common Crystal"
-description = "heals 30% HP"
+description = "heals 50 sHP"
 icon = ExtResource("2_d3b66")
 item_type = 0
 item_tier = 0
@@ -16,7 +16,7 @@ crafting_recipe = Array[ExtResource("1_k3e3k")]([])
 usable_mid_battle = true
 stackable = true
 max_stack = 99
-hp_restore_percent = 0.3
+hp_restore = 50
 full_restore = false
 clears_status = false
 infused_element = 0

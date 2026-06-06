@@ -43,7 +43,7 @@ var _last_drag_pos: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	_register_nodes()
 	_load_node_states()
-	$Camera2D/MenuButtons/GridContainer/HomeButton.pressed.connect(self._home_button_pressed)
+	$Camera2D/MenuButtons/Background/GridContainer/HomeButton.pressed.connect(self._home_button_pressed)
 
 func _home_button_pressed():
 	GameState.change_scene("home")
@@ -164,6 +164,7 @@ func _on_node_tapped(node: MapNode) -> void:
 	GameState.current_region = region_id
 	GameState.current_node = node.name
 	GameState.current_enemy = node.spawn_luminae()
+	GameState.node_rewards = node.rewards
 	GameState.change_scene("battle")
 
 

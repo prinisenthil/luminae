@@ -6,15 +6,15 @@ class_name RewardIcon
 @export var quantity: int
 
 
-func setup(rewardType: Global.RewardType, num: int, itemInput: ItemData = null):
+func setup(entry: RewardEntry):
 	var background: Panel = $Background
 	var stylebox = $Icon.get_theme_stylebox("panel") as StyleBoxTexture
 	var icon: StyleBoxTexture = stylebox.duplicate() as StyleBoxTexture
 	$Icon.add_theme_stylebox_override("panel", icon)
 	var quantity_label: Label = $Quantity/Label
-	type = rewardType
-	item = itemInput
-	quantity = num
+	type = entry.reward_type
+	item = entry.item
+	quantity = entry.quantity
 	
 	# Set ui
 	quantity_label.text = str(quantity)

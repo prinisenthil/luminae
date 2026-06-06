@@ -8,11 +8,11 @@ class_name Luminae
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var tap_area: Area2D = $Area2D
-@onready var hp_bar: TextureProgressBar = $HPBar
+@onready var hp_bar: TextureProgressBar = $Control/HPBar
 @onready var attack_origin: Marker2D = $AttackOrigin
 @onready var impact_point: Marker2D = $ImpactPoint
-@onready var name_label: Label = $NamePanel/Label
-@onready var level_label: Label = $LevelPanel/Label
+@onready var name_label: Label = $Control/NamePanel/Name
+@onready var level_label: Label = $Control/NamePanel/Level
 @onready var idle_anim: SpriteFrames = luminae_data.idle
 @onready var attack_anim: SpriteFrames = luminae_data.attack
 
@@ -42,7 +42,7 @@ func _ready():
 func setup():
 	set_variables()
 	name_label.text = nickname
-	level_label.text = str(level)
+	level_label.text = "Lvl. %d" % level
 	if not player:
 		sprite.flip_h = false
 	else:
@@ -119,6 +119,16 @@ func recalc_stats():
 	level_up_cost = getLevelUpCost()
 #	max_exp = exp_to_next_level()
 
+func get_stat_diff(base_stat: int):
+	var initial_stat = base_stat + int((base_stat * 0.15) * (level - 1))
+	var next_stat = base_stat + int((base_stat * 0.15) * (level))
+	return next_stat - initial_stat
+
+func get_health_diff():
+	var initial_max = luminae_data.base_health + int((luminae_data.base_health * 0.2) * (level - 1))
+	var next_max = luminae_data.base_health + int((luminae_data.base_health * 0.2) * (level))
+	return next_max - initial_max
+
 # level 1 returns base stat exactly, grows linearly each level
 func calc_stat(base_stat: int, boost: int) -> int:
 	return base_stat + int((base_stat * 0.15) * (level - 1)) + boost
@@ -152,10 +162,11 @@ func levelUp() -> void:
 	GameState.remove_gold(level_up_cost)
 	# trigger level up animation/signal here
 
-func use_item(item: ItemData):
+func use_item(item: ItemData, battling = false):
 	if item.item_type == Global.ItemType.HEALING:
-		var restore_amount = int(max_health * item.hp_restore_percent)
-		restore_health(restore_amount, true)
+		var restore_amount = item.hp_restore
+		restore_health(restore_amount, battling)
+		GameState.remove_item(item)
 
 func restore_health(hp_restore: int, battling=false):
 	health = min(health + hp_restore, max_health)

@@ -8,6 +8,7 @@ var keys = 2
 # Keyed by region name, then node name, then NodeState value
 # e.g. { "region_1": { "BrightstoneVillage": 2, "GoldenMeadows": 1 } }
 var node_states: Dictionary = {}
+var node_rewards: Array[RewardEntry] = []
 
 var current_region: String = "region_1"
 var current_node: String = ""
@@ -133,6 +134,8 @@ func set_node_state(region: String, node_name: String, state: MapNode.NodeState)
 		node_states[region] = {}
 	node_states[region][node_name] = state
 
+func get_node_rewards(region: String, node_name: String) -> Array[RewardEntry]:
+	return node_rewards
 
 func complete_node(region: String, node_name: String) -> void:
 	set_node_state(region, node_name, MapNode.NodeState.COMPLETED)

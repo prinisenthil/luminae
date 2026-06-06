@@ -10,6 +10,7 @@ class_name LuminaeData
 @export var base_attack: int = 6		# Base Attack Stat
 @export var base_defense: int = 6		# Base Defense Stat
 @export var base_speed: int = 10		# Base Speed Stat
+@export var base_crit: int = 5
 #@export var base_exp: int = 20
 
 @export var level: int = 1				# Default starting level

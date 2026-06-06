@@ -13,7 +13,7 @@ quantity = 10
 [resource]
 script = ExtResource("4_tya8w")
 name = "Refined Crystal"
-description = "heals 50% HP"
+description = "heals 150 HP"
 icon = ExtResource("3_tw8kg")
 item_type = 0
 item_tier = 1
@@ -22,7 +22,7 @@ crafting_recipe = Array[ExtResource("1_wuw6y")]([SubResource("Resource_gm8ty")])
 usable_mid_battle = true
 stackable = true
 max_stack = 99
-hp_restore_percent = 0.5
+hp_restore = 150
 full_restore = false
 clears_status = false
 infused_element = 0

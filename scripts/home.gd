@@ -2,7 +2,7 @@ extends Node2D
 class_name Home
 
 @onready var menu: LuminaeHomeMenu = $LuminaeHomeMenu
-@onready var battleBtn: Button = $MenuButtons/GridContainer/BattleButton
+@onready var battleBtn: Button = $MenuButtons/Background/GridContainer/BattleButton
 
 
 # Called when the node enters the scene tree for the first time.

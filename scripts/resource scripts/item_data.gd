@@ -18,7 +18,7 @@ class_name ItemData
 @export var max_stack: int = 99
 
 # HEALING items (Healing Seeds, Radiant Berries)
-@export var hp_restore_percent: float = 0.3  # 30%
+@export var hp_restore: int
 @export var full_restore: bool = false
 @export var clears_status: bool = false
 
@@ -35,7 +35,7 @@ class_name ItemData
 
 
 func _validate_property(property: Dictionary) -> void:
-	var healing_props = ["hp_restore_percent", "full_restore", "clears_status"]
+	var healing_props = ["hp_restore", "full_restore", "clears_status"]
 	var offering_props = ["infused_element"]
 	var experience_props = ["exp_points"]
 	var artifact_props = ["artifact_type", "element", "element_bond_bonus"]

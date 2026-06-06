@@ -1,14 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://m4wfamgs62gm"]
+[gd_scene load_steps=25 format=3 uid="uid://m4wfamgs62gm"]
 
 [ext_resource type="Texture2D" uid="uid://dteuxa10ld13w" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Modals/notebookModal_v2.png" id="1_q0rbs"]
 [ext_resource type="Texture2D" uid="uid://bqjts8vfrhin0" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Buttons/button_green.png" id="2_1njql"]
-[ext_resource type="Texture2D" uid="uid://noaomepvi16i" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Headers/headerBow_green.png" id="2_73x6e"]
 [ext_resource type="FontFile" uid="uid://dsdbxm78lspd3" path="res://art/placeholders/ui/fonts/Sora-Bold.otf" id="3_5y4la"]
 [ext_resource type="StyleBox" uid="uid://cvk4swkvfbbci" path="res://art/placeholders/ui/other styleboxes/levelup.tres" id="5_05io4"]
+[ext_resource type="Texture2D" uid="uid://dt8pkd8gjvkqc" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Panels/panel_cyan.png" id="5_p45yr"]
+[ext_resource type="Texture2D" uid="uid://bhcuqei2pgby4" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/ProgressBars/progressBar_black.png" id="5_pa2bg"]
+[ext_resource type="Texture2D" uid="uid://5m8ko4keo8ms" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/ProgressBars/progressBar_green.png" id="6_yyw55"]
 [ext_resource type="Texture2D" uid="uid://c4civkhshjc77" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/coin_icon_64px.png" id="7_hyq1y"]
+[ext_resource type="PackedScene" uid="uid://hphq58tb2py0" path="res://scenes/ui scenes/buttons/quick_heal_item_button.tscn" id="7_qvesf"]
 [ext_resource type="Texture2D" uid="uid://14cdltwnpe26" path="res://art/placeholders/sprite pngs/front facing/gaffingus front.png" id="7_ssr6l"]
 [ext_resource type="Texture2D" uid="uid://7d4m3jvsiayu" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Icons/64px/close_icon_64px.png" id="8_lvgcs"]
 [ext_resource type="PackedScene" uid="uid://c3g5j43pr3ahr" path="res://scenes/ui scenes/pop_up_menu.tscn" id="9_nj5sg"]
+[ext_resource type="Texture2D" uid="uid://db48xusx1xj3m" path="res://art/placeholders/Vector_UI_Pack_dobo_ui/Panels/panel_green.png" id="10_bllkt"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r8r7v"]
 load_path = "res://.godot/imported/button_green.png-25692639a0706b60c5f4601cba39d1ad.ctex"
@@ -26,8 +30,21 @@ texture = ExtResource("1_q0rbs")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8cpjr"]
 texture = ExtResource("1_q0rbs")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kiovo"]
-texture = ExtResource("2_73x6e")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sj4rq"]
+texture = ExtResource("5_p45yr")
+modulate_color = Color(1, 1, 1, 0.607843)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ajjfv"]
+texture = ExtResource("5_p45yr")
+modulate_color = Color(1, 1, 1, 0.607843)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_krvee"]
+texture = ExtResource("5_p45yr")
+modulate_color = Color(0.633757, 0.633757, 0.633756, 0.607843)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6vkht"]
+texture = ExtResource("10_bllkt")
+modulate_color = Color(0.763809, 0.763809, 0.763808, 0.607843)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fdrdd"]
 texture = ExtResource("7_hyq1y")
@@ -48,14 +65,13 @@ grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 300.0
-offset_right = 285.0
-offset_bottom = 350.0
-columns = 3
+offset_left = -89.0
+offset_top = 70.0
+offset_right = 21.0
+offset_bottom = 228.0
 
 [node name="StatsBtn" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(80, 50)
+custom_minimum_size = Vector2(110, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_5y4la")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_vcscc")
@@ -63,33 +79,14 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_q8ue7")
 
 [node name="Label" type="Label" parent="GridContainer/StatsBtn"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 6.0
-offset_right = 154.0
-offset_bottom = 82.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 140.0
+offset_bottom = 72.0
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("3_5y4la")
 theme_override_font_sizes/font_size = 40
 text = "Stats"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="EvolveBtn" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(80, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_5y4la")
-theme_override_styles/normal = SubResource("StyleBoxTexture_q8ue7")
-
-[node name="Label" type="Label" parent="GridContainer/EvolveBtn"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 6.0
-offset_right = 154.0
-offset_bottom = 82.0
-scale = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("3_5y4la")
-theme_override_font_sizes/font_size = 40
-text = "Evolve"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -101,14 +98,33 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_q8ue7")
 
 [node name="Label" type="Label" parent="GridContainer/ItemsBtn"]
 layout_mode = 0
-offset_left = 2.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 160.0
+offset_bottom = 80.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 40
+text = "Moves"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EvolveBtn" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_styles/normal = SubResource("StyleBoxTexture_q8ue7")
+
+[node name="Label" type="Label" parent="GridContainer/EvolveBtn"]
+layout_mode = 0
+offset_left = 6.0
 offset_top = 6.0
-offset_right = 154.0
+offset_right = 163.0
 offset_bottom = 82.0
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("3_5y4la")
 theme_override_font_sizes/font_size = 40
-text = "Items"
+text = "Growth"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -128,81 +144,176 @@ offset_right = 308.0
 offset_bottom = 313.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8cpjr")
 
-[node name="Header" type="Panel" parent="."]
+[node name="Header" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = -45.0
-offset_top = 8.0
-offset_right = 353.0
-offset_bottom = 67.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_kiovo")
+offset_left = 15.0
+offset_top = -11.0
+offset_right = 413.0
+offset_bottom = 48.0
+theme_override_constants/h_separation = 40
+columns = 2
 
 [node name="Name" type="Label" parent="Header"]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 1.0
-offset_right = 420.0
-offset_bottom = 60.0
-scale = Vector2(0.8, 0.8)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_5y4la")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "Fernling"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Level" type="Label" parent="Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 30
+text = "Lv. 18"
+
 [node name="Stats" type="Control" parent="."]
+visible = false
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 2.0
+offset_top = -29.0
+offset_right = 42.0
+offset_bottom = 11.0
 
-[node name="FirstStats" type="Label" parent="Stats"]
+[node name="HPPanel" type="Panel" parent="Stats"]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 89.0
-offset_right = 231.0
-offset_bottom = 248.0
-scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0.199596, 0.114761, 4.81308e-08, 1)
-theme_override_fonts/font = ExtResource("3_5y4la")
-theme_override_font_sizes/font_size = 40
-text = "Attack: 75
-Speed: 42
-HP: 82"
+offset_left = 15.0
+offset_top = 61.0
+offset_right = 289.0
+offset_bottom = 105.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_sj4rq")
 
-[node name="SecondStats" type="Label" parent="Stats"]
+[node name="HPLabel" type="Label" parent="Stats/HPPanel"]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 88.0
-offset_right = 432.0
-offset_bottom = 250.0
-scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0.199596, 0.114761, 4.81308e-08, 1)
-theme_override_fonts/font = ExtResource("3_5y4la")
-theme_override_font_sizes/font_size = 40
-text = "Defense: 62
-Crit Chance: 40%"
-autowrap_mode = 3
-
-[node name="LevelUpText" type="Label" parent="Stats"]
-layout_mode = 0
-offset_left = 102.0
-offset_top = 227.0
-offset_right = 414.0
-offset_bottom = 307.0
-scale = Vector2(0.3, 0.3)
-theme_override_colors/font_color = Color(0.199596, 0.114761, 4.81308e-08, 1)
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 353.0
+offset_bottom = 84.0
+scale = Vector2(0.2, 0.2)
 theme_override_fonts/font = ExtResource("3_5y4la")
 theme_override_font_sizes/font_size = 60
-text = "Level Up"
+text = "HP:  13  /  45"
+
+[node name="HPBar" type="TextureProgressBar" parent="Stats/HPPanel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 25.0
+offset_right = 574.0
+offset_bottom = 101.0
+scale = Vector2(0.15, 0.15)
+value = 100.0
+texture_under = ExtResource("5_pa2bg")
+texture_progress = ExtResource("6_yyw55")
+
+[node name="QuickHealButton" type="Button" parent="Stats"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 104.0
+offset_right = 289.0
+offset_bottom = 159.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_ajjfv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_krvee")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ajjfv")
+
+[node name="Label" type="Label" parent="Stats/QuickHealButton"]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 546.0
+offset_bottom = 98.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 60
+text = "Quick Heal"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Evolve" type="Control" parent="."]
+[node name="HealItems" type="GridContainer" parent="Stats/QuickHealButton"]
 visible = false
+layout_mode = 0
+offset_top = 53.0
+offset_right = 274.0
+offset_bottom = 162.0
+theme_override_constants/v_separation = -1
+
+[node name="QuickHealItemButton" parent="Stats/QuickHealButton/HealItems" instance=ExtResource("7_qvesf")]
+layout_mode = 2
+
+[node name="QuickHealItemButton2" parent="Stats/QuickHealButton/HealItems" instance=ExtResource("7_qvesf")]
+layout_mode = 2
+
+[node name="QuickHealItemButton3" parent="Stats/QuickHealButton/HealItems" instance=ExtResource("7_qvesf")]
+layout_mode = 2
+
+[node name="LuminaeStats" type="Panel" parent="Stats"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 158.0
+offset_right = 289.0
+offset_bottom = 247.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_sj4rq")
+
+[node name="Grid" type="GridContainer" parent="Stats/LuminaeStats"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 20.0
+offset_right = 627.0
+offset_bottom = 177.0
+scale = Vector2(0.3, 0.3)
+theme_override_constants/h_separation = 20
+columns = 3
+
+[node name="StatsLabel" type="Label" parent="Stats/LuminaeStats/Grid"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 60
+text = "ATK:  42
+SPD:  30"
+
+[node name="StatsLabel2" type="Label" parent="Stats/LuminaeStats/Grid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 60
+text = "|
+|"
+
+[node name="StatsLabel3" type="Label" parent="Stats/LuminaeStats/Grid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 60
+text = "DEF:  32
+CRT:  5%"
+
+[node name="LuminaeDescription" type="Panel" parent="Stats"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 260.0
+offset_right = 289.0
+offset_bottom = 324.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_sj4rq")
+
+[node name="Label" type="Label" parent="Stats/LuminaeDescription"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 7.0
+offset_right = 1071.0
+offset_bottom = 223.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 60
+text = "Gentle and energetic"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Growth" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="LevelNum" type="Label" parent="Evolve"]
+[node name="LevelNum" type="Label" parent="Growth"]
+visible = false
 layout_mode = 0
 offset_left = 110.0
 offset_top = 202.0
@@ -216,12 +327,14 @@ text = "Level"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EvolutionSprite" type="Sprite2D" parent="Evolve"]
+[node name="EvolutionSprite" type="Sprite2D" parent="Growth"]
+visible = false
 position = Vector2(149, 154)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_ssr6l")
 
-[node name="Label" type="Label" parent="Evolve"]
+[node name="Label" type="Label" parent="Growth"]
+visible = false
 layout_mode = 0
 offset_left = 38.0
 offset_top = 66.0
@@ -234,12 +347,43 @@ theme_override_font_sizes/font_size = 40
 text = "Evolution Stones: 1/3"
 horizontal_alignment = 1
 
-[node name="LevelUp" type="Button" parent="."]
+[node name="GrowthPreview" type="Panel" parent="Growth"]
+offset_left = 15.0
+offset_top = 33.0
+offset_right = 289.0
+offset_bottom = 110.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_sj4rq")
+
+[node name="Levels" type="Label" parent="Growth/GrowthPreview"]
 layout_mode = 0
-offset_left = 89.0
-offset_top = 251.0
-offset_right = 211.0
-offset_bottom = 289.0
+offset_left = 3.0
+offset_top = 7.0
+offset_right = 1071.0
+offset_bottom = 207.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 60
+text = "Level  18 -> 19"
+
+[node name="Stats" type="Label" parent="Growth/GrowthPreview"]
+offset_left = 3.0
+offset_top = 29.0
+offset_right = 1071.0
+offset_bottom = 185.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 60
+text = "HP  +5  |  ATK  +4  |  DEF  +4
+SPD  +4  |  CRT  +4%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelUp" type="Button" parent="Growth"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 207.0
+offset_right = 289.0
+offset_bottom = 260.0
 theme_override_colors/font_disabled_color = Color(0, 0.198808, 0.0759039, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0.198808, 0.0759039, 1)
 theme_override_colors/font_hover_color = Color(0.133333, 0.470588, 0.184314, 1)
@@ -249,35 +393,118 @@ theme_override_colors/font_color = Color(0, 0.198808, 0.0759039, 1)
 theme_override_colors/font_outline_color = Color(0, 0.198808, 0.0759039, 1)
 theme_override_fonts/font = ExtResource("3_5y4la")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = ExtResource("5_05io4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6vkht")
 theme_override_styles/normal = ExtResource("5_05io4")
 
-[node name="Panel" type="Panel" parent="LevelUp"]
+[node name="Coin" type="Panel" parent="Growth/LevelUp"]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 11.0
-offset_right = 82.0
-offset_bottom = 28.0
+offset_left = 183.0
+offset_top = 19.0
+offset_right = 201.0
+offset_bottom = 36.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_fdrdd")
 
-[node name="Label" type="Label" parent="LevelUp"]
+[node name="Label" type="Label" parent="Growth/LevelUp"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 10.0
-offset_right = 127.0
-offset_bottom = 87.0
+offset_left = 82.0
+offset_top = 8.0
+offset_right = 482.0
+offset_bottom = 165.0
 scale = Vector2(0.25, 0.25)
-theme_override_colors/font_color = Color(0.199596, 0.114761, 4.81308e-08, 1)
 theme_override_fonts/font = ExtResource("3_5y4la")
 theme_override_font_sizes/font_size = 60
-text = "60"
-horizontal_alignment = 2
+text = "Level Up    60"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Evolve" type="Button" parent="Growth"]
+offset_left = 14.0
+offset_top = 260.0
+offset_right = 288.0
+offset_bottom = 298.0
+theme_override_colors/font_disabled_color = Color(0, 0.198808, 0.0759039, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.198808, 0.0759039, 1)
+theme_override_colors/font_hover_color = Color(0.133333, 0.470588, 0.184314, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.198808, 0.0759039, 1)
+theme_override_colors/font_focus_color = Color(0, 0.198808, 0.0759039, 1)
+theme_override_colors/font_color = Color(0, 0.198808, 0.0759039, 1)
+theme_override_colors/font_outline_color = Color(0, 0.198808, 0.0759039, 1)
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = ExtResource("5_05io4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6vkht")
+theme_override_styles/normal = ExtResource("5_05io4")
+disabled = true
+
+[node name="Coin" type="Panel" parent="Growth/Evolve"]
+visible = false
+layout_mode = 0
+offset_left = 183.0
+offset_top = 10.0
+offset_right = 201.0
+offset_bottom = 27.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_fdrdd")
+
+[node name="Label" type="Label" parent="Growth/Evolve"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 3.0
+offset_right = 516.0
+offset_bottom = 131.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 60
+text = "Evolve    Lv. 40"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EvolutionMaterials" type="Panel" parent="Growth"]
+offset_left = 15.0
+offset_top = 108.0
+offset_right = 289.0
+offset_bottom = 185.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_sj4rq")
+
+[node name="Label" type="Label" parent="Growth/EvolutionMaterials"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 7.0
+offset_right = 1071.0
+offset_bottom = 207.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 60
+text = "Evolution Materials:"
+
+[node name="MaterialNames" type="Label" parent="Growth/EvolutionMaterials"]
+offset_left = 8.0
+offset_top = 28.0
+offset_right = 1076.0
+offset_bottom = 196.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 60
+text = "Sun Essence:
+Lumens Cost:"
+
+[node name="MaterialAmounts" type="Label" parent="Growth/EvolutionMaterials"]
+offset_left = 143.0
+offset_top = 28.0
+offset_right = 561.0
+offset_bottom = 185.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_5y4la")
+theme_override_font_sizes/font_size = 60
+text = "1/15
+500"
 
 [node name="CancelBtn" type="Button" parent="."]
 layout_mode = 0
-offset_left = 278.0
-offset_top = 14.0
-offset_right = 314.0
-offset_bottom = 49.0
+offset_left = 270.0
+offset_top = -10.0
+offset_right = 306.0
+offset_bottom = 25.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_fxy25")
 
 [node name="PopUpMenu" parent="." instance=ExtResource("9_nj5sg")]
